@@ -7,7 +7,7 @@ import PlaceBet from './components/PlaceBet';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <Headers />
         <div>
           <PlaceBet />
