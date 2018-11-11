@@ -4,19 +4,27 @@ import Slider from 'rc-slider/lib/Slider';
 import 'rc-slider/assets/index.css';
 
 
-class BetSize extends React.Component {
+class ValueSlider extends React.Component {
   render() {
     return (
-    <div className="form-group">
-      <label>Bet size</label>
       <div className="row">
         <div className="col">
-          <input className="bet-size form-control" />
+          <input className="form-control" />
         </div>
         <div className="col-11">
           <Slider />
         </div>
       </div>
+    );
+  }
+}
+
+class BetSize extends React.Component {
+  render() {
+    return (
+    <div className="form-group">
+      <label>Bet size</label>
+      <ValueSlider />
     </div>
     );
   }
@@ -27,20 +35,21 @@ class ChanceOfWinning extends React.Component {
     return (
     <div className="form-group">
       <label>Chance of winning</label>
-      <div className="row">
-        <div className="col">
-          <input className="chane-of-winning form-control" />
-        </div>
-        <div className="col-11">
-          <Slider />
-        </div>
-      </div>
+      <ValueSlider />
     </div>
     );
   }
 }
 
 class RollUnder extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
+
   render() {
     return (
     <div className="row">
@@ -48,7 +57,7 @@ class RollUnder extends React.Component {
         <h3>Roll under</h3>
       </div>
       <div className="col">
-        <h3 className="roll-under-value">{/* TODO */}51</h3>
+        <h3 className="roll-under-value">{this.props.value}</h3>
       </div>
     </div>
     );
@@ -70,7 +79,8 @@ class PlaceBet extends React.Component {
         <h2>Place your bet</h2>
         <BetSize />
         <ChanceOfWinning />
-        <RollUnder />
+        {/* TODO */}
+        <RollUnder value="51" />
         <RollButton />
       </form>
     );
