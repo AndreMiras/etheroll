@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 
 class BetSize extends React.Component {
@@ -54,6 +53,7 @@ class PlaceBet extends React.Component {
         <BetSize />
         <ChanceOfWinning />
         <RollUnder />
+        <RollButton />
       </div>
     );
   }
