@@ -1,5 +1,7 @@
 import React from 'react';
 import './css/PlaceBet.css';
+import Slider from 'rc-slider/lib/Slider';
+import 'rc-slider/assets/index.css';
 
 
 class BetSize extends React.Component {
@@ -7,8 +9,14 @@ class BetSize extends React.Component {
     return (
     <div className="form-group">
       <label>Bet size</label>
-      <input className="bet-size form-control">
-      </input>
+      <div className="row">
+        <div className="col">
+          <input className="bet-size form-control" />
+        </div>
+        <div className="col-11">
+          <Slider />
+        </div>
+      </div>
     </div>
     );
   }
@@ -19,8 +27,14 @@ class ChanceOfWinning extends React.Component {
     return (
     <div className="form-group">
       <label>Chance of winning</label>
-      <input className="chane-of-winning form-control">
-      </input>
+      <div className="row">
+        <div className="col">
+          <input className="chane-of-winning form-control" />
+        </div>
+        <div className="col-11">
+          <Slider />
+        </div>
+      </div>
     </div>
     );
   }
@@ -44,7 +58,7 @@ class RollUnder extends React.Component {
 class RollButton extends React.Component {
   render() {
     return (
-      <button type="button" className="roll-button btn btn-primary">Roll</button>
+      <button type="button" className="btn btn-primary btn-lg">Roll</button>
     );
   }
 }
