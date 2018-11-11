@@ -39,7 +39,7 @@ class RollUnder extends React.Component {
 class RollButton extends React.Component {
   render() {
     return (
-      <button className="roll-button">Roll</button>
+      <button type="button" className="roll-button btn btn-primary">Roll</button>
     );
   }
 }
