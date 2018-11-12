@@ -4,74 +4,61 @@ import Slider from 'rc-slider/lib/Slider';
 import 'rc-slider/assets/index.css';
 
 
-class ValueSlider extends React.Component {
-
-  onInputChange = (event) => {
-    this.props.updateValue(Number(event.target.value));
-  }
-
-  render() {
-    return (
-      <div className="row">
-        <div className="col">
-          <input type="number" className="form-control" onChange={this.onInputChange} value={this.props.value} />
-        </div>
-        <div className="col-10">
-          <Slider onChange={this.props.updateValue} value={this.props.value} />
-        </div>
+function ValueSlider(props) {
+  return (
+    <div className="row">
+      <div className="col">
+        <input type="number" className="form-control"
+            onChange={(e) => props.updateValue(Number(e.target.value))} value={props.value} />
       </div>
-    );
-  }
+      <div className="col-10">
+        <Slider onChange={props.updateValue} value={props.value} />
+      </div>
+    </div>
+  );
 }
 
-class BetSize extends React.Component {
-
-  render() {
-    return (
-      <div className="form-group">
-        <label>Bet size</label>
-        <ValueSlider value={this.props.betSize} updateValue={this.props.updateBetSize} />
-      </div>
-    );
-  }
+function BetSize(props) {
+  return (
+    <div className="form-group">
+      <label>Bet size</label>
+      <ValueSlider value={props.betSize} updateValue={props.updateBetSize} />
+    </div>
+  );
 }
 
-class ChanceOfWinning extends React.Component {
-
-  render() {
-    return (
-      <div className="form-group">
-        <label>Chance of winning</label>
-        <ValueSlider value={this.props.chances} updateValue={this.props.updateChances} />
-      </div>
-    );
-  }
+function ChanceOfWinning(props) {
+  return (
+    <div className="form-group">
+      <label>Chance of winning</label>
+      <ValueSlider value={props.chances} updateValue={props.updateChances} />
+    </div>
+  );
 }
 
-class RollUnder extends React.Component {
-
-  render() {
-    return (
-      <div className="row">
-        <div className="col">
-          <h3>Roll under</h3>
-        </div>
-        <div className="col">
-          <h3 className="roll-under-value">{this.props.value}</h3>
-        </div>
+function RollUnder(props) {
+  return (
+    <div className="row">
+      <div className="col">
+        <h3>Roll under</h3>
       </div>
-    );
-  }
+      <div className="col">
+        <h3 className="roll-under-value">{props.value}</h3>
+      </div>
+    </div>
+  );
 }
 
-const Button = ({ text }) => (
-    <button type="button" className="btn btn-primary btn-lg">{text}</button>
-)
+// const Button = ({ text }) => (
+//     <button type="button" className="btn btn-primary btn-lg">{text}</button>
+// )
 
-class RollButton extends React.Component {
-  render() {
-    return <Button text="Roll" />
-  }
+function Button(props) {
+    return <button type="button" className="btn btn-primary btn-lg">{props.text}</button>
+}
+
+function RollButton() {
+  return <Button text="Roll" />
 }
 
 class PlaceBet extends React.Component {
