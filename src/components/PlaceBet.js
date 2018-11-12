@@ -67,19 +67,20 @@ class PlaceBet extends React.Component {
     super(props);
     this.state = {
       betSize: 1,
-      chances: 51,
+      chances: 50,
     };
   }
 
   updateState = key => value => this.setState({ [key]: value })
 
   render() {
+    const rollUnder = this.state.chances + 1;
     return (
       <form className="PlaceBet">
         <h2>Place your bet</h2>
         <BetSize betSize={this.state.betSize} updateBetSize={this.updateState('betSize')} />
         <ChanceOfWinning chances={this.state.chances} updateChances={this.updateState('chances')} />
-        <RollUnder value={this.state.chances} />
+        <RollUnder value={rollUnder} />
         <RollButton />
       </form>
     );
