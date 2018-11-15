@@ -16,13 +16,9 @@ class Headers extends Component {
                 <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">Link</a>
+                <a className="nav-link" href="https://github.com/AndreMiras/etheroll">About</a>
               </li>
             </ul>
-            <form className="form-inline mt-2 mt-md-0">
-              <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
           </div>
         </nav>
       </header>
