@@ -1,7 +1,7 @@
 # Change Log
 
 
-## [Unreleased]
+## [v20181016]
 
   - Connect to the Etheroll contract
 
