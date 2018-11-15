@@ -6,7 +6,7 @@ class Footers extends Component {
     return (
       <footer className="Footers">
         <div className="container">
-          <span className="text-muted">Place sticky footer content here.</span>
+          <span className="text-muted">Copyright (c) 2018 Andre Miras</span>
         </div>
       </footer>
     );
