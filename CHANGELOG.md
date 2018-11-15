@@ -5,6 +5,7 @@
 
   - Show transaction on roll
   - Network management (support for Mainnet & Ropsten)
+  - Deploy to GitHub-Pages
 
 
 ## [v20181016]
