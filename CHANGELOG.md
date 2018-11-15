@@ -6,9 +6,10 @@
   - Show transaction on roll
   - Network management (support for Mainnet & Ropsten)
   - Deploy to GitHub-Pages
+  - Layout improvements & fixes
 
 
-## [v20181016]
+## [v20181015]
 
   - Connect to the Etheroll contract
 
