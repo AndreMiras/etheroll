@@ -1,7 +1,7 @@
 # Change Log
 
 
-## [Unreleased]
+## [v20181016]
 
   - Show transaction on roll
   - Network management (support for Mainnet & Ropsten)
