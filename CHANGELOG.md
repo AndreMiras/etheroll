@@ -1,6 +1,10 @@
 # Change Log
 
 
+## [Unreleased]
+
+  - Fixes input size on smartphone
+
 ## [v20181016]
 
   - Show transaction on roll

@@ -9,11 +9,11 @@ import {getEtherollContractSync, etherscanUrls, Networks, contractAddresses} fro
 function ValueSlider(props) {
   return (
     <div className="row">
-      <div className="col">
+      <div className="col-sm-3 col-lg-2">
         <input type="number" className="form-control"
             onChange={(e) => props.updateValue(Number(e.target.value))} value={props.value} />
       </div>
-      <div className="col-10">
+      <div className="col">
         <Slider onChange={props.updateValue} value={props.value} step={props.step} max={props.max} />
       </div>
     </div>
