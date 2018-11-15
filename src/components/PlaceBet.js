@@ -3,7 +3,7 @@ import './css/PlaceBet.css';
 import Slider from 'rc-slider/lib/Slider';
 import 'rc-slider/assets/index.css';
 import getWeb3 from "../utils/get-web3";
-import {getEtherollContractSync} from "../utils/etheroll-contract";
+import {getEtherollContractSync, etherscanUrls, Networks} from "../utils/etheroll-contract";
 
 
 function ValueSlider(props) {
@@ -14,7 +14,7 @@ function ValueSlider(props) {
             onChange={(e) => props.updateValue(Number(e.target.value))} value={props.value} />
       </div>
       <div className="col-10">
-        <Slider onChange={props.updateValue} value={props.value} />
+        <Slider onChange={props.updateValue} value={props.value} step={props.step} max={props.max} />
       </div>
     </div>
   );
@@ -24,7 +24,7 @@ function BetSize(props) {
   return (
     <div className="form-group">
       <label>Bet size</label>
-      <ValueSlider value={props.betSize} updateValue={props.updateBetSize} />
+      <ValueSlider value={props.betSize} updateValue={props.updateBetSize} step={0.1} max={10} />
     </div>
   );
 }
@@ -67,8 +67,9 @@ function RollButton(props) {
   return <Button text="Roll" onClick={props.onClick} />
 }
 
-function Accounts (props) {
-    return <p>Accounts: {props.accounts}</p>
+function Account (props) {
+  const url = etherscanUrls[props.network] + '/address/' + props.address;
+  return <span>Account: <a href={url}>{props.address}</a></span>
 }
 
 class PlaceBet extends React.Component {
@@ -76,10 +77,12 @@ class PlaceBet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      betSize: 1,
+      betSize: 0.1,
       chances: 50,
       accounts: null,
+      account: null,
       web3: null,
+      network: Networks.mainnet,
     };
   }
 
@@ -92,7 +95,7 @@ class PlaceBet extends React.Component {
   onRollClick() {
     var web3 = this.state.web3;
     var etherollContract = getEtherollContractSync(web3);
-    var from_account = this.state.accounts[0];
+    var from_account = this.state.account;
     var valueEth = this.state.betSize;
     var value = web3.toWei(valueEth.toString(), "ether");
     etherollContract.playerRollDice(51, {from: from_account, value: value}, (error, result) => {
@@ -109,11 +112,12 @@ class PlaceBet extends React.Component {
     getWeb3.then(results => {
       var web3 = results.web3;
       this.setState({web3: web3});
+      this.setState({network: web3.version.network});
       web3.eth.getAccounts((error, accounts) => {
         if (error) {
           console.log(error)
         }
-        this.setState({accounts: accounts});
+        this.setState({accounts: accounts, account: accounts[0]});
       });
     });
   }
@@ -123,7 +127,7 @@ class PlaceBet extends React.Component {
     return (
       <form className="PlaceBet">
         <h2>Place your bet</h2>
-        <Accounts accounts={this.state.accounts} />
+        <Account network={this.state.network} address={this.state.account} />
         <BetSize betSize={this.state.betSize} updateBetSize={this.updateState('betSize')} />
         <ChanceOfWinning chances={this.state.chances} updateChances={this.updateState('chances')} />
         <RollUnder value={rollUnder} />
