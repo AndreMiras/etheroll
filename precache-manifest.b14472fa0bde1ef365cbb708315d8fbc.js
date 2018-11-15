@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "6493321d567eb0f22bd5112fbcf044a8",
-    "url": "/etheroll/static/media/fa-regular-400.6493321d.eot"
+    "revision": "b69de69a4ff8ca0abe96ec0b0c180c5b",
+    "url": "/etheroll/static/media/fa-brands-400.b69de69a.ttf"
   },
   {
-    "revision": "47ab2463df688bab1c09",
+    "revision": "293bc23fccd327799cc6",
     "url": "/etheroll/static/css/main.e0835e79.chunk.css"
   },
   {
@@ -24,24 +24,24 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-brands-400.659c4d58.woff2"
   },
   {
-    "revision": "ec0716ae8aa1ba781a1a6bcbce833f6c",
-    "url": "/etheroll/static/media/fa-brands-400.ec0716ae.eot"
-  },
-  {
     "revision": "8b7a9afd7b95f62e6ee8a72930bfb9ed",
     "url": "/etheroll/static/media/fa-brands-400.8b7a9afd.woff"
   },
   {
-    "revision": "b69de69a4ff8ca0abe96ec0b0c180c5b",
-    "url": "/etheroll/static/media/fa-brands-400.b69de69a.ttf"
+    "revision": "ec0716ae8aa1ba781a1a6bcbce833f6c",
+    "url": "/etheroll/static/media/fa-brands-400.ec0716ae.eot"
+  },
+  {
+    "revision": "6493321d567eb0f22bd5112fbcf044a8",
+    "url": "/etheroll/static/media/fa-regular-400.6493321d.eot"
   },
   {
     "revision": "bdadb6ce95c5a2e7b673940721450d3c",
     "url": "/etheroll/static/media/fa-regular-400.bdadb6ce.woff2"
   },
   {
-    "revision": "47ab2463df688bab1c09",
-    "url": "/etheroll/static/js/main.47ab2463.chunk.js"
+    "revision": "293bc23fccd327799cc6",
+    "url": "/etheroll/static/js/main.293bc23f.chunk.js"
   },
   {
     "revision": "0b5e3a5451fc62d9023ccafc85bc89db",
@@ -56,12 +56,12 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-regular-400.0c419713.svg"
   },
   {
-    "revision": "fb493903265cad425ccdf8e04fc2de61",
-    "url": "/etheroll/static/media/fa-solid-900.fb493903.woff2"
-  },
-  {
     "revision": "f29ad0031ad2c1c14b771ce504e2bfa7",
     "url": "/etheroll/static/media/fa-solid-900.f29ad003.eot"
+  },
+  {
+    "revision": "fb493903265cad425ccdf8e04fc2de61",
+    "url": "/etheroll/static/media/fa-solid-900.fb493903.woff2"
   },
   {
     "revision": "bcb927a742a8370b76642fd1a9a749c0",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/etheroll/static/css/1.14c9bed2.chunk.css"
   },
   {
-    "revision": "c3632fb2fac16d5dd231a00d2987c379",
+    "revision": "ab9beb3546530db3fc3a2077f33bdc68",
     "url": "/etheroll/index.html"
   }
 ];
