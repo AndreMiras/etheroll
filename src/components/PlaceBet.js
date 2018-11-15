@@ -86,16 +86,16 @@ function Contract (props) {
 }
 
 function ContractInfo (props) {
-    return (
-    <div className="row">
-      <div className="col">
-        <Contract network={props.network} address={props.contractAddress} />
-      </div>
-      <div className="col">
-        <Wallet network={props.network} address={props.account} />
-      </div>
+  return (
+  <div className="row">
+    <div className="col">
+      <Contract network={props.network} address={props.contractAddress} />
     </div>
-    );
+    <div className="col">
+      <Wallet network={props.network} address={props.account} />
+    </div>
+  </div>
+  );
 }
 
 function Transactions (props) {
