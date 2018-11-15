@@ -1,3 +1,7 @@
 .PlaceBet .roll-under-value {
   text-align: right;
 }
+
+.card.transactions {
+  margin-top: 10px;
+}

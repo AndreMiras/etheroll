@@ -30,4 +30,4 @@ function getEtherollContract() {
 }
 
 
-export {getEtherollContract, getEtherollContractSync, etherscanUrls, Networks};
+export {getEtherollContract, getEtherollContractSync, etherscanUrls, Networks, contractAddresses};
