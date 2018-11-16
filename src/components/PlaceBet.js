@@ -31,8 +31,12 @@ function ValueSlider({
 ValueSlider.propTypes = {
   value: PropTypes.number.isRequired,
   updateValue: PropTypes.func.isRequired,
-  step: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired,
+  step: PropTypes.number,
+  max: PropTypes.number,
+};
+ValueSlider.defaultProps = {
+  step: 1,
+  max: 100,
 };
 
 function BetSize({ betSize, updateBetSize }) {

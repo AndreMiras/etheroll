@@ -1,6 +1,6 @@
 import Web3 from 'web3';
 
-const getWeb3 = new Promise((resolve, reject) => {
+const getWeb3 = new Promise((resolve) => {
   // wait for loading completion before loading web3, to be sure it's
   // already injected
   window.addEventListener('load', () => {
