@@ -133,7 +133,11 @@ class PlaceBet extends React.Component {
     this.getWeb3();
   }
 
-  updateState = key => value => this.setState({ [key]: value })
+  updateState(key) {
+    return (value) => {
+      this.setState({ [key]: value });
+    }
+  }
 
   onRollClick() {
     var web3 = this.state.web3;
