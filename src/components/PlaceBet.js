@@ -100,7 +100,7 @@ function ContractInfo (props) {
 
 function Transactions (props) {
   if (props.transactions.length === 0) return <span />;
-  var transactions = props.transactions.map((item, index) => (
+  const transactions = props.transactions.map((item, index) => (
     <li key={index} className="list-group-item"><Transaction network={props.network} hash={item} /></li>
   ));
   return (
@@ -114,18 +114,16 @@ function Transactions (props) {
 }
 
 class PlaceBet extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       betSize: 0.1,
       chances: 50,
-      accounts: null,
       account: null,
       web3: null,
       network: Networks.mainnet,
       contract: contractAddresses[Networks.mainnet],
-      roll_transactions: [],
+      rollTransactions: [],
     };
   }
 
@@ -133,62 +131,64 @@ class PlaceBet extends React.Component {
     this.getWeb3();
   }
 
-  updateState(key) {
-    return (value) => {
-      this.setState({ [key]: value });
-    }
-  }
-
   onRollClick() {
-    var web3 = this.state.web3;
-    var from_account = this.state.account;
-    var valueEth = this.state.betSize;
-    var value = web3.toWei(valueEth.toString(), "ether");
-    this.state.contract.playerRollDice(51, {from: from_account, value: value}, (error, result) => {
+    const {
+      account, contract, betSize, web3,
+    } = this.state;
+    const value = web3.toWei(betSize.toString(), 'ether');
+    contract.playerRollDice(51, { from: account, value }, (error, result) => {
       if (error) {
         console.error(error);
-      }
-      else {
+      } else {
         console.log(JSON.stringify(result));
-        var roll_transactions = this.state.roll_transactions.slice();
-        roll_transactions.push(result);
-        this.setState({roll_transactions: roll_transactions});
+        this.setState(prevState => ({
+          rollTransactions: prevState.rollTransactions.concat(result),
+        }));
       }
     });
   }
 
   getWeb3() {
-    getWeb3.then(results => {
-      var web3 = results.web3;
-      var contract = getEtherollContractSync(web3);
+    getWeb3.then((results) => {
+      const { web3 } = results;
+      const contract = getEtherollContractSync(web3);
       this.setState({
-        web3: web3,
+        web3,
         network: web3.version.network,
-        contract: contract,
+        contract,
         contractAddress: contract.address,
       });
       web3.eth.getAccounts((error, accounts) => {
         if (error) {
-          console.log(error)
+          console.log(error);
         }
-        this.setState({accounts: accounts, account: accounts[0]});
+        this.setState({ account: accounts[0] });
       });
     });
   }
 
+  updateState(key) {
+    return (value) => {
+      this.setState({ [key]: value });
+    };
+  }
+
   render() {
-    const rollUnder = this.state.chances + 1;
+    const {
+      account, betSize, chances, contractAddress, network, rollTransactions,
+    } = this.state;
+    const rollUnder = chances + 1;
     return (
       <div>
-        <ContractInfo contractAddress={this.state.contractAddress} network={this.state.network} account={this.state.account} />
+        <ContractInfo contractAddress={contractAddress} network={network} account={account} />
         <form className="PlaceBet">
           <h2>Place your bet</h2>
-          <BetSize betSize={this.state.betSize} updateBetSize={this.updateState('betSize')} />
-          <ChanceOfWinning chances={this.state.chances} updateChances={this.updateState('chances')} />
+          <BetSize betSize={betSize} updateBetSize={this.updateState('betSize')} />
+          <ChanceOfWinning chances={chances} updateChances={this.updateState('chances')} />
           <RollUnder value={rollUnder} />
           <RollButton onClick={() => this.onRollClick()} />
         </form>
-        <Transactions network={this.state.network} transactions={this.state.roll_transactions} />
+        <Transactions network={network} transactions={rollTransactions} />
       </div>
     );
   }
