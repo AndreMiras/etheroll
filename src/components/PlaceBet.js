@@ -101,7 +101,7 @@ RollButton.propTypes = {
 };
 
 function Transaction({ hash, network }) {
-  const url = `${etherscanUrls[network]} /tx/ ${hash}`;
+  const url = `${etherscanUrls[network]}/tx/${hash}`;
   return <a href={url}>{hash}</a>;
 }
 Transaction.propTypes = {
@@ -110,7 +110,7 @@ Transaction.propTypes = {
 };
 
 function Address({ address, network }) {
-  const url = `${etherscanUrls[network]} /address/ ${address}`;
+  const url = `${etherscanUrls[network]}/address/${address}`;
   return <a href={url}>{address}</a>;
 }
 Address.propTypes = {
