@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly on empty transactions 1`] = `<span />`;
+
+exports[`renders correctly on not empty transactions 1`] = `
+<div
+  className="card transactions"
+>
+  <div
+    className="card-header"
+  >
+    Transactions
+  </div>
+  <div
+    className="card-body"
+  >
+    <ul
+      className="list-group"
+    >
+      <li
+        className="list-group-item"
+      >
+        <a
+          href="https://ropsten.etherscan.io/tx/0x0123"
+        >
+          0x0123
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

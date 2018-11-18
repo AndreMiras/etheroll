@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Headers from './components/Headers';
 import Footers from './components/Footers';
-import { PlaceBet } from './components/PlaceBet';
+import PlaceBet from './components/PlaceBet';
 
 function App() {
   return (

@@ -3,7 +3,8 @@
 
 ## [Unreleased]
 
-  - Fixes input size on smartphone
+  - Fix input size on smartphone
+  - Setup unit testing, refs #6
 
 ## [v20181016]
 

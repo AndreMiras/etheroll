@@ -21,5 +21,6 @@ make
 
 ## Test
 ```
+make lint
 make test
 ```
