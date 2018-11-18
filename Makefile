@@ -3,13 +3,16 @@ ESLINT=$(BIN_DIR)/eslint
 SOURCE_DIR=src/
 
 
-all: build
+all: install
 
-build:
-	npm build
+install:
+	yarn install
 
 clean:
 	rm -rf node_modules/
 
 test:
+	yarn test
+
+lint:
 	$(ESLINT) $(SOURCE_DIR)

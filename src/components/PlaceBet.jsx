@@ -262,4 +262,4 @@ class PlaceBet extends React.Component {
   }
 }
 
-export default PlaceBet;
+export { Address, PlaceBet };
