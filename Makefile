@@ -11,7 +11,7 @@ install:
 clean:
 	rm -rf node_modules/
 
-test:
+test: install
 	yarn test
 
 lint:

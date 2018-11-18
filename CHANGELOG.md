@@ -5,6 +5,7 @@
 
   - Fix input size on smartphone
   - Setup unit testing, refs #6
+  - Provide Docker image, refs #13
 
 ## [v20181016]
 
