@@ -1,0 +1,12 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+install:
+  - docker build --tag=etheroll-js .
+
+script:
+  - docker run etheroll-js /bin/sh -c 'make test CI=1'

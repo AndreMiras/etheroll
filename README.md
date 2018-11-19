@@ -1,5 +1,7 @@
 # Etheroll ReactJS
 
+[![Build Status](https://travis-ci.org/AndreMiras/etheroll.svg?branch=develop)](https://travis-ci.org/AndreMiras/etheroll)
+
 <https://andremiras.github.io/etheroll/>
 
 Experimental project running an alternative [Etheroll](http://etheroll.com) frontend on [ReactJS](https://reactjs.org).
