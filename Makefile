@@ -12,7 +12,7 @@ clean:
 	rm -rf node_modules/
 
 test: install
-	yarn test
+	yarn test --watchAll=false
 
 lint:
 	$(ESLINT) $(SOURCE_DIR)
