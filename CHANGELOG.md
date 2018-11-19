@@ -7,6 +7,7 @@
   - Setup unit testing, refs #6
   - Provide Docker image, refs #13
   - CI testing with Travis, refs #7
+  - Show error message on missing web3-wallet, refs #4 and #5
 
 ## [v20181016]
 

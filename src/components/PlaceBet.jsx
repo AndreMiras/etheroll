@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/PlaceBet.css';
 import getWeb3 from '../utils/get-web3';
+import Alert from './Alert';
 import ContractInfo from './ContractInfo';
 import BetSize from './BetSize';
 import ChanceOfWinning from './ChanceOfWinning';
@@ -10,6 +11,7 @@ import Transactions from './Transactions';
 import {
   getEtherollContractSync, Networks, contractAddresses,
 } from '../utils/etheroll-contract';
+
 
 class PlaceBet extends React.Component {
   constructor(props) {
@@ -22,6 +24,7 @@ class PlaceBet extends React.Component {
       network: Networks.mainnet,
       contractAddress: contractAddresses[Networks.mainnet],
       rollTransactions: [],
+      alertDict: {},
     };
   }
 
@@ -62,6 +65,12 @@ class PlaceBet extends React.Component {
         }
         this.setState({ account: accounts[0] });
       });
+    }, (reason) => {
+      const classType = 'danger';
+      const message = 'No account connected, ' +
+        'connect with a Web3-compatible wallet like MetaMask';
+      const alertDict = { classType, message };
+      this.setState({ alertDict });
     });
   }
 
@@ -73,18 +82,20 @@ class PlaceBet extends React.Component {
 
   render() {
     const {
-      account, betSize, chances, contractAddress, network, rollTransactions,
+      account, alertDict, betSize, chances, contractAddress, network, rollTransactions, web3,
     } = this.state;
     const rollUnder = chances + 1;
+    const rollDisabled = web3 === null;
     return (
       <div>
+        <Alert classType={alertDict.classType} message={alertDict.message} />
         <ContractInfo account={account} contractAddress={contractAddress} network={network} />
         <form className="PlaceBet">
           <h2>Place your bet</h2>
           <BetSize betSize={betSize} updateBetSize={this.updateState('betSize')} />
           <ChanceOfWinning chances={chances} updateChances={this.updateState('chances')} />
           <RollUnder value={rollUnder} />
-          <RollButton onClick={() => this.onRollClick()} />
+          <RollButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
         </form>
         <Transactions network={network} transactions={rollTransactions} />
       </div>

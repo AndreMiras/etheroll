@@ -5,7 +5,7 @@ import Wallet from './Wallet';
 
 function ContractInfo({ account, contractAddress, network }) {
   if (account === null) {
-    return <span>No account connected, connect with MetaMask.</span>;
+    return null;
   }
   return (
     <div className="row">

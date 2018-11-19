@@ -22,10 +22,7 @@ function getEtherollContractSync(web3) {
 function getEtherollContract() {
   return getWeb3.then(results => (
     getEtherollContractSync(results.web3)
-  )).catch((error) => {
-    console.log(error);
-    console.log('Error finding web3.');
-  });
+  ));
 }
 
 

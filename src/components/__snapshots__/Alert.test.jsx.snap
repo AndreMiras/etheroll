@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly message 1`] = `
+<div
+  className="alert alert-success"
+  role="alert"
+>
+  message
+</div>
+`;
+
+exports[`renders correctly no message 1`] = `null`;
