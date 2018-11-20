@@ -23,7 +23,7 @@ function Headers() {
             <li className="nav-item">
               <a className="nav-link" href="https://github.com/AndreMiras/etheroll">
                 <i className="fab fa-github-alt" />
-                About
+                &nbsp;About
               </a>
             </li>
           </ul>
