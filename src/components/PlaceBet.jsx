@@ -50,15 +50,54 @@ class PlaceBet extends React.Component {
     });
   }
 
+  getTransactions(web3, contractAddress) {
+    // doesn't seem to work with account address
+    // and doesn't seem to work with list of addresses either
+    // const address = [account, contractAddress];
+    const address = contractAddress;
+    web3.eth.getBlockNumber((error, result) => {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        console.log(result);
+        const lastBlock = result;
+        const fromBlock = lastBlock - 100;
+        const toBlock = lastBlock;
+        const options = {
+          address,
+          fromBlock,
+          toBlock,
+        };
+        const filter = web3.eth.filter(options);
+        filter.watch((error, result) => {
+          if (error) {
+            console.log(error);
+          }
+          else {
+            console.log(result);
+            // const rollTransactions = result.map(item => item.transactionHash);
+            // this.setState({ rollTransactions });
+            this.setState(prevState => ({
+              rollTransactions: prevState.rollTransactions.concat(result.transactionHash),
+            }));
+          }
+        });
+      }
+    });
+  }
+
   getWeb3() {
     getWeb3.then((results) => {
       const { web3 } = results;
       const contract = getEtherollContractSync(web3);
+      const contractAddress = contract.address;
+      this.getTransactions(web3, contractAddress);
       this.setState({
         web3,
         network: Number(web3.version.network),
         contract,
-        contractAddress: contract.address,
+        contractAddress,
       });
       web3.eth.getAccounts((error, accounts) => {
         if (error) {
