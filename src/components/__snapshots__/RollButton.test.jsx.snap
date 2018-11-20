@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <button
-  className="btn btn-primary btn-lg"
+  className="btn btn-primary btn-lg col-md-3"
   disabled={false}
   onClick={[Function]}
   type="button"

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Button({ isDisabled, onClick, text }) {
   return (
-    <button type="button" className="btn btn-primary btn-lg" disabled={isDisabled} onClick={onClick}>
+    <button type="button" className="btn btn-primary btn-lg col-md-3" disabled={isDisabled} onClick={onClick}>
       {text}
     </button>
   );
@@ -27,6 +27,5 @@ RollButton.propTypes = {
 RollButton.defaultProps = {
   isDisabled: false,
 };
-
 
 export default RollButton;
