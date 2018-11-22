@@ -1,3 +1,9 @@
+/* https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/ */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
