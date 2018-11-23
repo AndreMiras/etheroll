@@ -15,4 +15,4 @@ test: install
 	yarn test --watchAll=false
 
 lint: install
-	$(ESLINT) $(SOURCE_DIR)
+	yarn lint
