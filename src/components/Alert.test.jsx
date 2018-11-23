@@ -1,6 +1,6 @@
 import React from 'react';
-import Alert from './Alert';
 import renderer from 'react-test-renderer';
+import Alert from './Alert';
 
 it('renders correctly message', () => {
   const tree = renderer

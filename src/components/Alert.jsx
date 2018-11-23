@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Alert({classType, message}) {
+function Alert({ classType, message }) {
   if (!message) {
     return null;
   }
@@ -21,4 +21,3 @@ Alert.defaultProps = {
 };
 
 export default Alert;
-

@@ -1,6 +1,6 @@
 import React from 'react';
-import Wallet from './Wallet';
 import renderer from 'react-test-renderer';
+import Wallet from './Wallet';
 
 it('renders correctly', () => {
   const tree = renderer

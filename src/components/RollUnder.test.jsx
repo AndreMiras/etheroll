@@ -1,6 +1,6 @@
 import React from 'react';
-import RollUnder from './RollUnder';
 import renderer from 'react-test-renderer';
+import RollUnder from './RollUnder';
 
 it('renders correctly', () => {
   const tree = renderer
