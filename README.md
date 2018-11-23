@@ -13,7 +13,7 @@ I'm learning ReactJS while building it, but I'm neither a frontend developer nor
 
 ## Run
 ```
-npm start
+yarn start
 ```
 
 ## Install
