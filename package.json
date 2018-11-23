@@ -20,7 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "./node_modules/.bin/eslint -c ./.eslintrc src/**/*.{js,jsx} --fix"
   },
   "eslintConfig": {
     "extends": "react-app"

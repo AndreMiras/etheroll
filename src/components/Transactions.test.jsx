@@ -1,6 +1,6 @@
 import React from 'react';
-import Transactions from './Transactions';
 import renderer from 'react-test-renderer';
+import Transactions from './Transactions';
 
 it('renders correctly on empty transactions', () => {
   const tree = renderer

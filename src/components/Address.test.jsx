@@ -1,6 +1,6 @@
 import React from 'react';
-import Address from './Address';
 import renderer from 'react-test-renderer';
+import Address from './Address';
 
 it('renders correctly', () => {
   const tree = renderer

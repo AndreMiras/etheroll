@@ -65,10 +65,10 @@ class PlaceBet extends React.Component {
         }
         this.setState({ account: accounts[0] });
       });
-    }, (reason) => {
+    }, () => {
       const classType = 'danger';
-      const message = 'No account connected, ' +
-        'connect with a Web3-compatible wallet like MetaMask';
+      const message = 'No account connected, '
+        + 'connect with a Web3-compatible wallet like MetaMask';
       const alertDict = { classType, message };
       this.setState({ alertDict });
     });

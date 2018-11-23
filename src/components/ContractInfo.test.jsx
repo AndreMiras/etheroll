@@ -1,6 +1,6 @@
 import React from 'react';
-import ContractInfo from './ContractInfo';
 import renderer from 'react-test-renderer';
+import ContractInfo from './ContractInfo';
 
 it('renders correctly', () => {
   const tree = renderer
