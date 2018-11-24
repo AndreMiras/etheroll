@@ -22,8 +22,9 @@ class PlaceBet extends React.Component {
       account: null,
       web3: null,
       network: Networks.mainnet,
+      contract: null,
       contractAddress: contractAddresses[Networks.mainnet],
-      rollTransactions: [],
+      contractTransactions: [],
       alertDict: {},
     };
   }
@@ -43,24 +44,21 @@ class PlaceBet extends React.Component {
         console.error(error);
       } else {
         console.log(JSON.stringify(result));
-        this.setState(prevState => ({
-          rollTransactions: prevState.rollTransactions.concat(result),
-        }));
+        // TODO: not an array of tx hash anymore
+        // this.setState(prevState => ({
+        //   contractTransactions: prevState.contractTransactions.concat(result),
+        // }));
       }
     });
   }
 
   getTransactions(web3, contractAddress) {
-    // doesn't seem to work with account address
-    // and doesn't seem to work with list of addresses either
-    // const address = [account, contractAddress];
+    // since this is a topic filter, it only works with contract addresses
     const address = contractAddress;
     web3.eth.getBlockNumber((error, result) => {
       if (error) {
         console.log(error);
-      }
-      else {
-        console.log(result);
+      } else {
         const lastBlock = result;
         const fromBlock = lastBlock - 100;
         const toBlock = lastBlock;
@@ -73,13 +71,12 @@ class PlaceBet extends React.Component {
         filter.watch((error, result) => {
           if (error) {
             console.log(error);
-          }
-          else {
+          } else {
             console.log(result);
-            // const rollTransactions = result.map(item => item.transactionHash);
-            // this.setState({ rollTransactions });
+            // const contractTransactions = result.map(item => item.transactionHash);
+            // this.setState({ contractTransactions });
             this.setState(prevState => ({
-              rollTransactions: prevState.rollTransactions.concat(result.transactionHash),
+              contractTransactions: prevState.contractTransactions.concat(result),
             }));
           }
         });
@@ -122,7 +119,7 @@ class PlaceBet extends React.Component {
 
   render() {
     const {
-      account, alertDict, betSize, chances, contractAddress, network, rollTransactions, web3,
+      account, alertDict, betSize, chances, contractAddress, network, contractTransactions, web3,
     } = this.state;
     const rollUnder = chances + 1;
     const rollDisabled = web3 === null;
@@ -137,7 +134,7 @@ class PlaceBet extends React.Component {
           <RollUnder value={rollUnder} />
           <RollButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
         </form>
-        <Transactions network={network} transactions={rollTransactions} />
+        <Transactions network={network} transactions={contractTransactions} />
       </div>
     );
   }
