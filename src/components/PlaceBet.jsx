@@ -53,34 +53,17 @@ class PlaceBet extends React.Component {
     });
   }
 
-  getTransactions(web3, contractAddress) {
-    // since this is a topic filter, it only works with contract addresses
-    const address = contractAddress;
-    web3.eth.getBlockNumber((error, result) => {
+  getTransactions(contract) {
+    // contract.watchTransactionLogs((error, result) => {
+    contract.getMergedTransactionLogs((error, result) => {
       if (error) {
         console.log(error);
       } else {
-        const lastBlock = result;
-        const fromBlock = lastBlock - 100;
-        const toBlock = lastBlock;
-        const options = {
-          address,
-          fromBlock,
-          toBlock,
-        };
-        const filter = web3.eth.filter(options);
-        filter.watch((error, result) => {
-          if (error) {
-            console.log(error);
-          } else {
-            console.log(result);
-            // const contractTransactions = result.map(item => item.transactionHash);
-            // this.setState({ contractTransactions });
-            this.setState(prevState => ({
-              contractTransactions: prevState.contractTransactions.concat(result),
-            }));
-          }
-        });
+        // const contractTransactions = result.map(item => item.transactionHash);
+        // this.setState({ contractTransactions });
+        this.setState(prevState => ({
+          contractTransactions: prevState.contractTransactions.concat(result),
+        }));
       }
     });
   }
@@ -90,7 +73,7 @@ class PlaceBet extends React.Component {
       const { web3 } = results;
       const contract = new EtherollContract(web3);
       const contractAddress = contract.address;
-      this.getTransactions(web3, contractAddress);
+      this.getTransactions(contract);
       this.setState({
         web3,
         network: Number(web3.version.network),

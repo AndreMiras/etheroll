@@ -44,7 +44,7 @@ class EtherollContract {
     const signatures = {};
     const events = this.getSolidityEvents();
     Object.keys(events).forEach((eventName) => {
-      signatures[eventName] = events[eventName].signature;
+      signatures[eventName] = events[eventName].signature();
     });
     return signatures;
   }
@@ -63,6 +63,91 @@ class EtherollContract {
     const solidityEvent = this.getSolidityEvent(evnt.topics[0]);
     const decoded = solidityEvent.decode(evnt);
     return decoded;
+  }
+
+  // callback(error, result)
+  getTransactionLogs(callback) {
+    this.web3.eth.getBlockNumber((error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        const { address } = this;
+        const lastBlock = result;
+        const fromBlock = lastBlock - 100;
+        const toBlock = lastBlock;
+        const options = {
+          address,
+          fromBlock,
+          toBlock,
+        };
+        const filter = this.web3.eth.filter(options);
+        filter.get(callback);
+      }
+    });
+  }
+
+  // callback(error, result)
+  watchTransactionLogs(callback) {
+    this.web3.eth.getBlockNumber((error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        const { address } = this;
+        const lastBlock = result;
+        const fromBlock = lastBlock - 100;
+        const toBlock = lastBlock;
+        const options = {
+          address,
+          fromBlock,
+          toBlock,
+        };
+        const filter = this.web3.eth.filter(options);
+        filter.watch(callback);
+      }
+    });
+  }
+
+  // Merges bet logs (LogBet) with bet results logs (LogResult).
+  static mergeLogs(logBetEvents, logResultEvents) {
+    const mergedLogs = [];
+    let betId;
+    // per bet ID dictionary
+    const logResultEventsDict = {};
+    logResultEvents.forEach((logResultEvent) => {
+      betId = logResultEvent.args.BetID;
+      logResultEventsDict[betId] = logResultEvent;
+    });
+    let logResultEvent;
+    let mergedLog;
+    logBetEvents.forEach((logBetEvent) => {
+      betId = logBetEvent.args.BetID;
+      logResultEvent = logResultEventsDict[betId];
+      mergedLog = {
+        logBetEvent,
+        logResultEvent,
+      };
+      mergedLogs.push(mergedLog);
+    });
+    return mergedLogs;
+  }
+
+  // callback(error, result)
+  getMergedTransactionLogs(callback) {
+    this.getTransactionLogs((error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        const decodedEvents = result.map(evnt => this.decodeEvent(evnt));
+        const logBetEvents = decodedEvents.filter(evnt => (
+          evnt.event === 'LogBet'
+        ));
+        const logResultEvents = decodedEvents.filter(evnt => (
+          evnt.event === 'LogResult'
+        ));
+        const mergedLogs = EtherollContract.mergeLogs(logBetEvents, logResultEvents);
+        callback(error, mergedLogs);
+      }
+    });
   }
 }
 
