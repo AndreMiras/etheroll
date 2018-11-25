@@ -9,7 +9,7 @@ import RollUnder from './RollUnder';
 import RollButton from './RollButton';
 import Transactions from './Transactions';
 import {
-  getEtherollContractSync, Networks, contractAddresses,
+  EtherollContract, Networks, contractAddresses,
 } from '../utils/etheroll-contract';
 
 
@@ -39,7 +39,7 @@ class PlaceBet extends React.Component {
     } = this.state;
     const rollUnder = chances + 1;
     const value = web3.toWei(betSize.toString(), 'ether');
-    contract.playerRollDice(rollUnder, { from: account, value }, (error, result) => {
+    contract.web3Contract.playerRollDice(rollUnder, { from: account, value }, (error, result) => {
       if (error) {
         console.error(error);
       } else {
@@ -87,7 +87,7 @@ class PlaceBet extends React.Component {
   getWeb3() {
     getWeb3.then((results) => {
       const { web3 } = results;
-      const contract = getEtherollContractSync(web3);
+      const contract = new EtherollContract(web3);
       const contractAddress = contract.address;
       this.getTransactions(web3, contractAddress);
       this.setState({
@@ -119,7 +119,8 @@ class PlaceBet extends React.Component {
 
   render() {
     const {
-      account, alertDict, betSize, chances, contractAddress, network, contractTransactions, web3,
+      account, alertDict, betSize, chances, contract, contractAddress, contractTransactions,
+      network, web3,
     } = this.state;
     const rollUnder = chances + 1;
     const rollDisabled = web3 === null;
@@ -134,7 +135,7 @@ class PlaceBet extends React.Component {
           <RollUnder value={rollUnder} />
           <RollButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
         </form>
-        <Transactions network={network} transactions={contractTransactions} />
+        <Transactions contract={contract} network={network} transactions={contractTransactions} />
       </div>
     );
   }
