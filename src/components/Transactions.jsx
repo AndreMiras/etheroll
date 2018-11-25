@@ -15,14 +15,31 @@ function LogBet({ contract, network, transaction }) {
   const url = `${etherscanUrls[network]}/tx/${hash}`;
   const txEvent = 'LogBet';
   const decoded = contract.decodeEvent(transaction);
-  console.log(decoded);
-  // debugger;
   return (
-    <a href={url}>
-      {hash}
-      &nbsp;
-      {txEvent}
-    </a>
+    <ul className="list-group">
+      <li className="list-group-item">
+        Wallet: {decoded.args.PlayerAddress}
+      </li>
+      <li className="list-group-item">
+        decoded.args.BetID: {decoded.args.BetID}
+      </li>
+      <li className="list-group-item">
+        <a href={url}>
+          {hash}
+          &nbsp;
+          {txEvent}
+        </a>
+      </li>
+      <li className="list-group-item">
+        decoded.args.PlayerNumber.c: {decoded.args.PlayerNumber.c}
+      </li>
+      <li className="list-group-item">
+        decoded.args.ProfitValue.c: {decoded.args.ProfitValue.c}
+      </li>
+      <li className="list-group-item">
+        decoded.args.RewardValue.c: {decoded.args.RewardValue.c}
+      </li>
+    </ul>
   );
 }
 LogBet.propTypes = {
@@ -33,18 +50,38 @@ LogBet.propTypes = {
   transaction: PropTypes.object.isRequired,
 };
 
-function LogResult({ network, transaction }) {
+function LogResult({ contract, network, transaction }) {
   const hash = transaction.transactionHash;
   const url = `${etherscanUrls[network]}/tx/${hash}`;
   const txEvent = 'LogResult';
+  const decoded = contract.decodeEvent(transaction);
   return (
-    <a href={url}>
-      {hash}
-      &nbsp;
-      {txEvent}
-    </a>);
+    <ul className="list-group">
+      <li className="list-group-item">
+        Wallet: {decoded.args.PlayerAddress}
+      </li>
+      <li className="list-group-item">
+        decoded.args.BetID: {decoded.args.BetID}
+      </li>
+      <li className="list-group-item">
+        <a href={url}>
+          {hash}
+          &nbsp;
+          {txEvent}
+        </a>
+      </li>
+      <li className="list-group-item">
+        decoded.args.DiceResult.c: {decoded.args.DiceResult.c}
+      </li>
+      <li className="list-group-item">
+        decoded.args.Value.c: {decoded.args.Value.c}
+      </li>
+    </ul>
+  );
 }
 LogResult.propTypes = {
+  // TODO: be more specific
+  contract: PropTypes.object.isRequired,
   network: PropTypes.number.isRequired,
   // TODO: be more specific
   transaction: PropTypes.object.isRequired,
@@ -57,7 +94,7 @@ function Transaction({ contract, network, transaction }) {
     return <LogBet contract={contract} network={network} transaction={transaction} />;
   }
   if (topic0 === events.LogResult) {
-    return <LogResult network={network} transaction={transaction} />;
+    return <LogResult contract={contract} network={network} transaction={transaction} />;
   }
 }
 Transaction.propTypes = {
@@ -69,7 +106,8 @@ Transaction.propTypes = {
 
 function Transactions({ contract, network, transactions }) {
   if (transactions.length === 0) return <span />;
-  const transactionsElems = transactions.map(transaction => (
+  const reversedTransactions = transactions.slice().reverse();
+  const transactionsElems = reversedTransactions.map(transaction => (
     <li key={transaction.transactionHash} className="list-group-item">
       <Transaction
         contract={contract}

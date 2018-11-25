@@ -24,6 +24,7 @@ class PlaceBet extends React.Component {
       network: Networks.mainnet,
       contract: null,
       contractAddress: contractAddresses[Networks.mainnet],
+      // most recent transaction is last in the array
       contractTransactions: [],
       alertDict: {},
     };
