@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-brands-400.8b7a9afd.woff"
   },
   {
-    "revision": "75bf66169bc8b272b493",
-    "url": "/etheroll/static/css/main.1a90b2f6.chunk.css"
+    "revision": "9dc19b0b5b91ecb2b7a9",
+    "url": "/etheroll/static/css/main.f2fbb0b9.chunk.css"
   },
   {
     "revision": "4478b4d7022cad174e4c04246fe622ef",
     "url": "/etheroll/static/media/fa-solid-900.4478b4d7.svg"
   },
   {
-    "revision": "a48629635bd7b9b2a39d",
-    "url": "/etheroll/static/js/1.a4862963.chunk.js"
+    "revision": "1dfb0ce733677fc92804",
+    "url": "/etheroll/static/js/1.1dfb0ce7.chunk.js"
   },
   {
     "revision": "f2c66284e4ae7522f310",
@@ -40,8 +40,8 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-brands-400.659c4d58.woff2"
   },
   {
-    "revision": "75bf66169bc8b272b493",
-    "url": "/etheroll/static/js/main.75bf6616.chunk.js"
+    "revision": "9dc19b0b5b91ecb2b7a9",
+    "url": "/etheroll/static/js/main.9dc19b0b.chunk.js"
   },
   {
     "revision": "fb493903265cad425ccdf8e04fc2de61",
@@ -52,12 +52,12 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-solid-900.bcb927a7.woff"
   },
   {
-    "revision": "ec0716ae8aa1ba781a1a6bcbce833f6c",
-    "url": "/etheroll/static/media/fa-brands-400.ec0716ae.eot"
-  },
-  {
     "revision": "b69de69a4ff8ca0abe96ec0b0c180c5b",
     "url": "/etheroll/static/media/fa-brands-400.b69de69a.ttf"
+  },
+  {
+    "revision": "ec0716ae8aa1ba781a1a6bcbce833f6c",
+    "url": "/etheroll/static/media/fa-brands-400.ec0716ae.eot"
   },
   {
     "revision": "0c41971339b9fc5b1cefb0abad1e2e69",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-brands-400.42f9fd6a.svg"
   },
   {
-    "revision": "a48629635bd7b9b2a39d",
-    "url": "/etheroll/static/css/1.313b6727.chunk.css"
+    "revision": "1dfb0ce733677fc92804",
+    "url": "/etheroll/static/css/1.b330c418.chunk.css"
   },
   {
-    "revision": "470166fb8b3510ea7d67c72c4ce97d96",
+    "revision": "fbf05c2f827113c28dbd76528a9a6ef6",
     "url": "/etheroll/index.html"
   }
 ];
