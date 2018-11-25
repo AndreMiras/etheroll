@@ -21,7 +21,7 @@ exports[`renders correctly on not empty transactions 1`] = `
         className="row d-inline-flex list-group-item list-group-item-secondary"
       >
         <div
-          className="col-2 d-block"
+          className="col-sm-2 d-block"
         >
           <h3>
             ?
@@ -48,14 +48,12 @@ exports[`renders correctly on not empty transactions 1`] = `
           <div
             className="w-100"
           >
-            <span>
-              Wallet:
-              <a
-                href="https://ropsten.etherscan.io/address/0x0123"
-              >
-                0x0123
-              </a>
-            </span>
+            Wallet:  
+            <a
+              href="https://ropsten.etherscan.io/address/0x0123"
+            >
+              0x0123
+            </a>
           </div>
           <div
             className="w-100"

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Wallet from './Wallet';
+import Address from './Address';
 import { etherscanUrls } from '../utils/etheroll-contract';
 
 
@@ -29,7 +29,7 @@ function MergedLog({ network, mergedLog }) {
   }
   return (
     <div className={`row d-inline-flex list-group-item list-group-item-${alertClass}`}>
-      <div className="col-2 d-block">
+      <div className="col-sm-2 d-block">
         <h3>{diceResult}</h3>
       </div>
       <div className="col-10">
@@ -46,7 +46,9 @@ function MergedLog({ network, mergedLog }) {
           {logBetEvent.args.PlayerNumber.toString()}
         </div>
         <div className="w-100">
-          <Wallet address={logBetEvent.args.PlayerAddress.toString()} network={network} />
+          Wallet:
+          &nbsp;
+          <Address address={logBetEvent.args.PlayerAddress.toString()} network={network} />
         </div>
         <div className="w-100">
           Transaction:

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Contract from './Contract';
-import Wallet from './Wallet';
+import Address from './Address';
 
 function ContractInfo({ account, contractAddress, network }) {
   if (account === null) {
@@ -10,10 +9,14 @@ function ContractInfo({ account, contractAddress, network }) {
   return (
     <div className="row">
       <div className="col">
-        <Contract network={network} address={contractAddress} />
+        Contract
+        &nbsp;
+        <Address network={network} address={contractAddress} />
       </div>
       <div className="col">
-        <Wallet network={network} address={account} />
+        Wallet:
+        &nbsp;
+        <Address network={network} address={account} />
       </div>
     </div>
   );
