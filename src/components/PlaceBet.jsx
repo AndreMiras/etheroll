@@ -34,10 +34,11 @@ class PlaceBet extends React.Component {
 
   onRollClick() {
     const {
-      account, contract, betSize, web3,
+      account, chances, contract, betSize, web3,
     } = this.state;
+    const rollUnder = chances + 1;
     const value = web3.toWei(betSize.toString(), 'ether');
-    contract.playerRollDice(51, { from: account, value }, (error, result) => {
+    contract.playerRollDice(rollUnder, { from: account, value }, (error, result) => {
       if (error) {
         console.error(error);
       } else {
