@@ -9,24 +9,67 @@ exports[`renders correctly on not empty transactions 1`] = `
   <div
     className="card-header"
   >
-    Transactions
+    Transactions (all)
   </div>
   <div
     className="card-body"
   >
-    <ul
+    <div
       className="list-group"
     >
-      <li
-        className="list-group-item"
+      <div
+        className="row d-inline-flex list-group-item list-group-item-secondary"
       >
-        <a
-          href="https://ropsten.etherscan.io/tx/0x0123"
+        <div
+          className="col-2 d-block"
         >
-          0x0123
-        </a>
-      </li>
-    </ul>
+          <h3>
+            ?
+          </h3>
+        </div>
+        <div
+          className="col-10"
+        >
+          <div
+            className="w-100"
+          >
+            ?
+              ETH
+          </div>
+          <div
+            className="w-100"
+          >
+            ?
+             
+            ?
+             
+            51
+          </div>
+          <div
+            className="w-100"
+          >
+            <span>
+              Wallet:
+              <a
+                href="https://ropsten.etherscan.io/address/0x0123"
+              >
+                0x0123
+              </a>
+            </span>
+          </div>
+          <div
+            className="w-100"
+          >
+            Transaction:  
+            <a
+              href="https://ropsten.etherscan.io/tx/0x0123"
+            >
+              0x0123
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

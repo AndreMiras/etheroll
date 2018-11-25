@@ -10,8 +10,18 @@ it('renders correctly on empty transactions', () => {
 });
 
 it('renders correctly on not empty transactions', () => {
+  const mergedLog = {
+    logBetEvent: {
+      transactionHash: '0x0123',
+      args: {
+        PlayerNumber: '51',
+        PlayerAddress: '0x0123',
+      },
+    },
+  };
+  const transactions = [mergedLog];
   const tree = renderer
-    .create(<Transactions transactions={['0x0123']} network={3} />)
+    .create(<Transactions transactions={transactions} network={3} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
