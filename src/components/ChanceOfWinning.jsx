@@ -6,7 +6,7 @@ function ChanceOfWinning({ chances, updateChances }) {
   return (
     <div className="form-group">
       <b>Chance of winning</b>
-      <ValueSlider value={chances} updateValue={updateChances} />
+      <ValueSlider value={chances} updateValue={updateChances} addonText="&nbsp;%&nbsp;" />
     </div>
   );
 }

@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
     className="row"
   >
     <div
-      className="col-sm-3 col-lg-2"
+      className="input-group col-sm-3 col-lg-2"
     >
       <input
         className="form-control"
@@ -19,6 +19,15 @@ exports[`renders correctly 1`] = `
         type="number"
         value={0.1}
       />
+      <div
+        className="input-group-append"
+      >
+        <span
+          className="input-group-text text-monospace"
+        >
+          ETH
+        </span>
+      </div>
     </div>
     <div
       className="col"

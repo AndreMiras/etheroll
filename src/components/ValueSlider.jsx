@@ -5,17 +5,26 @@ import 'rc-slider/assets/index.css';
 
 
 function ValueSlider({
-  value, updateValue, step, max,
+  value, updateValue, step, max, addonText,
 }) {
+  let addon = null;
+  if (addonText !== null) {
+    addon = (
+      <div className="input-group-append">
+        <span className="input-group-text text-monospace">{addonText}</span>
+      </div>
+    );
+  }
   return (
     <div className="row">
-      <div className="col-sm-3 col-lg-2">
+      <div className="input-group col-sm-3 col-lg-2">
         <input
           type="number"
           className="form-control"
           onChange={e => updateValue(Number(e.target.value))}
           value={value}
         />
+        {addon}
       </div>
       <div className="col">
         <Slider onChange={updateValue} value={value} step={step} max={max} />
@@ -28,10 +37,12 @@ ValueSlider.propTypes = {
   updateValue: PropTypes.func.isRequired,
   step: PropTypes.number,
   max: PropTypes.number,
+  addonText: PropTypes.string,
 };
 ValueSlider.defaultProps = {
   step: 1,
   max: 100,
+  addonText: null,
 };
 
 export default ValueSlider;
