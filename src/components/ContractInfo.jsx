@@ -14,7 +14,7 @@ function ContractInfo({ account, contractAddress, network }) {
         <Address network={network} address={contractAddress} />
       </div>
       <div className="col">
-        Wallet:
+        Wallet
         &nbsp;
         <Address network={network} address={account} />
       </div>

@@ -1,6 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly on empty transactions 1`] = `<span />`;
+exports[`renders correctly on empty transactions 1`] = `
+<div
+  className="card transactions"
+>
+  <div
+    className="card-header"
+  >
+    <nav
+      className="nav"
+    >
+      <a
+        className="nav-link active"
+        href="#all-transactions"
+        onClick={[Function]}
+      >
+        All transactions
+      </a>
+      <a
+        className="nav-link"
+        href="#my-transactions"
+        onClick={[Function]}
+      >
+        My transactions
+      </a>
+    </nav>
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="list-group"
+    />
+  </div>
+</div>
+`;
 
 exports[`renders correctly on not empty transactions 1`] = `
 <div
@@ -9,7 +43,24 @@ exports[`renders correctly on not empty transactions 1`] = `
   <div
     className="card-header"
   >
-    Transactions (all)
+    <nav
+      className="nav"
+    >
+      <a
+        className="nav-link active"
+        href="#all-transactions"
+        onClick={[Function]}
+      >
+        All transactions
+      </a>
+      <a
+        className="nav-link"
+        href="#my-transactions"
+        onClick={[Function]}
+      >
+        My transactions
+      </a>
+    </nav>
   </div>
   <div
     className="card-body"

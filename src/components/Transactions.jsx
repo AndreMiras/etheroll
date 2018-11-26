@@ -67,8 +67,31 @@ MergedLog.propTypes = {
   }).isRequired,
 };
 
-function Transactions({ network, transactions }) {
-  if (transactions.length === 0) return <span />;
+function TransactionsFilterButtons({ onClick }) {
+  return (
+    <nav className="nav">
+      <a
+        className="nav-link active"
+        href="#all-transactions"
+        onClick={e => onClick(e.target.href)}
+      >
+          All transactions
+      </a>
+      <a
+        className="nav-link"
+        href="#my-transactions"
+        onClick={e => onClick(e.target.href)}
+      >
+          My transactions
+      </a>
+    </nav>
+  );
+}
+TransactionsFilterButtons.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+function Transactions({ network, onClick, transactions }) {
   const reversedTransactions = transactions.slice().reverse();
   const transactionsElems = reversedTransactions.map(transaction => (
     <MergedLog
@@ -79,7 +102,9 @@ function Transactions({ network, transactions }) {
   ));
   return (
     <div className="card transactions">
-      <div className="card-header">Transactions (all)</div>
+      <div className="card-header">
+        <TransactionsFilterButtons onClick={onClick} />
+      </div>
       <div className="card-body">
         <div className="list-group">{transactionsElems}</div>
       </div>
@@ -88,6 +113,7 @@ function Transactions({ network, transactions }) {
 }
 Transactions.propTypes = {
   network: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
   transactions: PropTypes.arrayOf(PropTypes.shape({
     // TODO: seems completely ignored
     // https://github.com/facebook/prop-types/issues/181

@@ -4,7 +4,7 @@ import Transactions from './Transactions';
 
 it('renders correctly on empty transactions', () => {
   const tree = renderer
-    .create(<Transactions transactions={[]} network={3} />)
+    .create(<Transactions onClick={() => {}} transactions={[]} network={3} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
@@ -21,7 +21,7 @@ it('renders correctly on not empty transactions', () => {
   };
   const transactions = [mergedLog];
   const tree = renderer
-    .create(<Transactions transactions={transactions} network={3} />)
+    .create(<Transactions onClick={() => {}} transactions={transactions} network={3} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

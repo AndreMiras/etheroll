@@ -25,7 +25,8 @@ class PlaceBet extends React.Component {
       contract: null,
       contractAddress: contractAddresses[Networks.mainnet],
       // most recent transaction is last in the array
-      contractTransactions: [],
+      allTransactions: [],
+      filteredTransactions: [],
       alertDict: {},
     };
   }
@@ -47,22 +48,22 @@ class PlaceBet extends React.Component {
         console.log(JSON.stringify(result));
         // TODO: not an array of tx hash anymore
         // this.setState(prevState => ({
-        //   contractTransactions: prevState.contractTransactions.concat(result),
+        //   allTransactions: prevState.allTransactions.concat(result),
         // }));
       }
     });
   }
 
   getTransactions(contract) {
-    // contract.watchTransactionLogs((error, result) => {
     contract.getMergedTransactionLogs((error, result) => {
       if (error) {
         console.log(error);
       } else {
-        // const contractTransactions = result.map(item => item.transactionHash);
-        // this.setState({ contractTransactions });
+        // const allTransactions = result.map(item => item.transactionHash);
+        // this.setState({ allTransactions });
         this.setState(prevState => ({
-          contractTransactions: prevState.contractTransactions.concat(result),
+          allTransactions: prevState.allTransactions.concat(result),
+          filteredTransactions: prevState.filteredTransactions.concat(result),
         }));
       }
     });
@@ -95,6 +96,17 @@ class PlaceBet extends React.Component {
     });
   }
 
+  filterTransactions(transactionsFilter) {
+    const { account, allTransactions } = this.state;
+    let filteredTransactions = allTransactions.slice();
+    if (transactionsFilter.endsWith('#my-transactions')) {
+      filteredTransactions = allTransactions.filter(transaction => (
+        transaction.logBetEvent.args.PlayerAddress.toLowerCase() === account.toLowerCase()
+      ));
+    }
+    this.setState({ filteredTransactions });
+  }
+
   updateState(key) {
     return (value) => {
       this.setState({ [key]: value });
@@ -103,7 +115,7 @@ class PlaceBet extends React.Component {
 
   render() {
     const {
-      account, alertDict, betSize, chances, contract, contractAddress, contractTransactions,
+      account, alertDict, betSize, chances, contractAddress, filteredTransactions,
       network, web3,
     } = this.state;
     const rollUnder = chances + 1;
@@ -119,7 +131,11 @@ class PlaceBet extends React.Component {
           <RollUnder value={rollUnder} />
           <RollButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
         </form>
-        <Transactions contract={contract} network={network} transactions={contractTransactions} />
+        <Transactions
+          network={network}
+          onClick={transactionsFilter => this.filterTransactions(transactionsFilter)}
+          transactions={filteredTransactions}
+        />
       </div>
     );
   }
