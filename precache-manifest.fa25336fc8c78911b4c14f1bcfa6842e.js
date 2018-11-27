@@ -52,12 +52,12 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-solid-900.bcb927a7.woff"
   },
   {
-    "revision": "b69de69a4ff8ca0abe96ec0b0c180c5b",
-    "url": "/etheroll/static/media/fa-brands-400.b69de69a.ttf"
-  },
-  {
     "revision": "ec0716ae8aa1ba781a1a6bcbce833f6c",
     "url": "/etheroll/static/media/fa-brands-400.ec0716ae.eot"
+  },
+  {
+    "revision": "b69de69a4ff8ca0abe96ec0b0c180c5b",
+    "url": "/etheroll/static/media/fa-brands-400.b69de69a.ttf"
   },
   {
     "revision": "0c41971339b9fc5b1cefb0abad1e2e69",
