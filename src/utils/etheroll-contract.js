@@ -109,25 +109,15 @@ class EtherollContract {
 
   // Merges bet logs (LogBet) with bet results logs (LogResult).
   static mergeLogs(logBetEvents, logResultEvents) {
-    let betId;
     // per bet ID dictionary
     const logResultEventsDict = logResultEvents.reduce((dict, logResultEvent) => ({
       ...dict,
       [logResultEvent.args.BetID]: logResultEvent,
     }), {});
-    let logResultEvent;
-    let mergedLog;
-    const mergedLogs = [];
-    logBetEvents.forEach((logBetEvent) => {
-      betId = logBetEvent.args.BetID;
-      logResultEvent = logResultEventsDict[betId];
-      mergedLog = {
-        logBetEvent,
-        logResultEvent,
-      };
-      mergedLogs.push(mergedLog);
-    });
-    return mergedLogs;
+    return logBetEvents.map(logBetEvent => ({
+      logBetEvent,
+      logResultEvent: logResultEventsDict[logBetEvent.args.BetID],
+    }));
   }
 
   // callback(error, result)
