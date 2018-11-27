@@ -5,7 +5,7 @@ import 'rc-slider/assets/index.css';
 
 
 function ValueSlider({
-  value, updateValue, step, max, addonText,
+  value, updateValue, step, min, max, addonText,
 }) {
   let addon = null;
   if (addonText !== null) {
@@ -27,7 +27,7 @@ function ValueSlider({
         {addon}
       </div>
       <div className="col">
-        <Slider onChange={updateValue} value={value} step={step} max={max} />
+        <Slider onChange={updateValue} value={value} step={step} min={min} max={max} />
       </div>
     </div>
   );
@@ -36,11 +36,13 @@ ValueSlider.propTypes = {
   value: PropTypes.number.isRequired,
   updateValue: PropTypes.func.isRequired,
   step: PropTypes.number,
+  min: PropTypes.number,
   max: PropTypes.number,
   addonText: PropTypes.string,
 };
 ValueSlider.defaultProps = {
   step: 1,
+  min: 0,
   max: 100,
   addonText: null,
 };
