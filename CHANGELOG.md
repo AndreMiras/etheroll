@@ -9,6 +9,8 @@
   - CI testing with Travis, refs #7
   - Show error message on missing web3-wallet, refs #4 and #5
   - Show transaction history, refs #1
+  - Pull min bet and min/max roll number from contract, refs #8
+  - Clarify units, refs #17
 
 ## [v20181016]
 
