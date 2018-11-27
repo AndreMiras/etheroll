@@ -15,15 +15,16 @@ Transaction.propTypes = {
 
 function MergedLog({ network, mergedLog }) {
   const { logBetEvent, logResultEvent } = mergedLog;
+  const playerNumber = logBetEvent.args.PlayerNumber.toNumber();
   let valueEth = '?';
   let diceResult = '?';
   let sign = '?';
   let alertClass = 'secondary';
   // resolved bet case
   if (typeof logResultEvent !== 'undefined') {
-    const playerWon = logResultEvent.args.DiceResult < logBetEvent.args.PlayerNumber;
+    diceResult = logResultEvent.args.DiceResult.toNumber();
+    const playerWon = diceResult < playerNumber;
     valueEth = logResultEvent.args.Value * (10 ** (-18));
-    diceResult = logResultEvent.args.DiceResult.toString();
     sign = playerWon ? '<' : '>';
     alertClass = playerWon ? 'success' : 'danger';
   }
@@ -43,7 +44,7 @@ function MergedLog({ network, mergedLog }) {
           &nbsp;
           {sign}
           &nbsp;
-          {logBetEvent.args.PlayerNumber.toString()}
+          {playerNumber}
         </div>
         <div className="w-100">
           Wallet:

@@ -1,6 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import BigNumber from 'bignumber.js';
 import Transactions from './Transactions';
+
 
 it('renders correctly on empty transactions', () => {
   const tree = renderer
@@ -14,7 +16,7 @@ it('renders correctly on not empty transactions', () => {
     logBetEvent: {
       transactionHash: '0x0123',
       args: {
-        PlayerNumber: '51',
+        PlayerNumber: new BigNumber(51),
         PlayerAddress: '0x0123',
       },
     },
