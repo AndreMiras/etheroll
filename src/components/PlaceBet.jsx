@@ -21,6 +21,8 @@ class PlaceBet extends React.Component {
       chances: 50,
       minBet: BetSize.defaultProps.min,
       maxBet: BetSize.defaultProps.max,
+      minChances: ChanceOfWinning.defaultProps.max,
+      maxChances: ChanceOfWinning.defaultProps.max,
       account: null,
       web3: null,
       network: Networks.mainnet,
@@ -90,6 +92,20 @@ class PlaceBet extends React.Component {
         const minBet = Number(web3.fromWei(minBetWei, 'ether'));
         this.setState({ minBet });
       });
+      contract.web3Contract.minNumber((error, minNumber) => {
+        if (error) {
+          console.log(error);
+        }
+        const minChances = minNumber - 1;
+        this.setState({ minChances });
+      });
+      contract.web3Contract.maxNumber((error, maxNumber) => {
+        if (error) {
+          console.log(error);
+        }
+        const maxChances = maxNumber - 1;
+        this.setState({ maxChances });
+      });
       web3.eth.getAccounts((error, accounts) => {
         if (error) {
           console.log(error);
@@ -125,7 +141,7 @@ class PlaceBet extends React.Component {
   render() {
     const {
       account, alertDict, betSize, chances, contractAddress, filteredTransactions,
-      minBet, maxBet, network, web3,
+      minBet, maxBet, minChances, maxChances, network, web3,
     } = this.state;
     const rollUnder = chances + 1;
     const rollDisabled = web3 === null;
@@ -136,7 +152,7 @@ class PlaceBet extends React.Component {
         <form className="PlaceBet">
           <h2>Place your bet</h2>
           <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={this.updateState('betSize')} />
-          <ChanceOfWinning chances={chances} updateChances={this.updateState('chances')} />
+          <ChanceOfWinning chances={chances} min={minChances} max={maxChances} updateChances={this.updateState('chances')} />
           <RollUnder value={rollUnder} />
           <RollButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
         </form>
