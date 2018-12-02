@@ -24,7 +24,7 @@ function MergedLog({ network, mergedLog }) {
   if (typeof logResultEvent !== 'undefined') {
     diceResult = logResultEvent.args.DiceResult.toNumber();
     const playerWon = diceResult < playerNumber;
-    valueEth = logResultEvent.args.Value * (10 ** (-18));
+    valueEth = (logResultEvent.args.Value * (10 ** (-18))).toFixed(2);
     sign = playerWon ? '<' : '>';
     alertClass = playerWon ? 'success' : 'danger';
   }

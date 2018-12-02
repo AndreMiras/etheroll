@@ -23,11 +23,13 @@ class PlaceBet extends React.Component {
       maxBet: BetSize.defaultProps.max,
       minChances: ChanceOfWinning.defaultProps.max,
       maxChances: ChanceOfWinning.defaultProps.max,
-      account: null,
+      accountAddress: null,
+      accountBalance: 0,
       web3: null,
       network: Networks.mainnet,
       contract: null,
       contractAddress: contractAddresses[Networks.mainnet],
+      contractBalance: 0,
       // most recent transaction is last in the array
       allTransactions: [],
       filteredTransactions: [],
@@ -41,21 +43,24 @@ class PlaceBet extends React.Component {
 
   onRollClick() {
     const {
-      account, chances, contract, betSize, web3,
+      accountAddress, chances, contract, betSize, web3,
     } = this.state;
     const rollUnder = chances + 1;
     const value = web3.toWei(betSize.toString(), 'ether');
-    contract.web3Contract.playerRollDice(rollUnder, { from: account, value }, (error, result) => {
-      if (error) {
-        console.error(error);
-      } else {
-        console.log(JSON.stringify(result));
-        // TODO: not an array of tx hash anymore
-        // this.setState(prevState => ({
-        //   allTransactions: prevState.allTransactions.concat(result),
-        // }));
-      }
-    });
+    contract.web3Contract.playerRollDice(
+      rollUnder, { from: accountAddress, value },
+      (error, result) => {
+        if (error) {
+          console.error(error);
+        } else {
+          console.log(JSON.stringify(result));
+          // TODO: not an array of tx hash anymore
+          // this.setState(prevState => ({
+          //   allTransactions: prevState.allTransactions.concat(result),
+          // }));
+        }
+      },
+    );
   }
 
   getTransactions(contract) {
@@ -89,7 +94,7 @@ class PlaceBet extends React.Component {
         if (error) {
           console.log(error);
         }
-        const minBet = Number(web3.fromWei(minBetWei, 'ether'));
+        const minBet = web3.fromWei(minBetWei, 'ether').toNumber();
         this.setState({ minBet });
       });
       contract.web3Contract.minNumber((error, minNumber) => {
@@ -106,12 +111,23 @@ class PlaceBet extends React.Component {
         const maxChances = maxNumber - 1;
         this.setState({ maxChances });
       });
+      web3.eth.getBalance(contractAddress, (error, balance) => {
+        if (error) {
+          console.log(error);
+        }
+        const contractBalance = web3.fromWei(balance, 'ether').toNumber();
+        this.setState({ contractBalance });
+      });
       web3.eth.getAccounts((error, accounts) => {
         if (error) {
           console.log(error);
         }
-        const account = accounts.length === 0 ? null : accounts[0];
-        this.setState({ account });
+        const accountAddress = accounts.length === 0 ? null : accounts[0];
+        web3.eth.getBalance(accountAddress, (_, balance) => {
+          const accountBalance = web3.fromWei(balance, 'ether').toNumber();
+          this.setState({ accountBalance });
+        });
+        this.setState({ accountAddress });
       });
     }, () => {
       const classType = 'danger';
@@ -123,11 +139,11 @@ class PlaceBet extends React.Component {
   }
 
   filterTransactions(transactionsFilter) {
-    const { account, allTransactions } = this.state;
+    const { accountAddress, allTransactions } = this.state;
     let filteredTransactions = allTransactions.slice();
     if (transactionsFilter.endsWith('#my-transactions')) {
       filteredTransactions = allTransactions.filter(transaction => (
-        transaction.logBetEvent.args.PlayerAddress.toLowerCase() === account.toLowerCase()
+        transaction.logBetEvent.args.PlayerAddress.toLowerCase() === accountAddress.toLowerCase()
       ));
     }
     this.setState({ filteredTransactions });
@@ -141,17 +157,19 @@ class PlaceBet extends React.Component {
 
   render() {
     const {
-      account, alertDict, betSize, chances, contractAddress, filteredTransactions,
-      minBet, maxBet, minChances, maxChances, network,
+      accountAddress, accountBalance, alertDict, betSize, chances, contractAddress,
+      contractBalance, filteredTransactions, minBet, maxBet, minChances, maxChances, network,
     } = this.state;
     const rollUnder = chances + 1;
-    const rollDisabled = account === null;
+    const rollDisabled = accountAddress === null;
     return (
       <div>
         <Alert classType={alertDict.classType} message={alertDict.message} />
         <ContractInfo
-          accountAddress={account}
+          accountAddress={accountAddress}
+          accountBalance={accountBalance}
           contractAddress={contractAddress}
+          contractBalance={contractBalance}
           network={network}
         />
         <form className="PlaceBet">

@@ -12,6 +12,8 @@
   - Pull min bet and min/max roll number from contract, refs #8
   - Clarify units, refs #17
   - Detect when not logged in to MetaMask, refs #20
+  - Show account and contract balance. refs #12
+
 
 ## [v20181016]
 
