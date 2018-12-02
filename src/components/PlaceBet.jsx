@@ -141,14 +141,18 @@ class PlaceBet extends React.Component {
   render() {
     const {
       account, alertDict, betSize, chances, contractAddress, filteredTransactions,
-      minBet, maxBet, minChances, maxChances, network, web3,
+      minBet, maxBet, minChances, maxChances, network,
     } = this.state;
     const rollUnder = chances + 1;
-    const rollDisabled = web3 === null;
+    const rollDisabled = account === null;
     return (
       <div>
         <Alert classType={alertDict.classType} message={alertDict.message} />
-        <ContractInfo account={account} contractAddress={contractAddress} network={network} />
+        <ContractInfo
+          accountAddress={account}
+          contractAddress={contractAddress}
+          network={network}
+        />
         <form className="PlaceBet">
           <h2>Place your bet</h2>
           <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={this.updateState('betSize')} />

@@ -11,6 +11,7 @@
   - Show transaction history, refs #1
   - Pull min bet and min/max roll number from contract, refs #8
   - Clarify units, refs #17
+  - Detect when not logged in to MetaMask, refs #20
 
 ## [v20181016]
 

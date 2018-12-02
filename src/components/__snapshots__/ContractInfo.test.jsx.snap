@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`no account address 1`] = `
 <div
   className="row"
 >
   <div
-    className="col"
+    className="col-lg-6"
   >
     Contract  
     <a
@@ -15,9 +15,34 @@ exports[`renders correctly 1`] = `
     </a>
   </div>
   <div
-    className="col"
+    className="col-lg-6"
   >
-    Wallet  
+    Account  
+    <span>
+      Not connected, please login to MetaMask
+    </span>
+  </div>
+</div>
+`;
+
+exports[`renders correctly 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-lg-6"
+  >
+    Contract  
+    <a
+      href="https://ropsten.etherscan.io/address/0x3210"
+    >
+      0x3210
+    </a>
+  </div>
+  <div
+    className="col-lg-6"
+  >
+    Account  
     <a
       href="https://ropsten.etherscan.io/address/0x0123"
     >
