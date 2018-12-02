@@ -110,7 +110,8 @@ class PlaceBet extends React.Component {
         if (error) {
           console.log(error);
         }
-        this.setState({ account: accounts[0] });
+        const account = accounts.length === 0 ? null : accounts[0];
+        this.setState({ account });
       });
     }, () => {
       const classType = 'danger';
