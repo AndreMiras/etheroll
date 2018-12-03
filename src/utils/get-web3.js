@@ -4,13 +4,11 @@ const getWeb3 = new Promise((resolve, reject) => {
   // wait for loading completion before loading web3, to be sure it's
   // already injected
   window.addEventListener('load', () => {
-    let results;
-    let web3js;
     // checking if Web3 has been injected by the browser MetaMask
     if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
       // Use MetaMask's provider.
-      web3js = new Web3(window.web3.currentProvider);
-      results = { web3: web3js };
+      const web3 = new Web3(window.web3.currentProvider);
+      const results = { web3 };
       resolve(results);
     } else {
       // user is not running MetaMask?
