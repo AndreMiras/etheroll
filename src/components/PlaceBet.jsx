@@ -178,7 +178,7 @@ class PlaceBet extends React.Component {
           <h2>Place your bet</h2>
           <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={this.updateState('betSize')} />
           <ChanceOfWinning chances={chances} min={minChances} max={maxChances} updateChances={this.updateState('chances')} />
-          <RollUnder value={rollUnder} />
+          <RollUnder value={rollUnder} betSize={betSize} />
           <RollButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
         </form>
         <Transactions
