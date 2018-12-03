@@ -7,7 +7,7 @@ function ContractInfo({
 }) {
   const contractAddr = <Address network={network} address={contractAddress} />;
   const contractBalanceBlock = (
-    <div className="col-12">
+    <div className="col-12 d-none d-sm-block">
       <i className="far fa-file-code" />
       &nbsp;Contract&nbsp;(
       {contractBalance.toFixed(2)}
@@ -15,7 +15,7 @@ function ContractInfo({
     </div>
   );
   const contractAddressBlock = (
-    <div className="col-12">
+    <div className="col-12 d-none d-sm-block">
       {contractAddr}
     </div>
   );
