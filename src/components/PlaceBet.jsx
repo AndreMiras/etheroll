@@ -123,10 +123,12 @@ class PlaceBet extends React.Component {
           console.log(error);
         }
         const accountAddress = accounts.length === 0 ? null : accounts[0];
-        web3.eth.getBalance(accountAddress, (_, balance) => {
-          const accountBalance = web3.fromWei(balance, 'ether').toNumber();
-          this.setState({ accountBalance });
-        });
+        if (accountAddress !== null) {
+          web3.eth.getBalance(accountAddress, (_, balance) => {
+            const accountBalance = web3.fromWei(balance, 'ether').toNumber();
+            this.setState({ accountBalance });
+          });
+        }
         this.setState({ accountAddress });
       });
     }, () => {
