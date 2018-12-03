@@ -41,6 +41,8 @@ function RollUnder({ betSize, value }) {
       <div className="col-6">
         <p className="text-right">
           {profit.toFixed(2)}
+          &nbsp;
+          ETH
         </p>
       </div>
     </div>

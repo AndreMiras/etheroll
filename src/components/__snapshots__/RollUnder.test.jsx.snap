@@ -47,6 +47,7 @@ exports[`renders correctly 1`] = `
       className="text-right"
     >
       0.10
+        ETH
     </p>
   </div>
 </div>

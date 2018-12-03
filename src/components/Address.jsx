@@ -5,7 +5,7 @@ import { etherscanUrls } from '../utils/etheroll-contract';
 
 function Address({ address, network }) {
   const url = `${etherscanUrls[network]}/address/${address}`;
-  return <a href={url}>{address}</a>;
+  return <a href={url} className="text-monospace">{address}</a>;
 }
 Address.propTypes = {
   address: PropTypes.string.isRequired,

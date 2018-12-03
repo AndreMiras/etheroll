@@ -2,6 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <a
+  className="text-monospace"
   href="https://ropsten.etherscan.io/address/0x0123"
 >
   0x0123

@@ -101,6 +101,7 @@ exports[`renders correctly on not empty transactions 1`] = `
           >
             Wallet:  
             <a
+              className="text-monospace"
               href="https://ropsten.etherscan.io/address/0x0123"
             >
               0x0123
