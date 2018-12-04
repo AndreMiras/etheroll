@@ -14,6 +14,7 @@
   - Detect when not logged in to MetaMask, refs #20
   - Show account and contract balance, refs #12
   - Indicate potential profit, refs #19
+  - Setup error reporting, refs #22
 
 
 ## [v20181016]
