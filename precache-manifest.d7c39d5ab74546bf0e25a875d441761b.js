@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-brands-400.8b7a9afd.woff"
   },
   {
-    "revision": "77a177ff09f43797aa3c",
+    "revision": "b15da5e77760cdb20235",
     "url": "/etheroll/static/css/main.e251e9df.chunk.css"
   },
   {
@@ -40,8 +40,8 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-brands-400.659c4d58.woff2"
   },
   {
-    "revision": "77a177ff09f43797aa3c",
-    "url": "/etheroll/static/js/main.77a177ff.chunk.js"
+    "revision": "b15da5e77760cdb20235",
+    "url": "/etheroll/static/js/main.b15da5e7.chunk.js"
   },
   {
     "revision": "fb493903265cad425ccdf8e04fc2de61",
@@ -52,12 +52,12 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-solid-900.bcb927a7.woff"
   },
   {
-    "revision": "ec0716ae8aa1ba781a1a6bcbce833f6c",
-    "url": "/etheroll/static/media/fa-brands-400.ec0716ae.eot"
-  },
-  {
     "revision": "b69de69a4ff8ca0abe96ec0b0c180c5b",
     "url": "/etheroll/static/media/fa-brands-400.b69de69a.ttf"
+  },
+  {
+    "revision": "ec0716ae8aa1ba781a1a6bcbce833f6c",
+    "url": "/etheroll/static/media/fa-brands-400.ec0716ae.eot"
   },
   {
     "revision": "0c41971339b9fc5b1cefb0abad1e2e69",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/etheroll/static/css/1.a7f1f810.chunk.css"
   },
   {
-    "revision": "c8db0ea75e7348074a3e5d7dfc85a86d",
+    "revision": "48a112e0b8dfb6246dcdefce015ae853",
     "url": "/etheroll/index.html"
   }
 ];
