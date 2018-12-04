@@ -31,7 +31,7 @@ exports[`renders correctly 1`] = `
     <p
       className="text-right mb-0"
     >
-      0.1
+      0.10
         ETH
     </p>
   </div>
