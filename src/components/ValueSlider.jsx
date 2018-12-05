@@ -5,7 +5,7 @@ import 'rc-slider/assets/index.css';
 
 
 function ValueSlider({
-  value, updateValue, step, min, max, addonText,
+  value, updateValue, step, min, max, addonText, toFixedDigits,
 }) {
   let addon = null;
   if (addonText !== null) {
@@ -15,6 +15,7 @@ function ValueSlider({
       </div>
     );
   }
+  const formattedValue = toFixedDigits === null ? value : value.toFixed(toFixedDigits);
   return (
     <div className="row">
       <div className="input-group col-sm-3 col-lg-2">
@@ -22,7 +23,7 @@ function ValueSlider({
           type="number"
           className="form-control"
           onChange={e => updateValue(Number(e.target.value))}
-          value={value}
+          value={formattedValue}
         />
         {addon}
       </div>
@@ -39,12 +40,14 @@ ValueSlider.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   addonText: PropTypes.string,
+  toFixedDigits: PropTypes.number,
 };
 ValueSlider.defaultProps = {
   step: 1,
   min: 0,
   max: 100,
   addonText: null,
+  toFixedDigits: null,
 };
 
 export default ValueSlider;

@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
         className="form-control"
         onChange={[Function]}
         type="number"
-        value={0.1}
+        value="0.10"
       />
       <div
         className="input-group-append"

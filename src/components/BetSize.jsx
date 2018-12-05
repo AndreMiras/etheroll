@@ -8,7 +8,7 @@ function BetSize({
   return (
     <div className="form-group">
       <b>Bet size</b>
-      <ValueSlider value={betSize} updateValue={updateBetSize} step={0.1} min={min} max={max} addonText="ETH" />
+      <ValueSlider value={betSize} updateValue={updateBetSize} step={0.05} min={min} max={max} addonText="ETH" toFixedDigits={2} />
     </div>
   );
 }
