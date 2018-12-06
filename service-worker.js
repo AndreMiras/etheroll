@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/etheroll/precache-manifest.5c7f29a7000bfcfbc702d68c3484548f.js"
+  "/etheroll/precache-manifest.7a38a4c7ddbf1547fd4c5502bec0631a.js"
 );
 
 workbox.clientsClaim();

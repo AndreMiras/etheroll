@@ -1,7 +1,7 @@
 {
   "main.css": "/etheroll/static/css/main.2d35e6fb.chunk.css",
-  "main.js": "/etheroll/static/js/main.9d610a70.chunk.js",
-  "main.js.map": "/etheroll/static/js/main.9d610a70.chunk.js.map",
+  "main.js": "/etheroll/static/js/main.cf9c3559.chunk.js",
+  "main.js.map": "/etheroll/static/js/main.cf9c3559.chunk.js.map",
   "static/css/1.4c954f78.chunk.css": "/etheroll/static/css/1.4c954f78.chunk.css",
   "static/js/1.14140dc5.chunk.js": "/etheroll/static/js/1.14140dc5.chunk.js",
   "static/js/1.14140dc5.chunk.js.map": "/etheroll/static/js/1.14140dc5.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/css/main.2d35e6fb.chunk.css.map": "/etheroll/static/css/main.2d35e6fb.chunk.css.map",
   "static/css/1.4c954f78.chunk.css.map": "/etheroll/static/css/1.4c954f78.chunk.css.map",
   "index.html": "/etheroll/index.html",
-  "precache-manifest.5c7f29a7000bfcfbc702d68c3484548f.js": "/etheroll/precache-manifest.5c7f29a7000bfcfbc702d68c3484548f.js",
+  "precache-manifest.7a38a4c7ddbf1547fd4c5502bec0631a.js": "/etheroll/precache-manifest.7a38a4c7ddbf1547fd4c5502bec0631a.js",
   "service-worker.js": "/etheroll/service-worker.js"
 }
