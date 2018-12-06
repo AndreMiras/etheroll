@@ -21,7 +21,7 @@ class PlaceBet extends React.Component {
       chances: 50,
       minBet: BetSize.defaultProps.min,
       maxBet: BetSize.defaultProps.max,
-      minChances: ChanceOfWinning.defaultProps.max,
+      minChances: ChanceOfWinning.defaultProps.min,
       maxChances: ChanceOfWinning.defaultProps.max,
       accountAddress: null,
       accountBalance: 0,
