@@ -16,6 +16,7 @@
   - Indicate potential profit, refs #19
   - Setup error reporting, refs #22
   - Wager double digit precision, refs #25
+  - Setup web tracking, refs #3
 
 
 ## [v20181016]
