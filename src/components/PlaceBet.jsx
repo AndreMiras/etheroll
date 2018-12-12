@@ -41,6 +41,10 @@ class PlaceBet extends React.Component {
     this.getWeb3();
   }
 
+  componentWillUnmount() {
+    clearInterval(this.getTransactionsIntervalId);
+  }
+
   onRollClick() {
     const {
       accountAddress, chances, contract, betSize, web3,
@@ -54,10 +58,6 @@ class PlaceBet extends React.Component {
           console.error(error);
         } else {
           console.log(JSON.stringify(result));
-          // TODO: not an array of tx hash anymore
-          // this.setState(prevState => ({
-          //   allTransactions: prevState.allTransactions.concat(result),
-          // }));
         }
       },
     );
@@ -68,12 +68,9 @@ class PlaceBet extends React.Component {
       if (error) {
         console.log(error);
       } else {
-        // const allTransactions = result.map(item => item.transactionHash);
-        // this.setState({ allTransactions });
-        this.setState(prevState => ({
-          allTransactions: prevState.allTransactions.concat(result),
-          filteredTransactions: prevState.filteredTransactions.concat(result),
-        }));
+        const allTransactions = result;
+        this.setState({ allTransactions });
+        this.filterTransactions(window.location.href);
       }
     });
   }
@@ -83,6 +80,10 @@ class PlaceBet extends React.Component {
       const { web3 } = results;
       const contract = new EtherollContract(web3);
       const contractAddress = contract.address;
+      const pullIntervalSeconds = 10 * 1000;
+      // clearInterval() is in the componentWillUnmount()
+      this.getTransactionsIntervalId = setInterval((
+      ) => this.getTransactions(contract), pullIntervalSeconds);
       this.getTransactions(contract);
       this.setState({
         web3,

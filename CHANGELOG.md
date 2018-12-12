@@ -17,6 +17,7 @@
   - Setup error reporting, refs #22
   - Wager double digit precision, refs #25
   - Setup web tracking, refs #3
+  - Periodically refresh transaction history, refs #29
 
 
 ## [v20181016]
