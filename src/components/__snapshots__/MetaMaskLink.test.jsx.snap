@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<a
+  href="https://metamask.io/"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  Meta Mask
+</a>
+`;
