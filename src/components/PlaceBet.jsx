@@ -8,6 +8,7 @@ import ChanceOfWinning from './ChanceOfWinning';
 import RollUnder from './RollUnder';
 import RollButton from './RollButton';
 import Transactions from './Transactions';
+import MetaMaskLink from './MetaMaskLink';
 import {
   EtherollContract, Networks, contractAddresses,
 } from '../utils/etheroll-contract';
@@ -134,9 +135,11 @@ class PlaceBet extends React.Component {
       });
     }, () => {
       const classType = 'danger';
-      const message = 'No account connected, '
-        + 'connect with a Web3-compatible wallet like MetaMask';
-      const alertDict = { classType, message };
+      const noAccountConnected = () => (<>
+        {'No account connected, connect with a Web3-compatible wallet like '}
+        <MetaMaskLink />
+      </>);
+      const alertDict = { classType, message: noAccountConnected() };
       this.setState({ alertDict });
     });
   }

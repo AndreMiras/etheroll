@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, node, oneOfType } from 'prop-types';
 
 function Alert({ classType, message }) {
   if (!message) {
@@ -12,8 +12,8 @@ function Alert({ classType, message }) {
   );
 }
 Alert.propTypes = {
-  classType: PropTypes.string,
-  message: PropTypes.string,
+  classType: string,
+  message: oneOfType([string, node]),
 };
 Alert.defaultProps = {
   classType: 'primary',
