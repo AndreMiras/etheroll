@@ -6,9 +6,9 @@ import Footers from './components/Footers';
 import PlaceBet from './components/PlaceBet';
 
 
-const Hi = () => (
+const CoinFlip = () => (
   <>
-    Hello there sexy :)
+    coming soon
   </>
 );
 
@@ -18,7 +18,7 @@ const App = () => (
       <Headers />
       <div className="container">
         <Route path="/" exact component={PlaceBet} />
-        <Route path="/toss" component={Hi} />
+        <Route path="/toss" component={CoinFlip} />
       </div>
       <Footers />
     </div>

@@ -18,6 +18,7 @@
   - Wager double digit precision, refs #25
   - Setup web tracking, refs #3
   - Periodically refresh transaction history, refs #29
+  - Introduce react router for multiple games, refs #30
 
 
 ## [v20181016]
