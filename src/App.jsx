@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Headers from './components/Headers';
 import Footers from './components/Footers';
@@ -13,12 +13,12 @@ const CoinFlip = () => (
 );
 
 const App = () => (
-  <Router basename={process.env.PUBLIC_URL}>
+  <Router>
     <div className="App">
       <Headers />
       <div className="container">
         <Route path="/" exact component={PlaceBet} />
-        <Route path="/toss" component={CoinFlip} />
+        <Route path="/coin-flip" component={CoinFlip} />
       </div>
       <Footers />
     </div>
