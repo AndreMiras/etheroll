@@ -33,7 +33,7 @@ const NavSections = () => (
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" to="/toss" activeClassName="active">
+        <NavLink className="nav-link" to="/coin-flip" activeClassName="active">
           <i className="fas fa-coins" />
           {' Flip a coin'}
         </NavLink>
