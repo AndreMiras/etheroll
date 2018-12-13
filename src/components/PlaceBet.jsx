@@ -94,44 +94,56 @@ class PlaceBet extends React.Component {
       });
       contract.web3Contract.minBet((error, minBetWei) => {
         if (error) {
-          console.log(error);
+          this.showFetchContractInfoWarning();
+        } else {
+          const minBet = web3.fromWei(minBetWei, 'ether').toNumber();
+          this.setState({ minBet });
         }
-        const minBet = web3.fromWei(minBetWei, 'ether').toNumber();
-        this.setState({ minBet });
       });
       contract.web3Contract.minNumber((error, minNumber) => {
         if (error) {
-          console.log(error);
+          this.showFetchContractInfoWarning();
         }
         const minChances = minNumber - 1;
         this.setState({ minChances });
       });
       contract.web3Contract.maxNumber((error, maxNumber) => {
         if (error) {
-          console.log(error);
+          this.showFetchContractInfoWarning();
         }
         const maxChances = maxNumber - 1;
         this.setState({ maxChances });
       });
       web3.eth.getBalance(contractAddress, (error, balance) => {
-        if (error) {
-          console.log(error);
+        // error can be null with the balance also null in rare cases
+        if (error || balance === null) {
+          const message = "Can't fetch contract balance.";
+          this.showFetchContractInfoWarning(message);
+        } else {
+          const contractBalance = web3.fromWei(balance, 'ether').toNumber();
+          this.setState({ contractBalance });
         }
-        const contractBalance = web3.fromWei(balance, 'ether').toNumber();
-        this.setState({ contractBalance });
       });
       web3.eth.getAccounts((error, accounts) => {
         if (error) {
-          console.log(error);
+          const message = "Can't retrieve accounts.";
+          this.showWarningMessage(message);
+        } else {
+          const accountAddress = accounts.length === 0 ? null : accounts[0];
+          if (accountAddress !== null) {
+            web3.eth.getBalance(accountAddress, (err, balance) => {
+              // error can be null with the balance also null in rare cases
+              if (err || balance === null) {
+                const message = "Can't fetch account balance.";
+                this.showWarningMessage(message);
+              } else {
+                const accountBalance = web3.fromWei(balance, 'ether').toNumber();
+                this.setState({ accountBalance });
+              }
+            });
+          }
+          this.setState({ accountAddress });
         }
-        const accountAddress = accounts.length === 0 ? null : accounts[0];
-        if (accountAddress !== null) {
-          web3.eth.getBalance(accountAddress, (_, balance) => {
-            const accountBalance = web3.fromWei(balance, 'ether').toNumber();
-            this.setState({ accountBalance });
-          });
-        }
-        this.setState({ accountAddress });
       });
     }, () => {
       const classType = 'danger';
@@ -142,6 +154,22 @@ class PlaceBet extends React.Component {
       const alertDict = { classType, message: noAccountConnected() };
       this.setState({ alertDict });
     });
+  }
+
+  showMessage(classType, message) {
+    const alertDict = { classType, message };
+    this.setState({ alertDict });
+  }
+
+  showWarningMessage(message) {
+    const classType = 'warning';
+    this.showMessage(classType, message);
+  }
+
+  showFetchContractInfoWarning(optionalMessage) {
+    const defaultMessage = "Can't fetch contract info.";
+    const message = (typeof optionalMessage === 'undefined') ? defaultMessage : optionalMessage;
+    this.showWarningMessage(message);
   }
 
   filterTransactions(transactionsFilter) {
