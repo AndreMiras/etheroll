@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './css/PlaceBet.css';
+import './css/RollUnder.css';
 import getWeb3 from '../utils/get-web3';
 import ContractInfo from './ContractInfo';
 import BetSize from './BetSize';
@@ -14,7 +14,7 @@ import {
 } from '../utils/etheroll-contract';
 
 
-class PlaceBet extends React.Component {
+class RollUnder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -195,7 +195,7 @@ class PlaceBet extends React.Component {
           contractBalance={contractBalance}
           network={network}
         />
-        <form className="PlaceBet">
+        <form className="RollUnder">
           <h2>Place your bet</h2>
           <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={this.updateState('betSize')} />
           <ChanceOfWinning chances={chances} min={minChances} max={maxChances} updateChances={this.updateState('chances')} />
@@ -211,9 +211,9 @@ class PlaceBet extends React.Component {
     );
   }
 }
-PlaceBet.propTypes = {
+RollUnder.propTypes = {
   showMessage: PropTypes.func.isRequired,
   showWarningMessage: PropTypes.func.isRequired,
 };
 
-export default PlaceBet;
+export default RollUnder;
