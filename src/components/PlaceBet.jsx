@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './css/PlaceBet.css';
 import getWeb3 from '../utils/get-web3';
-import Alert from './Alert';
 import ContractInfo from './ContractInfo';
 import BetSize from './BetSize';
 import ChanceOfWinning from './ChanceOfWinning';
@@ -34,7 +34,6 @@ class PlaceBet extends React.Component {
       // most recent transaction is last in the array
       allTransactions: [],
       filteredTransactions: [],
-      alertDict: {},
     };
   }
 
@@ -77,6 +76,7 @@ class PlaceBet extends React.Component {
   }
 
   getWeb3() {
+    const { showMessage, showWarningMessage } = this.props;
     getWeb3.then((results) => {
       const { web3 } = results;
       const contract = new EtherollContract(web3);
@@ -127,7 +127,7 @@ class PlaceBet extends React.Component {
       web3.eth.getAccounts((error, accounts) => {
         if (error) {
           const message = "Can't retrieve accounts.";
-          this.showWarningMessage(message);
+          showWarningMessage(message);
         } else {
           const accountAddress = accounts.length === 0 ? null : accounts[0];
           if (accountAddress !== null) {
@@ -135,7 +135,7 @@ class PlaceBet extends React.Component {
               // error can be null with the balance also null in rare cases
               if (err || balance === null) {
                 const message = "Can't fetch account balance.";
-                this.showWarningMessage(message);
+                showWarningMessage(message);
               } else {
                 const accountBalance = web3.fromWei(balance, 'ether').toNumber();
                 this.setState({ accountBalance });
@@ -147,29 +147,19 @@ class PlaceBet extends React.Component {
       });
     }, () => {
       const classType = 'danger';
-      const noAccountConnected = () => (<>
+      const message = (<>
         {'No account connected, connect with a Web3-compatible wallet like '}
         <MetaMaskLink />
       </>);
-      const alertDict = { classType, message: noAccountConnected() };
-      this.setState({ alertDict });
+      showMessage(classType, message);
     });
   }
 
-  showMessage(classType, message) {
-    const alertDict = { classType, message };
-    this.setState({ alertDict });
-  }
-
-  showWarningMessage(message) {
-    const classType = 'warning';
-    this.showMessage(classType, message);
-  }
-
   showFetchContractInfoWarning(optionalMessage) {
+    const { showWarningMessage } = this.props;
     const defaultMessage = "Can't fetch contract info.";
     const message = (typeof optionalMessage === 'undefined') ? defaultMessage : optionalMessage;
-    this.showWarningMessage(message);
+    showWarningMessage(message);
   }
 
   filterTransactions(transactionsFilter) {
@@ -191,14 +181,13 @@ class PlaceBet extends React.Component {
 
   render() {
     const {
-      accountAddress, accountBalance, alertDict, betSize, chances, contractAddress,
+      accountAddress, accountBalance, betSize, chances, contractAddress,
       contractBalance, filteredTransactions, minBet, maxBet, minChances, maxChances, network,
     } = this.state;
     const rollUnder = chances + 1;
     const rollDisabled = accountAddress === null;
     return (
       <div>
-        <Alert classType={alertDict.classType} message={alertDict.message} />
         <ContractInfo
           accountAddress={accountAddress}
           accountBalance={accountBalance}
@@ -222,5 +211,9 @@ class PlaceBet extends React.Component {
     );
   }
 }
+PlaceBet.propTypes = {
+  showMessage: PropTypes.func.isRequired,
+  showWarningMessage: PropTypes.func.isRequired,
+};
 
 export default PlaceBet;
