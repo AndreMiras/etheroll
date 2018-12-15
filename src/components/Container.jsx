@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Alert from './Alert';
 import CoinFlip from './CoinFlip';
-import PlaceBet from './PlaceBet';
+import RollUnder from './RollUnder';
 
 
 class Container extends React.Component {
@@ -32,7 +32,7 @@ class Container extends React.Component {
           path="/"
           exact
           render={() => (
-            <PlaceBet
+            <RollUnder
               showMessage={(classType, message) => this.showMessage(classType, message)}
               showWarningMessage={message => this.showWarningMessage(message)}
             />
