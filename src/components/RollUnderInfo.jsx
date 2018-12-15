@@ -14,7 +14,7 @@ function getProfit(betSize, chances) {
   return profit;
 }
 
-function RollUnder({ betSize, value }) {
+function RollUnderInfo({ betSize, value }) {
   const chances = value - 1;
   const profit = getProfit(betSize, chances);
   return (
@@ -48,9 +48,9 @@ function RollUnder({ betSize, value }) {
     </div>
   );
 }
-RollUnder.propTypes = {
+RollUnderInfo.propTypes = {
   betSize: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
 };
 
-export default RollUnder;
+export default RollUnderInfo;

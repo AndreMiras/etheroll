@@ -5,7 +5,7 @@ import getWeb3 from '../utils/get-web3';
 import ContractInfo from './ContractInfo';
 import BetSize from './BetSize';
 import ChanceOfWinning from './ChanceOfWinning';
-import RollUnder from './RollUnder';
+import RollUnderInfo from './RollUnderInfo';
 import RollButton from './RollButton';
 import Transactions from './Transactions';
 import MetaMaskLink from './MetaMaskLink';
@@ -199,7 +199,7 @@ class PlaceBet extends React.Component {
           <h2>Place your bet</h2>
           <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={this.updateState('betSize')} />
           <ChanceOfWinning chances={chances} min={minChances} max={maxChances} updateChances={this.updateState('chances')} />
-          <RollUnder value={rollUnder} betSize={betSize} />
+          <RollUnderInfo value={rollUnder} betSize={betSize} />
           <RollButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
         </form>
         <Transactions
