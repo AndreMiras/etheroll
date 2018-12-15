@@ -3,14 +3,9 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Headers from './components/Headers';
 import Footers from './components/Footers';
+import CoinFlip from './components/CoinFlip';
 import PlaceBet from './components/PlaceBet';
 
-
-const CoinFlip = () => (
-  <>
-    coming soon
-  </>
-);
 
 const App = () => (
   <Router>
