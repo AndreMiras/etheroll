@@ -10,20 +10,20 @@ exports[`renders correctly on empty transactions 1`] = `
     <nav
       className="nav"
     >
-      <a
-        className="nav-link active"
-        href="#all-transactions"
+      <button
+        className="btn btn-link active"
         onClick={[Function]}
+        type="button"
       >
         All transactions
-      </a>
-      <a
-        className="nav-link"
-        href="#my-transactions"
+      </button>
+      <button
+        className="btn btn-link"
         onClick={[Function]}
+        type="button"
       >
         My transactions
-      </a>
+      </button>
     </nav>
   </div>
   <div
@@ -46,20 +46,20 @@ exports[`renders correctly on not empty transactions 1`] = `
     <nav
       className="nav"
     >
-      <a
-        className="nav-link active"
-        href="#all-transactions"
+      <button
+        className="btn btn-link active"
         onClick={[Function]}
+        type="button"
       >
         All transactions
-      </a>
-      <a
-        className="nav-link"
-        href="#my-transactions"
+      </button>
+      <button
+        className="btn btn-link"
         onClick={[Function]}
+        type="button"
       >
         My transactions
-      </a>
+      </button>
     </nav>
   </div>
   <div

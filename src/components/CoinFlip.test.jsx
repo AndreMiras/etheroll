@@ -4,7 +4,7 @@ import CoinFlip from './CoinFlip';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<CoinFlip />)
+    .create(<CoinFlip showMessage={() => {}} showWarningMessage={() => {}} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

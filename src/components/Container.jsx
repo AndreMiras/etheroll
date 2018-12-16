@@ -38,7 +38,16 @@ class Container extends React.Component {
             />
           )}
         />
-        <Route path="/coin-flip" component={CoinFlip} />
+        <Route
+          path="/coin-flip"
+          render={() => (
+            <CoinFlip
+              showMessage={(classType, message) => this.showMessage(classType, message)}
+              showWarningMessage={message => this.showWarningMessage(message)}
+            />
+          )}
+        />
+
       </div>
     );
   }

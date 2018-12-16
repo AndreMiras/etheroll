@@ -71,20 +71,20 @@ MergedLog.propTypes = {
 function TransactionsFilterButtons({ onClick }) {
   return (
     <nav className="nav">
-      <a
-        className="nav-link active"
-        href="#all-transactions"
-        onClick={e => onClick(e.target.href)}
+      <button
+        type="button"
+        className="btn btn-link active"
+        onClick={() => onClick('#all-transactions')}
       >
           All transactions
-      </a>
-      <a
-        className="nav-link"
-        href="#my-transactions"
-        onClick={e => onClick(e.target.href)}
+      </button>
+      <button
+        type="button"
+        className="btn btn-link"
+        onClick={() => onClick('#my-transactions')}
       >
           My transactions
-      </a>
+      </button>
     </nav>
   );
 }

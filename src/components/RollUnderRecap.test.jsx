@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import RollUnderInfo from './RollUnderInfo';
+import RollUnderRecap from './RollUnderRecap';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<RollUnderInfo value={51} betSize={0.1} />)
+    .create(<RollUnderRecap value={51} betSize={0.1} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
