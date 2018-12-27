@@ -7,35 +7,28 @@ import Transaction from './Transaction';
 function MergedLog({ network, mergedLog }) {
   const { logBetEvent, logResultEvent } = mergedLog;
   const playerNumber = logBetEvent.args.PlayerNumber.toNumber();
+  // const playerSide = 'Head';
   let valueEth = '?';
-  let diceResult = '?';
-  let sign = '?';
+  let coinResult = '?';
   let alertClass = 'secondary';
   // resolved bet case
   if (typeof logResultEvent !== 'undefined') {
-    diceResult = logResultEvent.args.DiceResult.toNumber();
+    const diceResult = logResultEvent.args.DiceResult.toNumber();
+    coinResult = diceResult < 51 ? 'Head' : 'Tail';
     const playerWon = diceResult < playerNumber;
     valueEth = (logResultEvent.args.Value * (10 ** (-18))).toFixed(2);
-    sign = playerWon ? '<' : '>';
     alertClass = playerWon ? 'success' : 'danger';
   }
   return (
     <div className={`row d-inline-flex list-group-item list-group-item-${alertClass}`}>
       <div className="col-sm-2 d-block">
-        <h3>{diceResult}</h3>
+        <h3>{coinResult}</h3>
       </div>
       <div className="col-10">
         <div className="w-100">
           {valueEth}
           &nbsp;
           ETH
-        </div>
-        <div className="w-100">
-          {diceResult}
-          &nbsp;
-          {sign}
-          &nbsp;
-          {playerNumber}
         </div>
         <div className="w-100">
           Wallet:
@@ -84,7 +77,10 @@ TransactionsFilterButtons.propTypes = {
 };
 
 function Transactions({ network, onClick, transactions }) {
-  const reversedTransactions = transactions.slice().reverse();
+  const coinflipTransactions = transactions.filter(transaction => (
+    transaction.logBetEvent.args.PlayerNumber.toNumber() === 51
+  ));
+  const reversedTransactions = coinflipTransactions.slice().reverse();
   const transactionsElems = reversedTransactions.map(transaction => (
     <MergedLog
       key={transaction.logBetEvent.transactionHash}

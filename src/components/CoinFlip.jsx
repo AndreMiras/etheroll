@@ -5,7 +5,7 @@ import ChanceOfWinning from './ChanceOfWinning';
 import ContractInfo from './ContractInfo';
 import FlipButton from './FlipButton';
 import CoinFlipRecap from './CoinFlipRecap';
-import Transactions from './Transactions';
+import CoinFlipTransactions from './CoinFlipTransactions';
 import {
   Networks, contractAddresses,
 } from '../utils/etheroll-contract';
@@ -59,7 +59,7 @@ class CoinFlip extends BaseGame {
         <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={this.updateState('betSize')} />
         <CoinFlipRecap betSize={betSize} />
         <FlipButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
-        <Transactions
+        <CoinFlipTransactions
           network={network}
           onClick={transactionsFilter => this.filterTransactions(transactionsFilter, setState)}
           transactions={filteredTransactions}

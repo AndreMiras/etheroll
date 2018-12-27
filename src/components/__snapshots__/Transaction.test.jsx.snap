@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly on empty transactions 1`] = `
+<a
+  href="https://ropsten.etherscan.io/tx/0x1234"
+>
+  0x1234
+</a>
+`;
