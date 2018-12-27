@@ -122,63 +122,19 @@ Array [
       </div>
     </div>
   </div>,
-  <div
-    className="row"
-  >
-    <div
-      className="col-6"
-    >
-      <h3>
-        Flip
-      </h3>
-    </div>
-    <div
-      className="col-6"
-    >
-      <h3
-        className="text-right"
-      >
-        Head
-      </h3>
-    </div>
-    <div
-      className="col-6"
-    >
-      With a wager of
-    </div>
-    <div
-      className="col-6"
-    >
-      <p
-        className="text-right mb-0"
-      >
-        0.10
-          ETH
-      </p>
-    </div>
-    <div
-      className="col-6"
-    >
-      For a profit of
-    </div>
-    <div
-      className="col-6"
-    >
-      <p
-        className="text-right"
-      >
-        0.10
-          ETH
-      </p>
-    </div>
-  </div>,
+  <p>
+    Flip Head with a wager of 
+    0.1
+     for a profit of 
+    0.10
+  </p>,
   <button
     className="btn btn-primary btn-lg col-md-3"
     disabled={false}
     onClick={[Function]}
     type="button"
   >
-    Flip
+    Flip Head
   </button>,
   <div
     className="card transactions"

@@ -18,7 +18,7 @@ Button.defaultProps = {
 };
 
 function FlipButton({ isDisabled, onClick }) {
-  return <Button text="Flip" isDisabled={isDisabled} onClick={onClick} />;
+  return <Button text="Flip Head" isDisabled={isDisabled} onClick={onClick} />;
 }
 FlipButton.propTypes = {
   isDisabled: PropTypes.bool,
