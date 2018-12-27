@@ -1,17 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Address from './Address';
-import { etherscanUrls } from '../utils/etheroll-contract';
+import Transaction from './Transaction';
 
-
-function Transaction({ hash, network }) {
-  const url = `${etherscanUrls[network]}/tx/${hash}`;
-  return <a href={url}>{hash}</a>;
-}
-Transaction.propTypes = {
-  hash: PropTypes.string.isRequired,
-  network: PropTypes.number.isRequired,
-};
 
 function MergedLog({ network, mergedLog }) {
   const { logBetEvent, logResultEvent } = mergedLog;
