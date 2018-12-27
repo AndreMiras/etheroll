@@ -3,7 +3,7 @@ import BaseGame from './BaseGame';
 import BetSize from './BetSize';
 import ChanceOfWinning from './ChanceOfWinning';
 import ContractInfo from './ContractInfo';
-import RollButton from './RollButton';
+import FlipButton from './FlipButton';
 import RollUnderRecap from './RollUnderRecap';
 import Transactions from './Transactions';
 import {
@@ -59,7 +59,7 @@ class CoinFlip extends BaseGame {
         />
         <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={this.updateState('betSize')} />
         <RollUnderRecap value={rollUnder} betSize={betSize} />
-        <RollButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
+        <FlipButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
         <Transactions
           network={network}
           onClick={transactionsFilter => this.filterTransactions(transactionsFilter, setState)}
