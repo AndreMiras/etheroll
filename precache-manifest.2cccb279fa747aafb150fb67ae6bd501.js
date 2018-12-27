@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-brands-400.8b7a9afd.woff"
   },
   {
-    "revision": "33e555ab04a78e00c691",
-    "url": "/etheroll/static/css/main.4b830bbb.chunk.css"
+    "revision": "865fc4920005aff4f4e0",
+    "url": "/etheroll/static/css/main.3415d5f3.chunk.css"
   },
   {
     "revision": "4478b4d7022cad174e4c04246fe622ef",
     "url": "/etheroll/static/media/fa-solid-900.4478b4d7.svg"
   },
   {
-    "revision": "dc4925f3fd54b5814c92",
-    "url": "/etheroll/static/js/1.dc4925f3.chunk.js"
+    "revision": "66dcaafcfeae9c30fcb0",
+    "url": "/etheroll/static/js/1.66dcaafc.chunk.js"
   },
   {
     "revision": "f2c66284e4ae7522f310",
@@ -28,20 +28,20 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-regular-400.0b5e3a54.woff"
   },
   {
-    "revision": "6493321d567eb0f22bd5112fbcf044a8",
-    "url": "/etheroll/static/media/fa-regular-400.6493321d.eot"
-  },
-  {
     "revision": "b48c48ea8457846a5695b139c377d3d1",
     "url": "/etheroll/static/media/fa-regular-400.b48c48ea.ttf"
+  },
+  {
+    "revision": "6493321d567eb0f22bd5112fbcf044a8",
+    "url": "/etheroll/static/media/fa-regular-400.6493321d.eot"
   },
   {
     "revision": "659c4d58b00226541ef95c3a76e169c5",
     "url": "/etheroll/static/media/fa-brands-400.659c4d58.woff2"
   },
   {
-    "revision": "33e555ab04a78e00c691",
-    "url": "/etheroll/static/js/main.33e555ab.chunk.js"
+    "revision": "865fc4920005aff4f4e0",
+    "url": "/etheroll/static/js/main.865fc492.chunk.js"
   },
   {
     "revision": "fb493903265cad425ccdf8e04fc2de61",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
     "url": "/etheroll/static/media/fa-brands-400.42f9fd6a.svg"
   },
   {
-    "revision": "dc4925f3fd54b5814c92",
-    "url": "/etheroll/static/css/1.d1cba27e.chunk.css"
+    "revision": "66dcaafcfeae9c30fcb0",
+    "url": "/etheroll/static/css/1.f96d93be.chunk.css"
   },
   {
-    "revision": "6f0993f690ee6ae4aa60a16ea37a9098",
+    "revision": "6c6f81ca3cf72b75963edb240be6d02d",
     "url": "/etheroll/index.html"
   }
 ];
