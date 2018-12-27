@@ -1,18 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getProfit } from '../utils/etheroll-contract';
 
-
-function getProfit(betSize, chances) {
-  let profit = 0;
-  const houseEdge = 1 / 100.0;
-  const chancesLoss = 100.0 - chances;
-  if (chances !== 0 && chancesLoss !== 0) {
-    let payout = ((chancesLoss / chances) * betSize) + betSize;
-    payout *= (1 - houseEdge);
-    profit = payout - betSize;
-  }
-  return profit;
-}
 
 function RollUnderRecap({ betSize, value }) {
   const chances = value - 1;
