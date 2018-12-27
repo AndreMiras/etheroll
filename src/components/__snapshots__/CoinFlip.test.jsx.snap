@@ -129,7 +129,7 @@ Array [
       className="col-6"
     >
       <h3>
-        Roll under
+        Flip
       </h3>
     </div>
     <div
@@ -138,7 +138,7 @@ Array [
       <h3
         className="text-right"
       >
-        51
+        Head
       </h3>
     </div>
     <div

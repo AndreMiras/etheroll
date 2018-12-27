@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { getProfit } from '../utils/etheroll-contract';
 
 
-function RollUnderRecap({ betSize, value }) {
-  const chances = value - 1;
+function CoinFlipRecap({ betSize }) {
+  const chances = 50;
   const profit = getProfit(betSize, chances);
   return (
     <div className="row">
       <div className="col-6">
-        <h3>Roll under</h3>
+        <h3>Flip</h3>
       </div>
       <div className="col-6">
-        <h3 className="text-right">{value}</h3>
+        <h3 className="text-right">Head</h3>
       </div>
       <div className="col-6">
         With a wager of
@@ -37,9 +37,8 @@ function RollUnderRecap({ betSize, value }) {
     </div>
   );
 }
-RollUnderRecap.propTypes = {
+CoinFlipRecap.propTypes = {
   betSize: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
 };
 
-export default RollUnderRecap;
+export default CoinFlipRecap;

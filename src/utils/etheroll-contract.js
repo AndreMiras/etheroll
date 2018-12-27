@@ -15,6 +15,17 @@ const etherscanUrls = {
   [Networks.ropsten]: 'https://ropsten.etherscan.io',
 };
 
+function getProfit(betSize, chances) {
+  let profit = 0;
+  const houseEdge = 1 / 100.0;
+  const chancesLoss = 100.0 - chances;
+  if (chances !== 0 && chancesLoss !== 0) {
+    let payout = ((chancesLoss / chances) * betSize) + betSize;
+    payout *= (1 - houseEdge);
+    profit = payout - betSize;
+  }
+  return profit;
+}
 
 class EtherollContract {
   constructor(web3, address) {
@@ -142,5 +153,5 @@ class EtherollContract {
 
 
 export {
-  EtherollContract, etherscanUrls, Networks, contractAddresses,
+  EtherollContract, etherscanUrls, getProfit, Networks, contractAddresses,
 };
