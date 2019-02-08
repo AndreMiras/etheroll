@@ -12,17 +12,26 @@ This is very early stage and experimental.
 I'm learning ReactJS while building it, but I'm not a UX designer.
 
 ## Run
-```
+```sh
 yarn start
 ```
 
 ## Install
-```
+```sh
 make
 ```
 
 ## Test
-```
+```sh
 make lint
 make test
 ```
+
+## Docker
+We provide a [Dockerfile](Dockerfile) that can be used for development or production.
+Build and run with:
+```sh
+docker-compuse up
+```
+The application will be server on both port `80` (default HTTP) and `3000` (default Node.js port).
+Find out more reading the [docker-compose.yml](docker-compose.yml) file.

@@ -19,7 +19,7 @@
   - Setup web tracking, refs #3
   - Periodically refresh transaction history, refs #29
   - Introduce react router for multiple games, refs #30
-  - Add coin flip game, refs #11
+  - Add coin flip game, refs #11, and #38
 
 
 ## [v20181016]
