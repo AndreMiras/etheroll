@@ -26,13 +26,13 @@ function cutHouseEdge(payout) {
 }
 
 function getProfit(betSize, winningChances) {
-  if (winningChances === 0 || winningChances === 100) {
+  if (winningChances === 0) {
     return 0;
   }
   const rawPayout = getPayout(betSize, winningChances);
   const netPayout = cutHouseEdge(rawPayout);
 
-  return netPayout - betSize;
+  return Math.max(netPayout - betSize, 0);
 }
 
 
