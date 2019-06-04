@@ -15,16 +15,24 @@ const etherscanUrls = {
   [Networks.ropsten]: 'https://ropsten.etherscan.io',
 };
 
-function getProfit(betSize, chances) {
-  let profit = 0;
-  const houseEdge = 1 / 100.0;
-  const chancesLoss = 100.0 - chances;
-  if (chances !== 0 && chancesLoss !== 0) {
-    let payout = ((chancesLoss / chances) * betSize) + betSize;
-    payout *= (1 - houseEdge);
-    profit = payout - betSize;
+function getProfit(betSize, winProbability) {
+  if(winProbability === 0 || winProbability === 100) {
+    return 0;
   }
-  return profit;
+  const rawPayout = getPayout(betSize, winProbability);
+  const netPayout = cutHouseEdge(rawPayout);
+  
+  return netPayout - betSize;
+}
+
+function getPayout(betSize, winProbability) {
+  const lossProbability = 100.0 - winProbability;
+  return ((lossProbability / winProbability) * betSize) + betSize;
+}
+
+function cutHouseEdge(payout) {
+  const houseEdge = 1 / 100.0;
+  return payout * (1 - houseEdge);
 }
 
 class EtherollContract {
