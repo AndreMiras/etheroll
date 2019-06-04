@@ -16,9 +16,8 @@ const etherscanUrls = {
 };
 
 
-function getPayout(betSize, winProbability) {
-  const lossProbability = 100.0 - winProbability;
-  return ((lossProbability / winProbability) * betSize) + betSize;
+function getPayout(betSize, winningChances) {
+  return 100 / winningChances * betSize;
 }
 
 function cutHouseEdge(payout) {
@@ -26,11 +25,11 @@ function cutHouseEdge(payout) {
   return payout * (1 - houseEdge);
 }
 
-function getProfit(betSize, winProbability) {
-  if (winProbability === 0 || winProbability === 100) {
+function getProfit(betSize, winningChances) {
+  if (winningChances === 0 || winningChances === 100) {
     return 0;
   }
-  const rawPayout = getPayout(betSize, winProbability);
+  const rawPayout = getPayout(betSize, winningChances);
   const netPayout = cutHouseEdge(rawPayout);
 
   return netPayout - betSize;
