@@ -73,7 +73,7 @@ class EtherollContract {
 
   getSolidityEvent(eventSignature) {
     const events = this.getSolidityEvents();
-    const [, matchingEvent] = events.find(([, value]) => value.signature() === eventSignature.replace('0x', ''));
+    const [, matchingEvent] = events.find(([, value]) => value.signature() === eventSignature.replace('0x', '')) || [];
     return matchingEvent;
   }
 
