@@ -1,4 +1,4 @@
-import { EtherollContract, mergeLogs } from './etheroll-contract';
+import { mergeLogs } from './etheroll-contract';
 
 test('mergeLogs', () => {
   const logBetEvents = [

@@ -15,15 +15,6 @@ const etherscanUrls = {
   [Networks.ropsten]: 'https://ropsten.etherscan.io',
 };
 
-function getProfit(betSize, winProbability) {
-  if(winProbability === 0 || winProbability === 100) {
-    return 0;
-  }
-  const rawPayout = getPayout(betSize, winProbability);
-  const netPayout = cutHouseEdge(rawPayout);
-
-  return netPayout - betSize;
-}
 
 function getPayout(betSize, winProbability) {
   const lossProbability = 100.0 - winProbability;
@@ -35,16 +26,29 @@ function cutHouseEdge(payout) {
   return payout * (1 - houseEdge);
 }
 
+function getProfit(betSize, winProbability) {
+  if (winProbability === 0 || winProbability === 100) {
+    return 0;
+  }
+  const rawPayout = getPayout(betSize, winProbability);
+  const netPayout = cutHouseEdge(rawPayout);
+
+  return netPayout - betSize;
+}
+
+
 // Merges bet logs (LogBet) with bet results logs (LogResult).
 function mergeLogs(logBetEvents, logResultEvents) {
+  const findLogResultEventBylogBetEvent = logBetEvent => (
+    logResultEvents.find(logResultEvent => (
+      logResultEvent.args.BetID === logBetEvent.args.BetID
+    ))
+  );
+
   return logBetEvents.map(logBetEvent => ({
     logBetEvent,
     logResultEvent: findLogResultEventBylogBetEvent(logBetEvent),
   }));
-
-  function findLogResultEventBylogBetEvent(logBetEvent) {
-    return logResultEvents.find(logResultEvent => logResultEvent.args.BetID === logBetEvent.args.BetID);
-  }
 }
 
 class EtherollContract {
@@ -58,19 +62,19 @@ class EtherollContract {
   getSolidityEvents() {
     return this.abi
       .filter(definition => definition.type === 'event')
-      .map(definition => [name, new SolidityEvent(this.web3, definition, this.address)]);
+      .map(definition => [definition.name, new SolidityEvent(this.web3, definition, this.address)]);
   }
 
   // Returns sha3 signature of events, e.g.
   // {'LogResult': '0x6883...5c88', 'LogBet': '0x1cb5...75c4'}
   getEventSignatures() {
     const events = this.getSolidityEvents();
-    return events.reduce((signatures, [name, value]) => ({...signatures, [name]: value}), {});
+    return events.reduce((signatures, [name, value]) => ({ ...signatures, [name]: value }), {});
   }
 
   getSolidityEvent(eventSignature) {
     const events = this.getSolidityEvents();
-    const [_, matchingEvent] = events.find(([_, value]) => value.signature() === eventSignature.replace('0x', ''));
+    const [, matchingEvent] = events.find(([, value]) => value.signature() === eventSignature.replace('0x', ''));
     return matchingEvent;
   }
 
