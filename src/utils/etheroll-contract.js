@@ -35,6 +35,18 @@ function cutHouseEdge(payout) {
   return payout * (1 - houseEdge);
 }
 
+// Merges bet logs (LogBet) with bet results logs (LogResult).
+function mergeLogs(logBetEvents, logResultEvents) {
+  return logBetEvents.map(logBetEvent => ({
+    logBetEvent,
+    logResultEvent: findLogResultEventBylogBetEvent(logBetEvent),
+  }));
+
+  function findLogResultEventBylogBetEvent(logBetEvent) {
+    return logResultEvents.find(logResultEvent => logResultEvent.args.BetID === logBetEvent.args.BetID);
+  }
+}
+
 class EtherollContract {
   constructor(web3, address = contractAddresses[web3.version.network]) {
     this.web3 = web3;
@@ -105,18 +117,6 @@ class EtherollContract {
     return this.web3.eth.filter(options);
   }
 
-  // Merges bet logs (LogBet) with bet results logs (LogResult).
-  static mergeLogs(logBetEvents, logResultEvents) {
-    return logBetEvents.map(logBetEvent => ({
-      logBetEvent,
-      logResultEvent: findLogResultEventBylogBetEvent(logBetEvent),
-    }));
-
-    function findLogResultEventBylogBetEvent(logBetEvent) {
-      return logResultEvents.find(logResultEvent => logResultEvent.args.BetID === logBetEvent.args.BetID);
-    }
-  }
-
   // callback(error, result)
   getMergedTransactionLogs(callback) {
     this.getTransactionLogs((error, result) => {
@@ -126,7 +126,7 @@ class EtherollContract {
         const decodedEvents = result.map(evnt => this.decodeEvent(evnt));
         const logBetEvents = decodedEvents.filter(evnt => evnt.event === 'LogBet');
         const logResultEvents = decodedEvents.filter(evnt => evnt.event === 'LogResult');
-        const mergedLogs = EtherollContract.mergeLogs(logBetEvents, logResultEvents);
+        const mergedLogs = mergeLogs(logBetEvents, logResultEvents);
         callback(error, mergedLogs);
       }
     });
@@ -135,5 +135,5 @@ class EtherollContract {
 
 
 export {
-  EtherollContract, etherscanUrls, getProfit, Networks, contractAddresses,
+  EtherollContract, etherscanUrls, getProfit, mergeLogs, Networks, contractAddresses,
 };

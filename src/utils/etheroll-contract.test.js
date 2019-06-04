@@ -1,4 +1,4 @@
-import { EtherollContract } from './etheroll-contract';
+import { EtherollContract, mergeLogs } from './etheroll-contract';
 
 test('mergeLogs', () => {
   const logBetEvents = [
@@ -64,6 +64,6 @@ test('mergeLogs', () => {
       logResultEvent: logResultEvents[1],
     },
   ];
-  const mergedLogs = EtherollContract.mergeLogs(logBetEvents, logResultEvents);
+  const mergedLogs = mergeLogs(logBetEvents, logResultEvents);
   expect(mergedLogs).toEqual(expectedMergedLog);
 });
