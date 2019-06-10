@@ -1,4 +1,6 @@
-import { mergeLogs, getProfit } from './etheroll-contract';
+import {
+  contractAddresses, mergeLogs, getProfit, EtherollContract, Networks,
+} from './etheroll-contract';
 
 test('mergeLogs', () => {
   const logBetEvents = [
@@ -91,5 +93,41 @@ describe('getProfit', () => {
 
     const expectedProfit = 0;
     expect(getProfit(betSize, winningChances)).toEqual(expectedProfit);
+  });
+});
+
+function mockWeb3(network, web3Contract) {
+  return {
+    version: {
+      network,
+    },
+    eth: {
+      contract: () => (
+        { at: () => web3Contract }
+      ),
+    },
+  };
+}
+
+describe('EtherollContract', () => {
+  it('constructs with one parameter', () => {
+    const network = Networks.mainnet;
+    const expectedAddress = contractAddresses[network];
+    const web3Contract = 'web3Contract';
+    const web3 = mockWeb3(network, web3Contract);
+    const etherollContract = new EtherollContract(web3);
+    // makes sure address default to the mainnet one
+    expect(etherollContract.address).toEqual(expectedAddress);
+    expect(etherollContract.web3Contract).toEqual(web3Contract);
+  });
+
+  it('construct with two parameters', () => {
+    const network = Networks.mainnet;
+    const address = '0x1234';
+    const web3Contract = 'web3Contract';
+    const web3 = mockWeb3(network, web3Contract);
+    const etherollContract = new EtherollContract(web3, address);
+    expect(etherollContract.address).toEqual(address);
+    expect(etherollContract.web3Contract).toEqual(web3Contract);
   });
 });
