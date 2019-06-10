@@ -1,4 +1,4 @@
-import { EtherollContract } from './etheroll-contract';
+import { mergeLogs, getProfit } from './etheroll-contract';
 
 test('mergeLogs', () => {
   const logBetEvents = [
@@ -64,6 +64,32 @@ test('mergeLogs', () => {
       logResultEvent: logResultEvents[1],
     },
   ];
-  const mergedLogs = EtherollContract.mergeLogs(logBetEvents, logResultEvents);
+  const mergedLogs = mergeLogs(logBetEvents, logResultEvents);
   expect(mergedLogs).toEqual(expectedMergedLog);
+});
+
+describe('getProfit', () => {
+  it('computes a net profit', () => {
+    const betSize = 10;
+    const winningChances = 10;
+
+    const expectedProfit = 89;
+    expect(getProfit(betSize, winningChances)).toEqual(expectedProfit);
+  });
+
+  it('never returns a negative value', () => {
+    const betSize = 10;
+    const winningChances = Infinity;
+
+    const expectedProfit = 0;
+    expect(getProfit(betSize, winningChances)).toEqual(expectedProfit);
+  });
+
+  it('returns 0 when the winning chances are 0', () => {
+    const betSize = 10;
+    const winningChances = 0;
+
+    const expectedProfit = 0;
+    expect(getProfit(betSize, winningChances)).toEqual(expectedProfit);
+  });
 });
