@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'rc-slider/lib/Slider';
-import PropTypes from 'prop-types';
+import { func, number, string } from 'prop-types';
 import 'rc-slider/assets/index.css';
 
 
@@ -34,13 +34,13 @@ function ValueSlider({
   );
 }
 ValueSlider.propTypes = {
-  value: PropTypes.number.isRequired,
-  updateValue: PropTypes.func.isRequired,
-  step: PropTypes.number,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  addonText: PropTypes.string,
-  toFixedDigits: PropTypes.number,
+  value: number.isRequired,
+  updateValue: func.isRequired,
+  step: number,
+  min: number,
+  max: number,
+  addonText: string,
+  toFixedDigits: number,
 };
 ValueSlider.defaultProps = {
   step: 1,

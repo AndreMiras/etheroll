@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { number } from 'prop-types';
 import { getProfit } from '../utils/etheroll-contract';
 
 
@@ -38,8 +38,8 @@ function RollUnderRecap({ betSize, value }) {
   );
 }
 RollUnderRecap.propTypes = {
-  betSize: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
+  betSize: number.isRequired,
+  value: number.isRequired,
 };
 
 export default RollUnderRecap;

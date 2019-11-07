@@ -3,3 +3,9 @@
   "browser": true,
   "jest": true,
 }
+"rules": {
+    "allowShortCircuit": true,
+    "allowTernary": true,
+    "no-unused-expressions": "off",
+    "no-mixed-operators": "off"
+}

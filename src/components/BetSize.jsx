@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { number, func } from 'prop-types';
 import ValueSlider from './ValueSlider';
 
 function BetSize({
@@ -13,10 +13,10 @@ function BetSize({
   );
 }
 BetSize.propTypes = {
-  betSize: PropTypes.number.isRequired,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  updateBetSize: PropTypes.func.isRequired,
+  betSize: number.isRequired,
+  min: number,
+  max: number,
+  updateBetSize: func.isRequired,
 };
 BetSize.defaultProps = {
   min: 0,

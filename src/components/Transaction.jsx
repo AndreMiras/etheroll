@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, number } from 'prop-types';
 import { etherscanUrls } from '../utils/etheroll-contract';
 
 
@@ -8,8 +8,8 @@ function Transaction({ hash, network }) {
   return <a href={url}>{hash}</a>;
 }
 Transaction.propTypes = {
-  hash: PropTypes.string.isRequired,
-  network: PropTypes.number.isRequired,
+  hash: string.isRequired,
+  network: number.isRequired,
 };
 
 export default Transaction;

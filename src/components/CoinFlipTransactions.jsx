@@ -1,5 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  arrayOf, func, number, shape,
+} from 'prop-types';
 import Address from './Address';
 import Transaction from './Transaction';
 
@@ -45,35 +47,33 @@ function MergedLog({ network, mergedLog }) {
   );
 }
 MergedLog.propTypes = {
-  network: PropTypes.number.isRequired,
-  mergedLog: PropTypes.shape({
+  network: number.isRequired,
+  mergedLog: shape({
     // TODO: seems completely ignored
-    todo: PropTypes.number,
+    todo: number,
   }).isRequired,
 };
 
-function TransactionsFilterButtons({ onClick }) {
-  return (
-    <nav className="nav">
-      <button
-        type="button"
-        className="btn btn-link active"
-        onClick={() => onClick('#all-transactions')}
-      >
-          All transactions
-      </button>
-      <button
-        type="button"
-        className="btn btn-link"
-        onClick={() => onClick('#my-transactions')}
-      >
-          My transactions
-      </button>
-    </nav>
-  );
-}
+const TransactionsFilterButtons = ({ onClick }) => (
+  <nav className="nav">
+    <button
+      type="button"
+      className="btn btn-link active"
+      onClick={() => onClick('#all-transactions')}
+    >
+      All transactions
+    </button>
+    <button
+      type="button"
+      className="btn btn-link"
+      onClick={() => onClick('#my-transactions')}
+    >
+      My transactions
+    </button>
+  </nav>
+);
 TransactionsFilterButtons.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: func.isRequired,
 };
 
 function Transactions({ network, onClick, transactions }) {
@@ -100,12 +100,12 @@ function Transactions({ network, onClick, transactions }) {
   );
 }
 Transactions.propTypes = {
-  network: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
-  transactions: PropTypes.arrayOf(PropTypes.shape({
+  network: number.isRequired,
+  onClick: func.isRequired,
+  transactions: arrayOf(shape({
     // TODO: seems completely ignored
     // https://github.com/facebook/prop-types/issues/181
-    todo: PropTypes.number,
+    todo: number,
   })).isRequired,
 };
 

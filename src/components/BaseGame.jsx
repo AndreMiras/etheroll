@@ -1,17 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import getWeb3 from '../utils/get-web3';
+import React, { Fragment } from 'react';
+import { func } from 'prop-types';
+
 import MetaMaskLink from './MetaMaskLink';
-import {
-  EtherollContract,
-} from '../utils/etheroll-contract';
+import getWeb3 from '../utils/get-web3';
+import { EtherollContract } from '../utils/etheroll-contract';
 
 
 class BaseGame extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   onRollClick() {
@@ -23,11 +21,9 @@ class BaseGame extends React.Component {
     contract.web3Contract.playerRollDice(
       rollUnder, { from: accountAddress, value },
       (error, result) => {
-        if (error) {
-          console.error(error);
-        } else {
-          console.log(JSON.stringify(result));
-        }
+        error
+          && console.error(error)
+          || console.log(JSON.stringify(result));
       },
     );
   }
@@ -131,10 +127,12 @@ class BaseGame extends React.Component {
       });
     }, () => {
       const classType = 'danger';
-      const message = (<>
-        {'No account connected, connect with a Web3-compatible wallet like '}
-        <MetaMaskLink />
-      </>);
+      const message = (
+        <Fragment>
+          {'No account connected, connect with a Web3-compatible wallet like '}
+          <MetaMaskLink />
+        </Fragment>
+      );
       showMessage(classType, message);
     });
   }
@@ -165,8 +163,8 @@ class BaseGame extends React.Component {
   }
 }
 BaseGame.propTypes = {
-  showMessage: PropTypes.func.isRequired,
-  showWarningMessage: PropTypes.func.isRequired,
+  showMessage: func.isRequired,
+  showWarningMessage: func.isRequired,
 };
 
 export default BaseGame;

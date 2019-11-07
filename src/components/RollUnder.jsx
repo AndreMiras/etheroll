@@ -78,6 +78,6 @@ class RollUnder extends BaseGame {
     );
   }
 }
-RollUnder.propTypes = BaseGame.propTypes;
+RollUnder.propTypes = { ...BaseGame.propTypes };
 
 export default RollUnder;

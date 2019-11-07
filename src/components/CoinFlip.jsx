@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import BaseGame from './BaseGame';
 import BetSize from './BetSize';
 import ChanceOfWinning from './ChanceOfWinning';
@@ -45,17 +45,14 @@ class CoinFlip extends BaseGame {
       betSize, accountAddress, accountBalance, contractAddress, contractBalance,
       filteredTransactions, minBet, maxBet, network,
     } = this.state;
+    const contractProps = {
+      accountAddress, accountBalance, contractAddress, contractBalance, network,
+    };
     const setState = dict => this.setState(dict);
     const rollDisabled = accountAddress === null;
     return (
-      <>
-        <ContractInfo
-          accountAddress={accountAddress}
-          accountBalance={accountBalance}
-          contractAddress={contractAddress}
-          contractBalance={contractBalance}
-          network={network}
-        />
+      <Fragment>
+        <ContractInfo {...contractProps} />
         <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={this.updateState('betSize')} />
         <CoinFlipRecap betSize={betSize} />
         <FlipButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
@@ -64,10 +61,10 @@ class CoinFlip extends BaseGame {
           onClick={transactionsFilter => this.filterTransactions(transactionsFilter, setState)}
           transactions={filteredTransactions}
         />
-      </>
+      </Fragment>
     );
   }
 }
-CoinFlip.propTypes = BaseGame.propTypes;
+CoinFlip.propTypes = { ...BaseGame.propTypes };
 
 export default CoinFlip;
