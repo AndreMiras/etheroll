@@ -2,14 +2,12 @@ import React from 'react';
 import { string, node, oneOfType } from 'prop-types';
 
 function Alert({ classType, message }) {
-  if (!message) {
-    return null;
-  }
-  return (
-    <div className={`alert alert-${classType}`} role="alert">
-      {message}
-    </div>
-  );
+  return message
+    ? (
+      <div className={`alert alert-${classType}`} role="alert">
+        {message}
+      </div>)
+    : null;
 }
 Alert.propTypes = {
   classType: string,

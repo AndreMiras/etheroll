@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { number } from 'prop-types';
 import { getProfit } from '../utils/etheroll-contract';
 
 
@@ -16,7 +16,7 @@ function CoinFlipRecap({ betSize }) {
   );
 }
 CoinFlipRecap.propTypes = {
-  betSize: PropTypes.number.isRequired,
+  betSize: number.isRequired,
 };
 
 export default CoinFlipRecap;

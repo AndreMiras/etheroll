@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, number } from 'prop-types';
 import { etherscanUrls } from '../utils/etheroll-contract';
 
 
@@ -8,8 +8,8 @@ function Address({ address, network }) {
   return <a href={url} className="text-monospace">{address}</a>;
 }
 Address.propTypes = {
-  address: PropTypes.string.isRequired,
-  network: PropTypes.number.isRequired,
+  address: string.isRequired,
+  network: number.isRequired,
 };
 
 export default Address;

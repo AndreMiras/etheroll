@@ -25,29 +25,17 @@ class Container extends React.Component {
 
   render() {
     const { alertDict } = this.state;
+
+    const commonProps = {
+      showMessage: (classType, message) => this.showMessage(classType, message),
+      showWarningMessage: message => this.showWarningMessage(message),
+    };
+
     return (
       <div className="container">
         <Alert classType={alertDict.classType} message={alertDict.message} />
-        <Route
-          path="/"
-          exact
-          render={() => (
-            <RollUnder
-              showMessage={(classType, message) => this.showMessage(classType, message)}
-              showWarningMessage={message => this.showWarningMessage(message)}
-            />
-          )}
-        />
-        <Route
-          path="/coin-flip"
-          render={() => (
-            <CoinFlip
-              showMessage={(classType, message) => this.showMessage(classType, message)}
-              showWarningMessage={message => this.showWarningMessage(message)}
-            />
-          )}
-        />
-
+        <Route path="/" exact render={() => <RollUnder {...commonProps} />} />
+        <Route path="/coin-flip" render={() => <CoinFlip {...commonProps} />} />
       </div>
     );
   }

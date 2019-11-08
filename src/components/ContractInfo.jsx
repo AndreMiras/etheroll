@@ -1,11 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { number, string } from 'prop-types';
 import Address from './Address';
 
 function ContractInfo({
   accountAddress, accountBalance, contractAddress, contractBalance, network,
 }) {
   const contractAddr = <Address network={network} address={contractAddress} />;
+
   const contractBalanceBlock = (
     <div className="col-12 d-none d-sm-block">
       <i className="far fa-file-code" />
@@ -14,14 +15,17 @@ function ContractInfo({
       &nbsp;ETH)
     </div>
   );
+
   const contractAddressBlock = (
     <div className="col-12 d-none d-sm-block">
       {contractAddr}
     </div>
   );
+
   const accountAddr = (accountAddress !== null)
     ? <Address network={network} address={accountAddress} />
     : <span>Not connected, please login to MetaMask</span>;
+
   const accountBalanceBlock = (
     <div className="col-lg-12">
       <i className="far fa-user" />
@@ -30,11 +34,13 @@ function ContractInfo({
       &nbsp;ETH)
     </div>
   );
+
   const accountAddressBlock = (
     <div className="col-12">
       {accountAddr}
     </div>
   );
+
   return (
     <div className="row">
       {accountBalanceBlock}
@@ -45,11 +51,11 @@ function ContractInfo({
   );
 }
 ContractInfo.propTypes = {
-  accountAddress: PropTypes.string,
-  accountBalance: PropTypes.number.isRequired,
-  contractAddress: PropTypes.string.isRequired,
-  contractBalance: PropTypes.number.isRequired,
-  network: PropTypes.number.isRequired,
+  accountAddress: string,
+  accountBalance: number.isRequired,
+  contractAddress: string.isRequired,
+  contractBalance: number.isRequired,
+  network: number.isRequired,
 };
 ContractInfo.defaultProps = {
   accountAddress: null,
