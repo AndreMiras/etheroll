@@ -8,16 +8,16 @@ import Transaction from './Transaction';
 
 function MergedLog({ network, mergedLog }) {
   const { logBetEvent, logResultEvent } = mergedLog;
-  const playerNumber = logBetEvent.args.PlayerNumber.toNumber();
+  const playerNumber = Number(logBetEvent.returnValues.PlayerNumber);
   let valueEth = '?';
   let diceResult = '?';
   let sign = '?';
   let alertClass = 'secondary';
   // resolved bet case
   if (typeof logResultEvent !== 'undefined') {
-    diceResult = logResultEvent.args.DiceResult.toNumber();
+    diceResult = Number(logResultEvent.returnValues.DiceResult);
     const playerWon = diceResult < playerNumber;
-    valueEth = (logResultEvent.args.Value * (10 ** (-18))).toFixed(2);
+    valueEth = (logResultEvent.returnValues.Value * (10 ** (-18))).toFixed(2);
     sign = playerWon ? '<' : '>';
     alertClass = playerWon ? 'success' : 'danger';
   }
@@ -42,7 +42,7 @@ function MergedLog({ network, mergedLog }) {
         <div className="w-100">
           Wallet:
           &nbsp;
-          <Address address={logBetEvent.args.PlayerAddress.toString()} network={network} />
+          <Address address={logBetEvent.returnValues.PlayerAddress.toString()} network={network} />
         </div>
         <div className="w-100">
           Transaction:

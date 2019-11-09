@@ -3,7 +3,7 @@ import { func } from 'prop-types';
 
 import MetaMaskLink from './MetaMaskLink';
 import getWeb3 from '../utils/get-web3';
-import { EtherollContract } from '../utils/etheroll-contract';
+import { EtherollContract, contractAddresses } from '../utils/etheroll-contract';
 
 
 class BaseGame extends React.Component {
@@ -59,8 +59,10 @@ class BaseGame extends React.Component {
     const { showMessage, showWarningMessage } = this.props;
     getWeb3.then((results) => {
       const { web3 } = results;
-      const contract = new EtherollContract(web3);
-      const contractAddress = contract.address;
+      // TODO: hardcoded
+      const networkId = 1;
+      const contractAddress = contractAddresses[networkId];
+      const contract = new EtherollContract(web3, contractAddress);
       const pullIntervalSeconds = 10 * 1000;
       // clearInterval() is in the componentWillUnmount()
       this.getTransactionsIntervalId = setInterval((
@@ -72,22 +74,22 @@ class BaseGame extends React.Component {
         contract,
         contractAddress,
       });
-      contract.web3Contract.minBet((error, minBetWei) => {
+      contract.web3Contract.methods.minBet.call((error, minBetWei) => {
         if (error) {
           this.showFetchContractInfoWarning();
         } else {
-          const minBet = web3.fromWei(minBetWei, 'ether').toNumber();
+          const minBet = Number(web3.utils.fromWei(minBetWei, 'ether'));
           setState({ minBet });
         }
       });
-      contract.web3Contract.minNumber((error, minNumber) => {
+      contract.web3Contract.methods.minNumber.call((error, minNumber) => {
         if (error) {
           this.showFetchContractInfoWarning();
         }
         const minChances = minNumber - 1;
         setState({ minChances });
       });
-      contract.web3Contract.maxNumber((error, maxNumber) => {
+      contract.web3Contract.methods.maxNumber.call((error, maxNumber) => {
         if (error) {
           this.showFetchContractInfoWarning();
         }
@@ -100,7 +102,7 @@ class BaseGame extends React.Component {
           const message = "Can't fetch contract balance.";
           this.showFetchContractInfoWarning(message);
         } else {
-          const contractBalance = web3.fromWei(balance, 'ether').toNumber();
+          const contractBalance = Number(web3.utils.fromWei(balance, 'ether'));
           setState({ contractBalance });
         }
       });
@@ -117,7 +119,7 @@ class BaseGame extends React.Component {
                 const message = "Can't fetch account balance.";
                 showWarningMessage(message);
               } else {
-                const accountBalance = web3.fromWei(balance, 'ether').toNumber();
+                const accountBalance = Number(web3.utils.fromWei(balance, 'ether'));
                 setState({ accountBalance });
               }
             });

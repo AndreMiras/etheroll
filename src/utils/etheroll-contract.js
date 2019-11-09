@@ -1,7 +1,7 @@
 import etherollAbi from './etheroll-abi';
 
 // TODO require vs import
-const SolidityEvent = require('web3/lib/web3/event.js');
+// const SolidityEvent = require('web3/lib/web3/event.js');
 
 const Networks = Object.freeze({ mainnet: 1, morden: 2, ropsten: 3 });
 
@@ -40,7 +40,7 @@ function getProfit(betSize, winningChances) {
 function mergeLogs(logBetEvents, logResultEvents) {
   const findLogResultEventBylogBetEvent = logBetEvent => (
     logResultEvents.find(logResultEvent => (
-      logResultEvent.args.BetID === logBetEvent.args.BetID
+      logResultEvent.returnValues.BetID === logBetEvent.returnValues.BetID
     ))
   );
 
@@ -51,73 +51,30 @@ function mergeLogs(logBetEvents, logResultEvents) {
 }
 
 class EtherollContract {
-  constructor(web3, address = contractAddresses[web3.version.network]) {
+  constructor(web3, address) {
     this.web3 = web3;
     this.address = address;
     this.abi = etherollAbi;
-    this.web3Contract = web3.eth.contract(etherollAbi).at(this.address);
-  }
-
-  getSolidityEvents() {
-    return this.abi
-      .filter(definition => definition.type === 'event')
-      .map(definition => [definition.name, new SolidityEvent(this.web3, definition, this.address)]);
-  }
-
-  // Returns sha3 signature of events, e.g.
-  // {'LogResult': '0x6883...5c88', 'LogBet': '0x1cb5...75c4'}
-  getEventSignatures() {
-    const events = this.getSolidityEvents();
-    return events.reduce((signatures, [name, value]) => ({ ...signatures, [name]: value }), {});
-  }
-
-  getSolidityEvent(eventSignature) {
-    const events = this.getSolidityEvents();
-    const [, matchingEvent] = events.find(([, value]) => value.signature() === eventSignature.replace('0x', '')) || [];
-    return matchingEvent;
-  }
-
-  decodeEvent(_evnt) {
-    // SolidityEvent.decode() seems to be mutating the object, hence the copy
-    const evnt = { ..._evnt };
-    const solidityEvent = this.getSolidityEvent(evnt.topics[0]);
-    return solidityEvent.decode(evnt);
+    this.web3Contract = new web3.eth.Contract(etherollAbi, address);
   }
 
   // callback(error, result)
   getTransactionLogs(callback) {
-    this.web3.eth.getBlockNumber((error, result) => {
+    this.web3.eth.getBlockNumber((error, blockNumber) => {
       if (error) {
         console.log(error);
       } else {
-        const filter = this.getFilter(result);
-        filter.get(callback);
+        const { address } = this;
+        const toBlock = blockNumber;
+        const fromBlock = toBlock - 100;
+        const options = {
+          address,
+          fromBlock,
+          toBlock,
+        };
+        this.web3Contract.getPastEvents('allEvents', options, callback);
       }
     });
-  }
-
-  // callback(error, result)
-  watchTransactionLogs(callback) {
-    this.web3.eth.getBlockNumber((error, result) => {
-      if (error) {
-        console.log(error);
-      } else {
-        const filter = this.getFilter(result);
-        filter.watch(callback);
-      }
-    });
-  }
-
-  getFilter(result) {
-    const { address } = this;
-    const toBlock = result;
-    const fromBlock = toBlock - 100;
-    const options = {
-      address,
-      fromBlock,
-      toBlock,
-    };
-    return this.web3.eth.filter(options);
   }
 
   // callback(error, result)
@@ -126,9 +83,8 @@ class EtherollContract {
       if (error) {
         console.log(error);
       } else {
-        const decodedEvents = result.map(evnt => this.decodeEvent(evnt));
-        const logBetEvents = decodedEvents.filter(evnt => evnt.event === 'LogBet');
-        const logResultEvents = decodedEvents.filter(evnt => evnt.event === 'LogResult');
+        const logBetEvents = result.filter(evnt => evnt.event === 'LogBet');
+        const logResultEvents = result.filter(evnt => evnt.event === 'LogResult');
         const mergedLogs = mergeLogs(logBetEvents, logResultEvents);
         callback(error, mergedLogs);
       }
