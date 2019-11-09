@@ -20,7 +20,15 @@ ENV LANG="en_US.UTF-8" \
 
 # install minimal system dependencies
 RUN apt update -qq > /dev/null && \
-    apt install --yes --no-install-recommends curl ca-certificates gnupg make nodejs git
+    apt install --yes --no-install-recommends \
+    build-essential \
+    ca-certificates \
+    curl \
+    git \
+    gnupg \
+    make \
+    nodejs \
+    python3
 
 # install yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
