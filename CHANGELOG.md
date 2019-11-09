@@ -1,6 +1,31 @@
 # Change Log
 
 
+## [v20191110]
+
+  - Fix input size on smartphone
+  - Dependencies bumps
+  - Setup unit testing, refs #6
+  - Provide Docker image, refs #13
+  - CI testing with Travis, refs #7
+  - Show error message on missing web3-wallet, refs #4 and #5
+  - Show transaction history, refs #1
+  - Pull min bet and min/max roll number from contract, refs #8
+  - Clarify units, refs #17
+  - Detect when not logged in to MetaMask, refs #20
+  - Show account and contract balance, refs #12
+  - Indicate potential profit, refs #19
+  - Setup error reporting, refs #22
+  - Wager double digit precision, refs #25
+  - Setup web tracking, refs #3
+  - Periodically refresh transaction history, refs #29
+  - Introduce react router for multiple games (@lgarest), refs #30
+  - Add coin flip game, refs #11, and #38
+  - Add docker-compose.yml (@Npizza), refs #44
+  - Refactor etheroll contract (@Simonboeuf1), refs #47
+  - Clean proptype imports and private components (@lgarest), refs #49
+
+
 ## [v20181016]
 
   - Show transaction on roll

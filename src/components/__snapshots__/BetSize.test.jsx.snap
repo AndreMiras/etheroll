@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="form-group"
+>
+  <b>
+    Bet size
+  </b>
+  <div
+    className="row"
+  >
+    <div
+      className="input-group col-sm-3 col-lg-2"
+    >
+      <input
+        className="form-control"
+        onChange={[Function]}
+        type="number"
+        value="0.10"
+      />
+      <div
+        className="input-group-append"
+      >
+        <span
+          className="input-group-text text-monospace"
+        >
+          ETH
+        </span>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        className="rc-slider"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        onTouchStart={[Function]}
+      >
+        <div
+          className="rc-slider-rail"
+          style={Object {}}
+        />
+        <div
+          className="rc-slider-track"
+          style={
+            Object {
+              "left": "0%",
+              "width": "1%",
+            }
+          }
+        />
+        <div
+          className="rc-slider-step"
+        />
+        <div
+          aria-disabled={false}
+          aria-valuemax={10}
+          aria-valuemin={0}
+          aria-valuenow={0.1}
+          className="rc-slider-handle"
+          onBlur={[Function]}
+          onKeyDown={[Function]}
+          role="slider"
+          style={
+            Object {
+              "left": "1%",
+            }
+          }
+          tabIndex={0}
+        />
+        <div
+          className="rc-slider-mark"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

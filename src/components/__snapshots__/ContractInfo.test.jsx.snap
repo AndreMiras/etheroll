@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`no account address 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-lg-12"
+  >
+    <i
+      className="far fa-user"
+    />
+     Account (
+    0.00
+     ETH)
+  </div>
+  <div
+    className="col-12"
+  >
+    <span>
+      Not connected, please login to MetaMask
+    </span>
+  </div>
+  <div
+    className="col-12 d-none d-sm-block"
+  >
+    <i
+      className="far fa-file-code"
+    />
+     Contract (
+    123.00
+     ETH)
+  </div>
+  <div
+    className="col-12 d-none d-sm-block"
+  >
+    <a
+      className="text-monospace"
+      href="https://ropsten.etherscan.io/address/0x3210"
+    >
+      0x3210
+    </a>
+  </div>
+</div>
+`;
+
+exports[`renders correctly 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-lg-12"
+  >
+    <i
+      className="far fa-user"
+    />
+     Account (
+    1.12
+     ETH)
+  </div>
+  <div
+    className="col-12"
+  >
+    <a
+      className="text-monospace"
+      href="https://ropsten.etherscan.io/address/0x0123"
+    >
+      0x0123
+    </a>
+  </div>
+  <div
+    className="col-12 d-none d-sm-block"
+  >
+    <i
+      className="far fa-file-code"
+    />
+     Contract (
+    123.00
+     ETH)
+  </div>
+  <div
+    className="col-12 d-none d-sm-block"
+  >
+    <a
+      className="text-monospace"
+      href="https://ropsten.etherscan.io/address/0x3210"
+    >
+      0x3210
+    </a>
+  </div>
+</div>
+`;

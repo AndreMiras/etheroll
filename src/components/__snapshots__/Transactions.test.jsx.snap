@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly on empty transactions 1`] = `
+<div
+  className="card transactions"
+>
+  <div
+    className="card-header"
+  >
+    <nav
+      className="nav"
+    >
+      <button
+        className="btn btn-link active"
+        onClick={[Function]}
+        type="button"
+      >
+        All transactions
+      </button>
+      <button
+        className="btn btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        My transactions
+      </button>
+    </nav>
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="list-group"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders correctly on not empty transactions 1`] = `
+<div
+  className="card transactions"
+>
+  <div
+    className="card-header"
+  >
+    <nav
+      className="nav"
+    >
+      <button
+        className="btn btn-link active"
+        onClick={[Function]}
+        type="button"
+      >
+        All transactions
+      </button>
+      <button
+        className="btn btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        My transactions
+      </button>
+    </nav>
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="list-group"
+    >
+      <div
+        className="row d-inline-flex list-group-item list-group-item-secondary"
+      >
+        <div
+          className="col-sm-2 d-block"
+        >
+          <h3>
+            ?
+          </h3>
+        </div>
+        <div
+          className="col-10"
+        >
+          <div
+            className="w-100"
+          >
+            ?
+              ETH
+          </div>
+          <div
+            className="w-100"
+          >
+            ?
+             
+            ?
+             
+            51
+          </div>
+          <div
+            className="w-100"
+          >
+            Wallet:  
+            <a
+              className="text-monospace"
+              href="https://ropsten.etherscan.io/address/0x0123"
+            >
+              0x0123
+            </a>
+          </div>
+          <div
+            className="w-100"
+          >
+            Transaction:  
+            <a
+              href="https://ropsten.etherscan.io/tx/0x0123"
+            >
+              0x0123
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

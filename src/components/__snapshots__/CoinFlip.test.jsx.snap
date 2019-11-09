@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <div
+    className="row"
+  >
+    <div
+      className="col-lg-12"
+    >
+      <i
+        className="far fa-user"
+      />
+       Account (
+      0.00
+       ETH)
+    </div>
+    <div
+      className="col-12"
+    >
+      <span>
+        Not connected, please login to MetaMask
+      </span>
+    </div>
+    <div
+      className="col-12 d-none d-sm-block"
+    >
+      <i
+        className="far fa-file-code"
+      />
+       Contract (
+      0.00
+       ETH)
+    </div>
+    <div
+      className="col-12 d-none d-sm-block"
+    >
+      <a
+        className="text-monospace"
+        href="https://etherscan.io/address/0xA52e014B3f5Cc48287c2D483A3E026C32cc76E6d"
+      >
+        0xA52e014B3f5Cc48287c2D483A3E026C32cc76E6d
+      </a>
+    </div>
+  </div>,
+  <div
+    className="form-group"
+  >
+    <b>
+      Bet size
+    </b>
+    <div
+      className="row"
+    >
+      <div
+        className="input-group col-sm-3 col-lg-2"
+      >
+        <input
+          className="form-control"
+          onChange={[Function]}
+          type="number"
+          value="0.10"
+        />
+        <div
+          className="input-group-append"
+        >
+          <span
+            className="input-group-text text-monospace"
+          >
+            ETH
+          </span>
+        </div>
+      </div>
+      <div
+        className="col"
+      >
+        <div
+          className="rc-slider"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          onTouchStart={[Function]}
+        >
+          <div
+            className="rc-slider-rail"
+            style={Object {}}
+          />
+          <div
+            className="rc-slider-track"
+            style={
+              Object {
+                "left": "0%",
+                "width": "1%",
+              }
+            }
+          />
+          <div
+            className="rc-slider-step"
+          />
+          <div
+            aria-disabled={false}
+            aria-valuemax={10}
+            aria-valuemin={0}
+            aria-valuenow={0.1}
+            className="rc-slider-handle"
+            onBlur={[Function]}
+            onKeyDown={[Function]}
+            role="slider"
+            style={
+              Object {
+                "left": "1%",
+              }
+            }
+            tabIndex={0}
+          />
+          <div
+            className="rc-slider-mark"
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <p>
+    Flip Head with a wager of 
+    0.1
+     for a profit of 
+    0.10
+  </p>,
+  <button
+    className="btn btn-primary btn-lg col-md-3"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Flip Head
+  </button>,
+  <div
+    className="card transactions"
+  >
+    <div
+      className="card-header"
+    >
+      <nav
+        className="nav"
+      >
+        <button
+          className="btn btn-link active"
+          onClick={[Function]}
+          type="button"
+        >
+          All transactions
+        </button>
+        <button
+          className="btn btn-link"
+          onClick={[Function]}
+          type="button"
+        >
+          My transactions
+        </button>
+      </nav>
+    </div>
+    <div
+      className="card-body"
+    >
+      <div
+        className="list-group"
+      />
+    </div>
+  </div>,
+]
+`;
