@@ -1,19 +1,19 @@
 import Web3 from 'web3';
 
 const getWeb3 = new Promise((resolve, reject) => {
-  // wait for loading completion before loading web3, to be sure it's
-  // already injected
-  window.addEventListener('load', () => {
-    // checking if Web3 has been injected by the browser MetaMask
-    if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
-      // Use MetaMask's provider.
-      const web3 = new Web3(window.web3.currentProvider);
-      const results = { web3 };
-      resolve(results);
-    } else {
-      // user is not running MetaMask?
-      reject(new Error('Is MetaMask running?'));
+  window.addEventListener('load', async () => {
+    let web3;
+    if (window.ethereum) { // Modern dapp browsers...
+      web3 = new Web3(window.ethereum);
+      // Request account access if needed
+      // await window.ethereum.enable();
+    } else if (window.web3) { // Legacy dapp browsers...
+      web3 = new Web3(window.web3.currentProvider);
+    } else { // Non-dapp browsers...
+      reject(new Error('Non-Ethereum browser detected. Is MetaMask running?'));
     }
+    const results = { web3 };
+    resolve(results);
   });
 });
 
