@@ -8,7 +8,7 @@ const getWeb3 = new Promise((resolve, reject) => {
       try {
         // Request account access if needed
         await window.ethereum.enable();
-      } catch(error) {
+      } catch (error) {
         console.error(error);
       }
     } else if (window.web3) { // Legacy dapp browsers...
