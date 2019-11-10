@@ -3,7 +3,7 @@ import { func } from 'prop-types';
 
 import MetaMaskLink from './MetaMaskLink';
 import getWeb3 from '../utils/get-web3';
-import { EtherollContract } from '../utils/etheroll-contract';
+import { EtherollContract, contractAddresses } from '../utils/etheroll-contract';
 
 
 class BaseGame extends React.Component {
@@ -58,72 +58,74 @@ class BaseGame extends React.Component {
   getWeb3(setState) {
     const { showMessage, showWarningMessage } = this.props;
     getWeb3.then((results) => {
-      const { web3 } = results;
-      const contract = new EtherollContract(web3);
-      const contractAddress = contract.address;
-      const pullIntervalSeconds = 10 * 1000;
-      // clearInterval() is in the componentWillUnmount()
-      this.getTransactionsIntervalId = setInterval((
-      ) => this.getTransactions(contract, setState), pullIntervalSeconds);
-      this.getTransactions(contract, setState);
-      setState({
-        web3,
-        network: Number(web3.version.network),
-        contract,
-        contractAddress,
-      });
-      contract.web3Contract.minBet((error, minBetWei) => {
-        if (error) {
-          this.showFetchContractInfoWarning();
-        } else {
-          const minBet = web3.fromWei(minBetWei, 'ether').toNumber();
-          setState({ minBet });
-        }
-      });
-      contract.web3Contract.minNumber((error, minNumber) => {
-        if (error) {
-          this.showFetchContractInfoWarning();
-        }
-        const minChances = minNumber - 1;
-        setState({ minChances });
-      });
-      contract.web3Contract.maxNumber((error, maxNumber) => {
-        if (error) {
-          this.showFetchContractInfoWarning();
-        }
-        const maxChances = maxNumber - 1;
-        setState({ maxChances });
-      });
-      web3.eth.getBalance(contractAddress, (error, balance) => {
-        // error can be null with the balance also null in rare cases
-        if (error || balance === null) {
-          const message = "Can't fetch contract balance.";
-          this.showFetchContractInfoWarning(message);
-        } else {
-          const contractBalance = web3.fromWei(balance, 'ether').toNumber();
-          setState({ contractBalance });
-        }
-      });
-      web3.eth.getAccounts((error, accounts) => {
-        if (error) {
-          const message = "Can't retrieve accounts.";
-          showWarningMessage(message);
-        } else {
-          const accountAddress = accounts.length === 0 ? null : accounts[0];
-          if (accountAddress !== null) {
-            web3.eth.getBalance(accountAddress, (err, balance) => {
-              // error can be null with the balance also null in rare cases
-              if (err || balance === null) {
-                const message = "Can't fetch account balance.";
-                showWarningMessage(message);
-              } else {
-                const accountBalance = web3.fromWei(balance, 'ether').toNumber();
-                setState({ accountBalance });
-              }
-            });
+      results.web3.eth.net.getId().then((network) => {
+        const { web3 } = results;
+        const contractAddress = contractAddresses[network];
+        const contract = new EtherollContract(web3, contractAddress);
+        const pullIntervalSeconds = 10 * 1000;
+        // clearInterval() is in the componentWillUnmount()
+        this.getTransactionsIntervalId = setInterval((
+        ) => this.getTransactions(contract, setState), pullIntervalSeconds);
+        this.getTransactions(contract, setState);
+        setState({
+          web3,
+          network,
+          contract,
+          contractAddress,
+        });
+        contract.web3Contract.methods.minBet.call((error, minBetWei) => {
+          if (error) {
+            this.showFetchContractInfoWarning();
+          } else {
+            const minBet = Number(web3.utils.fromWei(minBetWei, 'ether'));
+            setState({ minBet });
           }
-          setState({ accountAddress });
-        }
+        });
+        contract.web3Contract.methods.minNumber.call((error, minNumber) => {
+          if (error) {
+            this.showFetchContractInfoWarning();
+          }
+          const minChances = minNumber - 1;
+          setState({ minChances });
+        });
+        contract.web3Contract.methods.maxNumber.call((error, maxNumber) => {
+          if (error) {
+            this.showFetchContractInfoWarning();
+          }
+          const maxChances = maxNumber - 1;
+          setState({ maxChances });
+        });
+        web3.eth.getBalance(contractAddress, (error, balance) => {
+          // error can be null with the balance also null in rare cases
+          if (error || balance === null) {
+            const message = "Can't fetch contract balance.";
+            this.showFetchContractInfoWarning(message);
+          } else {
+            const contractBalance = Number(web3.utils.fromWei(balance, 'ether'));
+            setState({ contractBalance });
+          }
+        });
+        web3.eth.getAccounts((error, accounts) => {
+          if (error) {
+            const message = "Can't retrieve accounts.";
+            showWarningMessage(message);
+          } else {
+            const accountAddress = accounts.length === 0 ? null : accounts[0];
+            if (accountAddress !== null) {
+              web3.eth.getBalance(accountAddress, (err, balance) => {
+                // error can be null with the balance also null in rare cases
+                if (err || balance === null) {
+                  const message = "Can't fetch account balance.";
+                  showWarningMessage(message);
+                } else {
+                  const accountBalance = Number(web3.utils.fromWei(balance, 'ether'));
+                  setState({ accountBalance });
+                }
+              });
+            }
+            setState({ accountAddress });
+          }
+        });
       });
     }, () => {
       const classType = 'danger';

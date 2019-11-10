@@ -21,7 +21,6 @@ function ContractInfo({
       {contractAddr}
     </div>
   );
-
   const accountAddr = (accountAddress !== null)
     ? <Address network={network} address={accountAddress} />
     : <span>Not connected, please login to MetaMask</span>;
