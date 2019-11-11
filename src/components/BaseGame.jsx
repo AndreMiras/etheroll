@@ -17,15 +17,15 @@ class BaseGame extends React.Component {
       accountAddress, chances, contract, betSize, web3,
     } = this.state;
     const rollUnder = chances + 1;
-    const value = web3.toWei(betSize.toString(), 'ether');
-    contract.web3Contract.playerRollDice(
-      rollUnder, { from: accountAddress, value },
-      (error, result) => {
-        error
-          && console.error(error)
-          || console.log(JSON.stringify(result));
-      },
-    );
+    const value = web3.utils.toWei(betSize.toString(), 'ether');
+    contract.web3Contract.methods.playerRollDice(rollUnder).send({
+      from: accountAddress,
+      value,
+    }).then((error, result) => {
+      error
+        && console.error(error)
+        || console.log(JSON.stringify(result));
+    });
   }
 
   getTransactions(contract, setState) {
@@ -73,7 +73,7 @@ class BaseGame extends React.Component {
           contract,
           contractAddress,
         });
-        contract.web3Contract.methods.minBet.call((error, minBetWei) => {
+        contract.web3Contract.methods.minBet().call((error, minBetWei) => {
           if (error) {
             this.showFetchContractInfoWarning();
           } else {
@@ -81,14 +81,14 @@ class BaseGame extends React.Component {
             setState({ minBet });
           }
         });
-        contract.web3Contract.methods.minNumber.call((error, minNumber) => {
+        contract.web3Contract.methods.minNumber().call((error, minNumber) => {
           if (error) {
             this.showFetchContractInfoWarning();
           }
           const minChances = minNumber - 1;
           setState({ minChances });
         });
-        contract.web3Contract.methods.maxNumber.call((error, maxNumber) => {
+        contract.web3Contract.methods.maxNumber().call((error, maxNumber) => {
           if (error) {
             this.showFetchContractInfoWarning();
           }
