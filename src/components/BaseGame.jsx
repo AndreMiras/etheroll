@@ -152,7 +152,8 @@ class BaseGame extends React.Component {
     let filteredTransactions = allTransactions.slice();
     if (transactionsFilter === '#my-transactions') {
       filteredTransactions = allTransactions.filter(transaction => (
-        transaction.logBetEvent.args.PlayerAddress.toLowerCase() === accountAddress.toLowerCase()
+        transaction.logBetEvent.returnValues.PlayerAddress.toLowerCase()
+        === accountAddress.toLowerCase()
       ));
     }
     setState({ filteredTransactions, transactionsFilter });
