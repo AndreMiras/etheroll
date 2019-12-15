@@ -50,6 +50,7 @@ exports[`renders correctly 1`] = `
           style={
             Object {
               "left": "0%",
+              "right": "auto",
               "width": "50%",
             }
           }
@@ -65,10 +66,13 @@ exports[`renders correctly 1`] = `
           className="rc-slider-handle"
           onBlur={[Function]}
           onKeyDown={[Function]}
+          onMouseDown={[Function]}
           role="slider"
           style={
             Object {
               "left": "50%",
+              "right": "auto",
+              "transform": "translateX(-50%)",
             }
           }
           tabIndex={0}
