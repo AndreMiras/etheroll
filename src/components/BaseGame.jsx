@@ -22,9 +22,8 @@ class BaseGame extends React.Component {
       from: accountAddress,
       value,
     }).then((error, result) => {
-      error
-        && console.error(error)
-        || console.log(JSON.stringify(result));
+      console.log(JSON.stringify(result));
+      error && console.error(error);
     });
   }
 

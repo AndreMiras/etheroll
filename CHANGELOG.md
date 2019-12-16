@@ -3,7 +3,7 @@
 
 ## [Unreleased]
 
-  - Post Web3 1.2 migration fixes, refs #56
+  - Post Web3 1.2 migration fixes, refs #56, #60
 
 
 ## [2019.11.11]
