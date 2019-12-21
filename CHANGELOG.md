@@ -1,5 +1,11 @@
 # Change Log
 
+
+## [2019.12.16]
+
+  - Post Web3 1.2 migration fixes, refs #56, #60
+
+
 ## [2019.11.11]
 
   - Migrates from to Web3 1.2, refs #56

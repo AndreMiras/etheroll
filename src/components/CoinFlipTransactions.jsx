@@ -8,17 +8,17 @@ import Transaction from './Transaction';
 
 function MergedLog({ network, mergedLog }) {
   const { logBetEvent, logResultEvent } = mergedLog;
-  const playerNumber = logBetEvent.args.PlayerNumber.toNumber();
+  const playerNumber = Number(logBetEvent.returnValues.PlayerNumber);
   // const playerSide = 'Head';
   let valueEth = '?';
   let coinResult = '?';
   let alertClass = 'secondary';
   // resolved bet case
   if (typeof logResultEvent !== 'undefined') {
-    const diceResult = logResultEvent.args.DiceResult.toNumber();
+    const diceResult = Number(logResultEvent.returnValues.DiceResult);
     coinResult = diceResult < 51 ? 'Head' : 'Tail';
     const playerWon = diceResult < playerNumber;
-    valueEth = (logResultEvent.args.Value * (10 ** (-18))).toFixed(2);
+    valueEth = (logResultEvent.returnValues.Value * (10 ** (-18))).toFixed(2);
     alertClass = playerWon ? 'success' : 'danger';
   }
   return (
@@ -35,7 +35,7 @@ function MergedLog({ network, mergedLog }) {
         <div className="w-100">
           Wallet:
           &nbsp;
-          <Address address={logBetEvent.args.PlayerAddress.toString()} network={network} />
+          <Address address={logBetEvent.returnValues.PlayerAddress.toString()} network={network} />
         </div>
         <div className="w-100">
           Transaction:
@@ -78,7 +78,7 @@ TransactionsFilterButtons.propTypes = {
 
 function Transactions({ network, onClick, transactions }) {
   const coinflipTransactions = transactions.filter(transaction => (
-    transaction.logBetEvent.args.PlayerNumber.toNumber() === 51
+    Number(transaction.logBetEvent.returnValues.PlayerNumber) === 51
   ));
   const reversedTransactions = coinflipTransactions.slice().reverse();
   const transactionsElems = reversedTransactions.map(transaction => (

@@ -1,13 +1,10 @@
-# Docker image for installing dependencies running tests.
+# Docker image for installing dependencies & running tests.
 # Build with:
 # docker build --tag=etheroll-js .
 # Run with:
 # docker run etheroll-js /bin/sh -c 'make test CI=1'
 # Or for interactive shell:
 # docker run -it --rm etheroll-js
-#	- setup caching (for apt, and pip)
-#	- run as non root
-#	- install nvm
 FROM ubuntu:18.04
 
 # configure locale

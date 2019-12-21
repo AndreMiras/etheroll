@@ -6,7 +6,8 @@ function Alert({ classType, message }) {
     ? (
       <div className={`alert alert-${classType}`} role="alert">
         {message}
-      </div>)
+      </div>
+    )
     : null;
 }
 Alert.propTypes = {
