@@ -6,6 +6,62 @@ import getWeb3 from '../utils/get-web3';
 import { EtherollContract, contractAddresses } from '../utils/etheroll-contract';
 
 
+const showFetchContractInfoWarning = (showWarningMessage, optionalMessage) => {
+  const defaultMessage = "Can't fetch contract info.";
+  const message = (typeof optionalMessage === 'undefined') ? defaultMessage : optionalMessage;
+  showWarningMessage(message);
+};
+
+const minBetCallback = (web3, showWarningMessage, updateValue) => (error, minBetWei) => {
+  error ? showFetchContractInfoWarning(showWarningMessage) : (
+    updateValue(Number(web3.utils.fromWei(minBetWei, 'ether')))
+  );
+};
+
+const minNumberCallback = (showWarningMessage, updateValue) => (error, minNumber) => {
+  error ? showFetchContractInfoWarning(showWarningMessage) : updateValue(minNumber - 1);
+};
+
+const maxNumberCallback = (showWarningMessage, updateValue) => (error, maxNumber) => {
+  error ? showFetchContractInfoWarning(showWarningMessage) : updateValue(maxNumber - 1);
+};
+
+const getBalanceCallback = (web3, showWarningMessage, updateValue) => (error, balance) => {
+  // error can be null with the balance also null in rare cases
+  (error || balance === null) ? showFetchContractInfoWarning("Can't fetch contract balance.") : (
+    updateValue(Number(web3.utils.fromWei(balance, 'ether')))
+  );
+};
+
+const getAccountBalanceCallback = (web3, showWarningMessage, updateValue) => (error, balance) => {
+  // error can be null with the balance also null in rare cases
+  (error || balance === null) ? showWarningMessage("Can't fetch account balance.") : (
+    updateValue(Number(web3.utils.fromWei(balance, 'ether')))
+  );
+};
+
+const getAccountsCallback = (
+  web3, showWarningMessage, updateAccountAddress, updateAccountBalance,
+) => (error, accounts) => {
+  if (error) {
+    const message = "Can't retrieve accounts.";
+    showWarningMessage(message);
+  } else {
+    const accountAddress = accounts.length === 0 ? null : accounts[0];
+    if (accountAddress !== null) {
+      web3.eth.getBalance(
+        accountAddress,
+        getAccountBalanceCallback(
+          web3,
+          showWarningMessage,
+          updateAccountBalance,
+        ),
+      );
+    }
+    updateAccountAddress(accountAddress);
+  }
+};
+
 class BaseGame extends React.Component {
   constructor(props) {
     super(props);
@@ -56,60 +112,6 @@ class BaseGame extends React.Component {
    */
   getWeb3(setState) {
     const { showMessage, showWarningMessage } = this.props;
-    const minBetCallback = web3 => (error, minBetWei) => {
-      if (error) {
-        this.showFetchContractInfoWarning();
-      } else {
-        const minBet = Number(web3.utils.fromWei(minBetWei, 'ether'));
-        setState({ minBet });
-      }
-    };
-    const minNumberCallback = (error, minNumber) => {
-      if (error) {
-        this.showFetchContractInfoWarning();
-      }
-      const minChances = minNumber - 1;
-      setState({ minChances });
-    };
-    const maxNumberCallback = (error, maxNumber) => {
-      if (error) {
-        this.showFetchContractInfoWarning();
-      }
-      const maxChances = maxNumber - 1;
-      setState({ maxChances });
-    };
-    const getBalanceCallback = web3 => (error, balance) => {
-      // error can be null with the balance also null in rare cases
-      if (error || balance === null) {
-        const message = "Can't fetch contract balance.";
-        this.showFetchContractInfoWarning(message);
-      } else {
-        const contractBalance = Number(web3.utils.fromWei(balance, 'ether'));
-        setState({ contractBalance });
-      }
-    };
-    const getAccountBalanceCallback = web3 => (err, balance) => {
-      // error can be null with the balance also null in rare cases
-      if (err || balance === null) {
-        const message = "Can't fetch account balance.";
-        showWarningMessage(message);
-      } else {
-        const accountBalance = Number(web3.utils.fromWei(balance, 'ether'));
-        setState({ accountBalance });
-      }
-    };
-    const getAccountsCallback = web3 => (error, accounts) => {
-      if (error) {
-        const message = "Can't retrieve accounts.";
-        showWarningMessage(message);
-      } else {
-        const accountAddress = accounts.length === 0 ? null : accounts[0];
-        if (accountAddress !== null) {
-          web3.eth.getBalance(accountAddress, getAccountBalanceCallback(web3));
-        }
-        setState({ accountAddress });
-      }
-    };
     const getIdCallback = web3 => (network) => {
       const contractAddress = contractAddresses[network];
       const contract = new EtherollContract(web3, contractAddress);
@@ -124,11 +126,32 @@ class BaseGame extends React.Component {
         contract,
         contractAddress,
       });
-      contract.web3Contract.methods.minBet().call(minBetCallback(web3));
-      contract.web3Contract.methods.minNumber().call(minNumberCallback);
-      contract.web3Contract.methods.maxNumber().call(maxNumberCallback);
-      web3.eth.getBalance(contractAddress, getBalanceCallback(web3));
-      web3.eth.getAccounts(getAccountsCallback(web3));
+      contract.web3Contract.methods.minBet().call(
+        minBetCallback(
+          web3, showWarningMessage, this.updateState('minBet'),
+        ),
+      );
+      contract.web3Contract.methods.minNumber().call(
+        minNumberCallback(
+          showWarningMessage, this.updateState('minChances'),
+        ),
+      );
+      contract.web3Contract.methods.maxNumber().call(
+        maxNumberCallback(
+          showWarningMessage, this.updateState('maxChances'),
+        ),
+      );
+      web3.eth.getBalance(
+        contractAddress,
+        getBalanceCallback(
+          web3, showWarningMessage, this.updateState('contractBalance'),
+        ),
+      );
+      web3.eth.getAccounts(
+        getAccountsCallback(
+          web3, showWarningMessage, this.updateState('accountAddress'), this.updateState('accountBalance'),
+        ),
+      );
     };
     const getWeb3CallbackOk = (results) => {
       results.web3.eth.net.getId().then(getIdCallback(results.web3));
@@ -144,13 +167,6 @@ class BaseGame extends React.Component {
       showMessage(classType, message);
     };
     getWeb3.then(getWeb3CallbackOk, getWeb3CallbackError);
-  }
-
-  showFetchContractInfoWarning(optionalMessage) {
-    const { showWarningMessage } = this.props;
-    const defaultMessage = "Can't fetch contract info.";
-    const message = (typeof optionalMessage === 'undefined') ? defaultMessage : optionalMessage;
-    showWarningMessage(message);
   }
 
   filterTransactions(transactionsFilter, setState) {
