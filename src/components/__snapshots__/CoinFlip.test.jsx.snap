@@ -3,47 +3,6 @@
 exports[`renders correctly 1`] = `
 Array [
   <div
-    className="row"
-  >
-    <div
-      className="col-lg-12"
-    >
-      <i
-        className="far fa-user"
-      />
-       Account (
-      0.00
-       ETH)
-    </div>
-    <div
-      className="col-12"
-    >
-      <span>
-        Not connected, please login to MetaMask
-      </span>
-    </div>
-    <div
-      className="col-12 d-none d-sm-block"
-    >
-      <i
-        className="far fa-file-code"
-      />
-       Contract (
-      0.00
-       ETH)
-    </div>
-    <div
-      className="col-12 d-none d-sm-block"
-    >
-      <a
-        className="text-monospace"
-        href="https://etherscan.io/address/0xA52e014B3f5Cc48287c2D483A3E026C32cc76E6d"
-      >
-        0xA52e014B3f5Cc48287c2D483A3E026C32cc76E6d
-      </a>
-    </div>
-  </div>,
-  <div
     className="form-group"
   >
     <b>
@@ -128,7 +87,7 @@ Array [
   </div>,
   <p>
     Flip Head with a wager of 
-    0.1
+    0.10
      for a profit of 
     0.10
   </p>,

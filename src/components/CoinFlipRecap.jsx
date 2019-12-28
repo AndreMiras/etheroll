@@ -9,7 +9,7 @@ function CoinFlipRecap({ betSize }) {
   return (
     <p>
       {'Flip Head with a wager of '}
-      {betSize}
+      {betSize.toFixed(2)}
       {' for a profit of '}
       {profit.toFixed(2)}
     </p>
