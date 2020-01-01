@@ -6,13 +6,16 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0",
     "@sentry/browser": "^4.4.1",
+    "babel-preset-react": "^6.24.1",
     "bignumber.js": "^8.0.1",
     "bootstrap": "^4.3.1",
+    "extract-react-intl-messages": "^2.3.5",
     "prop-types": "^15.6.2",
     "rc-slider": "^8.6.3",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-ga": "^2.5.6",
+    "react-intl": "^3.9.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "react-test-renderer": "^16.6.3",
@@ -26,7 +29,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "./node_modules/.bin/eslint -c .eslintrc src/**/*.{js,jsx}"
+    "lint": "eslint -c .eslintrc src/**/*.{js,jsx}",
+    "intl": "NODE_ENV=development extract-messages -l=en,es,fr -o src/translations/ --flat true 'src/**/!(*.test).jsx'"
   },
   "eslintConfig": {
     "extends": "react-app"

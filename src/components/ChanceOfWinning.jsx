@@ -1,5 +1,6 @@
 import React from 'react';
 import { number, func } from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import ValueSlider from './ValueSlider';
 
 function ChanceOfWinning({
@@ -7,7 +8,12 @@ function ChanceOfWinning({
 }) {
   return (
     <div className="form-group">
-      <b>Chance of winning</b>
+      <b>
+        <FormattedMessage
+          id="chanceofwinning.chanceofwinning"
+          defaultMessage="Chance of winning"
+        />
+      </b>
       <ValueSlider
         value={chances}
         min={min}

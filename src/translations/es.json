@@ -1,0 +1,9 @@
+{
+  "betsize.betsize": "",
+  "chanceofwinning.chanceofwinning": "",
+  "container.no-account-connected": "No cuenta disponible, conéctese con una wallet compatible con Web3 como {metamaskLink}",
+  "container.place-your-bet": "Haz tu apuesta",
+  "contractinfo.account": "Cuenta ({accountBalance} ETH)",
+  "contractinfo.contract": "",
+  "contractinfo.not-connected": "No conectado, inicie sesión con MetaMask"
+}

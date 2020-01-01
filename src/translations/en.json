@@ -1,0 +1,9 @@
+{
+  "betsize.betsize": "Bet size",
+  "chanceofwinning.chanceofwinning": "Chance of winning",
+  "container.no-account-connected": "No account connected, connect with a Web3-compatible wallet like {metamaskLink}",
+  "container.place-your-bet": "Place your bet",
+  "contractinfo.account": "Account ({accountBalance} ETH)",
+  "contractinfo.contract": "Contract ({contractBalance} ETH)",
+  "contractinfo.not-connected": "Not connected, please login to MetaMask"
+}

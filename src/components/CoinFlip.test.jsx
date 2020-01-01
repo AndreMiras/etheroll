@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import createComponentWithIntl from '../utils/createComponentWithIntl';
 import CoinFlip from './CoinFlip';
 
 it('renders correctly', () => {
@@ -21,8 +21,8 @@ it('renders correctly', () => {
     updateState,
     filterTransactions,
   };
-  const tree = renderer
-    .create(<CoinFlip {...gameProps} />)
-    .toJSON();
+  const tree = createComponentWithIntl(
+    <CoinFlip {...gameProps} />,
+  ).toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -25,7 +25,6 @@ function RollUnder(props) {
   return (
     <div>
       <form className="RollUnder">
-        <h2>Place your bet</h2>
         <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={updateState('betSize')} />
         <ChanceOfWinning chances={chances} min={minChances} max={maxChances} updateChances={updateState('chances')} />
         <RollUnderRecap value={rollUnder} betSize={betSize} />

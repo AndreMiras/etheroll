@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import { fromWei } from 'web3-utils';
 import Alert from './Alert';
 import CoinFlip from './CoinFlip';
@@ -209,8 +210,11 @@ class Container extends React.Component {
       const classType = 'danger';
       const message = (
         <Fragment>
-          {'No account connected, connect with a Web3-compatible wallet like '}
-          <MetaMaskLink />
+          <FormattedMessage
+            id="container.no-account-connected"
+            defaultMessage={'No account connected, connect with a Web3-compatible wallet like {metamaskLink}'}
+            values={{ metamaskLink: <MetaMaskLink /> }}
+          />
         </Fragment>
       );
       showMessage(classType, message, this.updateState('alertDict'));
@@ -262,6 +266,13 @@ class Container extends React.Component {
       <div className="container">
         <Alert classType={alertDict.classType} message={alertDict.message} />
         <ContractInfo {...contractProps} />
+        <h2>
+          <FormattedMessage
+            id="container.place-your-bet"
+            defaultMessage="Place your bet"
+            description="Place your bet title"
+          />
+        </h2>
         <Route path="/" exact render={() => <RollUnder {...gameProps} />} />
         <Route path="/coin-flip" render={() => <CoinFlip {...gameProps} />} />
       </div>

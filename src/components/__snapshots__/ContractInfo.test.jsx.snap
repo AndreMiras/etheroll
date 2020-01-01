@@ -10,9 +10,8 @@ exports[`no account address 1`] = `
     <i
       className="far fa-user"
     />
-     Account (
-    0.00
-     ETH)
+     
+    Account (0.00 ETH)
   </div>
   <div
     className="col-12"
@@ -27,9 +26,8 @@ exports[`no account address 1`] = `
     <i
       className="far fa-file-code"
     />
-     Contract (
-    123.00
-     ETH)
+     
+    Contract (123.00 ETH)
   </div>
   <div
     className="col-12 d-none d-sm-block"
@@ -54,9 +52,8 @@ exports[`renders correctly 1`] = `
     <i
       className="far fa-user"
     />
-     Account (
-    1.12
-     ETH)
+     
+    Account (1.12 ETH)
   </div>
   <div
     className="col-12"
@@ -74,9 +71,8 @@ exports[`renders correctly 1`] = `
     <i
       className="far fa-file-code"
     />
-     Contract (
-    123.00
-     ETH)
+     
+    Contract (123.00 ETH)
   </div>
   <div
     className="col-12 d-none d-sm-block"
