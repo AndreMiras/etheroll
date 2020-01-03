@@ -1,0 +1,21 @@
+{
+  "betsize.betsize": "Montant du pari",
+  "chanceofwinning.chanceofwinning": "Probabilité de gagner",
+  "coinfliprecap.flip-head-with-a-wager": "Mise de {betSize} sur Face pour un profit de {profit}",
+  "container.no-account-connected": "Aucun compte connecté, connectez vous avec un wallet compatible Web3 tel que {metamaskLink}",
+  "container.place-your-bet": "Placez votre pari",
+  "contractinfo.account": "Compte ({accountBalance} ETH)",
+  "contractinfo.contract": "Contrat ({contractBalance} ETH)",
+  "contractinfo.not-connected": "Non connecté, connectez-vous avec MetaMask",
+  "flipbutton.text": "",
+  "headers.navsections.navlink.about": "À propos",
+  "headers.navsections.navlink.coin-flip": "Pile ou Face",
+  "headers.navsections.navlink.home": "",
+  "merged-log.transaction": "Transaction :",
+  "merged-log.wallet": "Compte :",
+  "rollunderrecap.for-a-profit-of": "",
+  "rollunderrecap.roll-under": "",
+  "rollunderrecap.with-a-wager-of": "Montant du pari",
+  "transactions-filter-buttons.all-transactions": "Toutes les transactions",
+  "transactions-filter-buttons.my-transactions": "Mes transactions"
+}

@@ -1,5 +1,9 @@
 # Change Log
 
+## [2020.01.03]
+
+  - Setup up basic translations in French and Spanish, refs #2
+
 
 ## [2019.12.16]
 

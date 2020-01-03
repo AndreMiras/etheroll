@@ -1,5 +1,6 @@
 import React from 'react';
 import { number, string } from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import Address from './Address';
 
 function ContractInfo({
@@ -10,9 +11,12 @@ function ContractInfo({
   const contractBalanceBlock = (
     <div className="col-12 d-none d-sm-block">
       <i className="far fa-file-code" />
-      &nbsp;Contract&nbsp;(
-      {contractBalance.toFixed(2)}
-      &nbsp;ETH)
+      &nbsp;
+      <FormattedMessage
+        id="contractinfo.contract"
+        defaultMessage={'Contract ({contractBalance} ETH)'}
+        values={{ contractBalance: contractBalance.toFixed(2) }}
+      />
     </div>
   );
 
@@ -23,14 +27,24 @@ function ContractInfo({
   );
   const accountAddr = (accountAddress !== null)
     ? <Address network={network} address={accountAddress} />
-    : <span>Not connected, please login to MetaMask</span>;
+    : (
+      <span>
+        <FormattedMessage
+          id="contractinfo.not-connected"
+          defaultMessage="Not connected, please login to MetaMask"
+        />
+      </span>
+    );
 
   const accountBalanceBlock = (
     <div className="col-lg-12">
       <i className="far fa-user" />
-      &nbsp;Account&nbsp;(
-      {accountBalance.toFixed(2)}
-      &nbsp;ETH)
+      &nbsp;
+      <FormattedMessage
+        id="contractinfo.account"
+        defaultMessage={'Account ({accountBalance} ETH)'}
+        values={{ accountBalance: accountBalance.toFixed(2) }}
+      />
     </div>
   );
 

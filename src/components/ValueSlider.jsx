@@ -7,14 +7,11 @@ import 'rc-slider/assets/index.css';
 function ValueSlider({
   value, updateValue, step, min, max, addonText, toFixedDigits,
 }) {
-  let addon = null;
-  if (addonText !== null) {
-    addon = (
-      <div className="input-group-append">
-        <span className="input-group-text text-monospace">{addonText}</span>
-      </div>
-    );
-  }
+  const addon = (addonText !== null) ? (
+    <div className="input-group-append">
+      <span className="input-group-text text-monospace">{addonText}</span>
+    </div>
+  ) : null;
   const formattedValue = toFixedDigits === null ? value : value.toFixed(toFixedDigits);
   return (
     <div className="row">

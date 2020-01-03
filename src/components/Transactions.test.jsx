@@ -1,13 +1,13 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import BigNumber from 'bignumber.js';
+import createComponentWithIntl from '../utils/createComponentWithIntl';
 import Transactions from './Transactions';
 
 
 it('renders correctly on empty transactions', () => {
-  const tree = renderer
-    .create(<Transactions onClick={() => {}} transactions={[]} network={3} />)
-    .toJSON();
+  const tree = createComponentWithIntl(
+    <Transactions onClick={() => {}} transactions={[]} network={3} />,
+  ).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
@@ -22,8 +22,8 @@ it('renders correctly on not empty transactions', () => {
     },
   };
   const transactions = [mergedLog];
-  const tree = renderer
-    .create(<Transactions onClick={() => {}} transactions={transactions} network={3} />)
-    .toJSON();
+  const tree = createComponentWithIntl(
+    <Transactions onClick={() => {}} transactions={transactions} network={3} />,
+  ).toJSON();
   expect(tree).toMatchSnapshot();
 });

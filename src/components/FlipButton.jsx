@@ -1,5 +1,6 @@
 import React from 'react';
 import { bool, func, string } from 'prop-types';
+import { defineMessages, useIntl } from 'react-intl';
 
 const Button = ({ isDisabled, onClick, text }) => (
   <button
@@ -21,7 +22,16 @@ Button.defaultProps = {
 };
 
 function FlipButton({ isDisabled, onClick }) {
-  return <Button text="Flip Head" isDisabled={isDisabled} onClick={onClick} />;
+  // https://github.com/leesx/react-intl-demo2018/blob/0cd88df/docs/react-intl-corner-cases.md
+  const messages = defineMessages({
+    text: {
+      id: 'flipbutton.text',
+      defaultMessage: 'Flip Head',
+    },
+  });
+  const intl = useIntl();
+  return (
+    <Button text={intl.formatMessage(messages.text)} isDisabled={isDisabled} onClick={onClick} />);
 }
 FlipButton.propTypes = {
   isDisabled: bool,

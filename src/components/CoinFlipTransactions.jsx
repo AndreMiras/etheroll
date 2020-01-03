@@ -2,6 +2,7 @@ import React from 'react';
 import {
   arrayOf, func, number, shape,
 } from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import Address from './Address';
 import Transaction from './Transaction';
 
@@ -33,12 +34,18 @@ function MergedLog({ network, mergedLog }) {
           ETH
         </div>
         <div className="w-100">
-          Wallet:
+          <FormattedMessage
+            id="merged-log.wallet"
+            defaultMessage="Wallet:"
+          />
           &nbsp;
           <Address address={logBetEvent.returnValues.PlayerAddress.toString()} network={network} />
         </div>
         <div className="w-100">
-          Transaction:
+          <FormattedMessage
+            id="merged-log.transaction"
+            defaultMessage="Transaction:"
+          />
           &nbsp;
           <Transaction hash={logBetEvent.transactionHash} network={network} />
         </div>
@@ -61,14 +68,20 @@ const TransactionsFilterButtons = ({ onClick }) => (
       className="btn btn-link active"
       onClick={() => onClick('#all-transactions')}
     >
-      All transactions
+      <FormattedMessage
+        id="transactions-filter-buttons.all-transactions"
+        defaultMessage="All transactions"
+      />
     </button>
     <button
       type="button"
       className="btn btn-link"
       onClick={() => onClick('#my-transactions')}
     >
-      My transactions
+      <FormattedMessage
+        id="transactions-filter-buttons.my-transactions"
+        defaultMessage="My transactions"
+      />
     </button>
   </nav>
 );

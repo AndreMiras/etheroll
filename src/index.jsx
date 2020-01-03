@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { IntlProvider } from 'react-intl';
+import messagesEs from './translations/es.json';
+import messagesFr from './translations/fr.json';
 import setupGA from './utils/analytics';
 import setupSentry from './utils/sentry';
 import './index.css';
@@ -12,7 +15,20 @@ import * as serviceWorker from './serviceWorker';
 setupGA();
 setupSentry();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const messages = {
+  en: null,
+  es: messagesEs,
+  fr: messagesFr,
+};
+// language without region code
+const language = navigator.language.split(/[-_]/)[0];
+
+ReactDOM.render(
+  <IntlProvider locale={language} messages={messages[language]}>
+    <App />
+  </IntlProvider>,
+  document.getElementById('root'),
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

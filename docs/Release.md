@@ -27,7 +27,7 @@ git push --tags
 ## Publish to GitHub Pages
 Publish to https://andremiras.github.io/etheroll via:
 ```sh
-yarn deploy
+make deploy
 ```
 
 ## Update GitHub release

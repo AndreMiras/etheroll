@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
 const Logo = () => (
@@ -28,14 +29,22 @@ const NavSections = () => (
       <li className="nav-item">
         <NavLink className="nav-link" to="/" exact activeClassName="active">
           <i className="fas fa-home" />
-          {' Home'}
+          &nbsp;
+          <FormattedMessage
+            id="headers.navsections.navlink.home"
+            defaultMessage="Home"
+          />
           <span className="sr-only">(current)</span>
         </NavLink>
       </li>
       <li className="nav-item">
         <NavLink className="nav-link" to="/coin-flip" activeClassName="active">
           <i className="fas fa-coins" />
-          {' Flip a coin'}
+          &nbsp;
+          <FormattedMessage
+            id="headers.navsections.navlink.coin-flip"
+            defaultMessage="Flip a coin"
+          />
         </NavLink>
       </li>
       <li className="nav-item">
@@ -46,7 +55,11 @@ const NavSections = () => (
           rel="noopener noreferrer"
         >
           <i className="fab fa-github-alt" />
-          {' About'}
+          &nbsp;
+          <FormattedMessage
+            id="headers.navsections.navlink.about"
+            defaultMessage="About"
+          />
         </a>
       </li>
     </ul>

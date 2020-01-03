@@ -1,83 +1,68 @@
 import React from 'react';
+import {
+  arrayOf, func, number, shape, string,
+} from 'prop-types';
 import './css/RollUnder.css';
-import BaseGame from './BaseGame';
-import ContractInfo from './ContractInfo';
+import onRollClick from './BaseGame';
 import BetSize from './BetSize';
 import ChanceOfWinning from './ChanceOfWinning';
 import RollUnderRecap from './RollUnderRecap';
 import RollButton from './RollButton';
 import Transactions from './Transactions';
-import {
-  Networks, contractAddresses,
-} from '../utils/etheroll-contract';
 
 
-class RollUnder extends BaseGame {
-  constructor(props) {
-    super(props);
-    this.state = {
-      betSize: 0.1,
-      chances: 50,
-      minBet: BetSize.defaultProps.min,
-      maxBet: BetSize.defaultProps.max,
-      minChances: ChanceOfWinning.defaultProps.min,
-      maxChances: ChanceOfWinning.defaultProps.max,
-      accountAddress: null,
-      accountBalance: 0,
-      web3: null,
-      network: Networks.mainnet,
-      contract: null,
-      contractAddress: contractAddresses[Networks.mainnet],
-      contractBalance: 0,
-      // most recent transaction is last in the array
-      allTransactions: [],
-      filteredTransactions: [],
-      transactionsFilter: '#all-transactions',
-    };
-  }
-
-  componentDidMount() {
-    const setState = dict => this.setState(dict);
-    this.getWeb3(setState);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.getTransactionsIntervalId);
-  }
-
-  render() {
-    const {
-      accountAddress, accountBalance, betSize, chances, contractAddress,
-      contractBalance, filteredTransactions, minBet, maxBet, minChances, maxChances, network,
-    } = this.state;
-    const setState = dict => this.setState(dict);
-    const rollUnder = chances + 1;
-    const rollDisabled = accountAddress === null;
-    return (
-      <div>
-        <ContractInfo
-          accountAddress={accountAddress}
-          accountBalance={accountBalance}
-          contractAddress={contractAddress}
-          contractBalance={contractBalance}
-          network={network}
-        />
-        <form className="RollUnder">
-          <h2>Place your bet</h2>
-          <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={this.updateState('betSize')} />
-          <ChanceOfWinning chances={chances} min={minChances} max={maxChances} updateChances={this.updateState('chances')} />
-          <RollUnderRecap value={rollUnder} betSize={betSize} />
-          <RollButton isDisabled={rollDisabled} onClick={() => this.onRollClick()} />
-        </form>
-        <Transactions
-          network={network}
-          onClick={transactionsFilter => this.filterTransactions(transactionsFilter, setState)}
-          transactions={filteredTransactions}
-        />
-      </div>
-    );
-  }
+function RollUnder(props) {
+  const {
+    accountAddress, betSize, chances, contract,
+    filterTransactions, filteredTransactions, minBet, maxBet, minChances, maxChances, network,
+    updateState,
+  } = props;
+  const rollUnder = chances + 1;
+  const onRollClickProps = {
+    accountAddress, rollUnder, contract, betSize,
+  };
+  const rollDisabled = accountAddress === null;
+  return (
+    <div>
+      <form className="RollUnder">
+        <BetSize betSize={betSize} min={minBet} max={maxBet} updateBetSize={updateState('betSize')} />
+        <ChanceOfWinning chances={chances} min={minChances} max={maxChances} updateChances={updateState('chances')} />
+        <RollUnderRecap value={rollUnder} betSize={betSize} />
+        <RollButton isDisabled={rollDisabled} onClick={() => onRollClick(onRollClickProps)} />
+      </form>
+      <Transactions
+        network={network}
+        onClick={transactionsFilter => filterTransactions(transactionsFilter)}
+        transactions={filteredTransactions}
+      />
+    </div>
+  );
 }
-RollUnder.propTypes = { ...BaseGame.propTypes };
+RollUnder.propTypes = {
+  accountAddress: string,
+  betSize: number.isRequired,
+  chances: number.isRequired,
+  contract: shape({
+    // TODO: seems completely ignored
+    // https://github.com/facebook/prop-types/issues/181
+    todo: number,
+  }),
+  filterTransactions: func.isRequired,
+  filteredTransactions: arrayOf(shape({
+    // TODO: seems completely ignored
+    // https://github.com/facebook/prop-types/issues/181
+    todo: number,
+  })).isRequired,
+  minBet: number.isRequired,
+  maxBet: number.isRequired,
+  minChances: number.isRequired,
+  maxChances: number.isRequired,
+  network: number.isRequired,
+  updateState: func.isRequired,
+};
+RollUnder.defaultProps = {
+  accountAddress: null,
+  contract: null,
+};
 
 export default RollUnder;

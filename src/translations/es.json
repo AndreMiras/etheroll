@@ -1,0 +1,21 @@
+{
+  "betsize.betsize": "Monto de la apuesta",
+  "chanceofwinning.chanceofwinning": "Probabilidades de ganar",
+  "coinfliprecap.flip-head-with-a-wager": "",
+  "container.no-account-connected": "No cuenta disponible, conéctese con una wallet compatible con Web3 como {metamaskLink}",
+  "container.place-your-bet": "Haz tu apuesta",
+  "contractinfo.account": "Cuenta ({accountBalance} ETH)",
+  "contractinfo.contract": "Contrato ({contractBalance} ETH)",
+  "contractinfo.not-connected": "No conectado, inicie sesión con MetaMask",
+  "flipbutton.text": "",
+  "headers.navsections.navlink.about": "",
+  "headers.navsections.navlink.coin-flip": "Cara o cruz",
+  "headers.navsections.navlink.home": "",
+  "merged-log.transaction": "Transaccion:",
+  "merged-log.wallet": "Cuenta:",
+  "rollunderrecap.for-a-profit-of": "",
+  "rollunderrecap.roll-under": "",
+  "rollunderrecap.with-a-wager-of": "Monto de la apuesta",
+  "transactions-filter-buttons.all-transactions": "Todas las transacciones",
+  "transactions-filter-buttons.my-transactions": "Mis transacciones"
+}

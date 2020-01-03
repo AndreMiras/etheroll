@@ -99,7 +99,8 @@ exports[`renders correctly on not empty transactions 1`] = `
           <div
             className="w-100"
           >
-            Wallet:  
+            Wallet:
+             
             <a
               className="text-monospace"
               href="https://ropsten.etherscan.io/address/0x0123"
@@ -110,7 +111,8 @@ exports[`renders correctly on not empty transactions 1`] = `
           <div
             className="w-100"
           >
-            Transaction:  
+            Transaction:
+             
             <a
               href="https://ropsten.etherscan.io/tx/0x0123"
             >
