@@ -17,3 +17,6 @@ lint: install
 
 intl: install
 	yarn intl
+
+deploy: install
+	yarn deploy
