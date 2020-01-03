@@ -1,9 +1,21 @@
 {
   "betsize.betsize": "Bet size",
   "chanceofwinning.chanceofwinning": "Chance of winning",
+  "coinfliprecap.flip-head-with-a-wager": "Flip Head with a wager of {betSize} for a profit of {profit}",
   "container.no-account-connected": "No account connected, connect with a Web3-compatible wallet like {metamaskLink}",
   "container.place-your-bet": "Place your bet",
   "contractinfo.account": "Account ({accountBalance} ETH)",
   "contractinfo.contract": "Contract ({contractBalance} ETH)",
-  "contractinfo.not-connected": "Not connected, please login to MetaMask"
+  "contractinfo.not-connected": "Not connected, please login to MetaMask",
+  "flipbutton.text": "Flip Head",
+  "headers.navsections.navlink.about": "About",
+  "headers.navsections.navlink.coin-flip": "Flip a coin",
+  "headers.navsections.navlink.home": "Home",
+  "merged-log.transaction": "Transaction:",
+  "merged-log.wallet": "Wallet:",
+  "rollunderrecap.for-a-profit-of": "For a profit of",
+  "rollunderrecap.roll-under": "Roll under",
+  "rollunderrecap.with-a-wager-of": "With a wager of",
+  "transactions-filter-buttons.all-transactions": "All transactions",
+  "transactions-filter-buttons.my-transactions": "My transactions"
 }

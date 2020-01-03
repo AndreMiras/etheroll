@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { number } from 'prop-types';
 import { getProfit } from '../utils/etheroll-contract';
 
@@ -9,13 +10,21 @@ function RollUnderRecap({ betSize, value }) {
   return (
     <div className="row">
       <div className="col-6">
-        <h3>Roll under</h3>
+        <h3>
+          <FormattedMessage
+            id="rollunderrecap.roll-under"
+            defaultMessage="Roll under"
+          />
+        </h3>
       </div>
       <div className="col-6">
         <h3 className="text-right">{value}</h3>
       </div>
       <div className="col-6">
-        With a wager of
+        <FormattedMessage
+          id="rollunderrecap.with-a-wager-of"
+          defaultMessage="With a wager of"
+        />
       </div>
       <div className="col-6">
         <p className="text-right mb-0">
@@ -25,7 +34,10 @@ function RollUnderRecap({ betSize, value }) {
         </p>
       </div>
       <div className="col-6">
-        For a profit of
+        <FormattedMessage
+          id="rollunderrecap.for-a-profit-of"
+          defaultMessage="For a profit of"
+        />
       </div>
       <div className="col-6">
         <p className="text-right">

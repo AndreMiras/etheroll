@@ -1,10 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import createComponentWithIntl from '../utils/createComponentWithIntl';
 import RollUnderRecap from './RollUnderRecap';
 
 it('renders correctly', () => {
-  const tree = renderer
-    .create(<RollUnderRecap value={51} betSize={0.1} />)
-    .toJSON();
+  const tree = createComponentWithIntl(
+    <RollUnderRecap value={51} betSize={0.1} />,
+  ).toJSON();
   expect(tree).toMatchSnapshot();
 });
