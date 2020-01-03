@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [2020.01.03]
 
   - Setup up basic translations in French and Spanish, refs #2
 
