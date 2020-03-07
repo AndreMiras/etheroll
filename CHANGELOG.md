@@ -1,5 +1,10 @@
 # Change Log
 
+## [Unreleased]
+
+  - Language switcher using the Context API, refs #61 and #62
+
+
 ## [2020.01.03]
 
   - Setup up basic translations in French and Spanish, refs #2

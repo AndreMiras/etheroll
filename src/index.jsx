@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { IntlProvider } from 'react-intl';
-import messagesEs from './translations/es.json';
-import messagesFr from './translations/fr.json';
 import setupGA from './utils/analytics';
 import setupSentry from './utils/sentry';
+import IntlContextProvider from './contexts/IntlContext';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
@@ -15,18 +13,10 @@ import * as serviceWorker from './serviceWorker';
 setupGA();
 setupSentry();
 
-const messages = {
-  en: null,
-  es: messagesEs,
-  fr: messagesFr,
-};
-// language without region code
-const language = navigator.language.split(/[-_]/)[0];
-
 ReactDOM.render(
-  <IntlProvider locale={language} messages={messages[language]}>
+  <IntlContextProvider>
     <App />
-  </IntlProvider>,
+  </IntlContextProvider>,
   document.getElementById('root'),
 );
 
