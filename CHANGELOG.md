@@ -1,5 +1,10 @@
 # Change Log
 
+## [2020.03.07]
+
+  - Language switcher, refs #61, #62 and #63
+
+
 ## [2020.01.03]
 
   - Setup up basic translations in French and Spanish, refs #2

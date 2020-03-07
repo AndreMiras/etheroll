@@ -13,7 +13,7 @@ I'm learning ReactJS while building it, but I'm not a UX designer.
 
 ## Run
 ```sh
-yarn start
+make start
 ```
 
 ## Install

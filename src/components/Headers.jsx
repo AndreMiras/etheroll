@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
+import LanguageUpdate from './LanguageUpdate';
 
 const Logo = () => (
   <a className="navbar-brand" href="/">
@@ -62,6 +63,7 @@ const NavSections = () => (
           />
         </a>
       </li>
+      <LanguageUpdate />
     </ul>
   </div>
 );
