@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-  - Language switcher using the Context API, refs #61 and #62
+  - Language switcher, refs #61, #62 and #63
 
 
 ## [2020.01.03]

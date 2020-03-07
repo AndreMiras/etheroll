@@ -35,6 +35,7 @@ const LanguageUpdate = () => {
         type="button"
       >
         <i className="fas fa-flag" />
+        &nbsp;
         {locale.toUpperCase()}
       </button>
       <DropdownMenu
