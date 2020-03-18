@@ -1,0 +1,22 @@
+{
+  "betsize.betsize": "Размер ставки",
+  "chanceofwinning.chanceofwinning": "Вероятность выигрыша",
+  "coinfliprecap.flip-head-with-a-wager": "Ставка {betSize}; Орёл выигрывает {profit}",
+  "container.no-account-connected": "Вы не подключены, зайти с помощью кошелька, совместимого с Web3 {metamaskLink}",
+  "container.place-your-bet": "Сделать ставку",
+  "contractinfo.account": "Счёт ({accountBalance} ETH)",
+  "contractinfo.contract": "Контракт ({contractBalance} ETH)",
+  "contractinfo.not-connected": "Вы не подключены, зайдите с помощью MetaMask",
+  "flipbutton.text": "Подбросить на Орла",
+  "headers.navsections.navlink.about": "О нас",
+  "headers.navsections.navlink.coin-flip": "Подбросить монету",
+  "headers.navsections.navlink.home": "Главная",
+  "merged-log.transaction": "Операция:",
+  "merged-log.wallet": "Кошелёк:",
+  "rollunderrecap.for-a-profit-of": "Выигрыш",
+  "rollunderrecap.roll-under": "Надо получить меньше, чем",
+  "rollunderrecap.with-a-wager-of": "Ставка",
+  "transactions-filter-buttons.all-transactions": "Все операции",
+  "transactions-filter-buttons.my-transactions": "Мои операции"
+}
+

@@ -43,6 +43,13 @@ exports[`renders correctly 1`] = `
     >
       fr
     </button>
+    <button
+      className="dropdown-item"
+      onClick={[Function]}
+      type="button"
+    >
+      ru
+    </button>
   </div>
 </li>
 `;

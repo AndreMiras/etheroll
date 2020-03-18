@@ -1,5 +1,10 @@
 # Change Log
 
+## [Unreleased]
+
+  - Translate to Russian, refs #65
+
+
 ## [2020.03.07]
 
   - Language switcher, refs #61, #62 and #63
