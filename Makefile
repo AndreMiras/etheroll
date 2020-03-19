@@ -1,3 +1,6 @@
+DOCKER_IMAGE=etheroll-js
+DOCKER_COMMAND ?= /bin/bash
+
 all: install
 
 install:
@@ -20,3 +23,9 @@ intl: install
 
 deploy: install
 	yarn deploy
+
+docker/build:
+	docker build --tag=$(DOCKER_IMAGE) .
+
+docker/run:
+	docker run --rm -it $(DOCKER_IMAGE) $(DOCKER_COMMAND)
