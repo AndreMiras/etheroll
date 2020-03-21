@@ -4,6 +4,7 @@
 
   - Translate to Russian, refs #65
   - Docker build & run Makefile targets, refs #59
+  - Deploy to Heroku, refs #67
 
 
 ## [2020.03.07]

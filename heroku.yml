@@ -1,0 +1,12 @@
+build:
+  docker:
+    web:
+      dockerfile: Dockerfile
+      target: full
+run:
+  web: |
+    /bin/bash -c "
+      set -e
+      make start
+      /bin/bash || exit 0
+    "

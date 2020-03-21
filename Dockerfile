@@ -5,7 +5,7 @@
 # docker run etheroll-js /bin/sh -c 'make test CI=1'
 # Or for interactive shell:
 # docker run -it --rm etheroll-js
-FROM ubuntu:18.04
+FROM ubuntu:18.04 as base
 
 # configure locale
 RUN apt update -qq > /dev/null && apt install --yes --no-install-recommends \
@@ -35,3 +35,6 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 
 WORKDIR /app
 COPY . /app
+
+FROM base as full
+RUN make

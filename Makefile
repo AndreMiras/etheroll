@@ -25,7 +25,10 @@ deploy: install
 	yarn deploy
 
 docker/build:
-	docker build --tag=$(DOCKER_IMAGE) .
+	docker build --tag=$(DOCKER_IMAGE) --target=base .
+
+docker/build-full:
+	docker build --tag=$(DOCKER_IMAGE)-full --target=full .
 
 docker/run:
 	docker run --rm -it $(DOCKER_IMAGE) $(DOCKER_COMMAND)
