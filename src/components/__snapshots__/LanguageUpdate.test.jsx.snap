@@ -34,6 +34,13 @@ exports[`renders correctly 1`] = `
       onClick={[Function]}
       type="button"
     >
+      cn
+    </button>
+    <button
+      className="dropdown-item"
+      onClick={[Function]}
+      type="button"
+    >
       es
     </button>
     <button

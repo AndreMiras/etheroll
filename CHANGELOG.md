@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+  - Translate to Chinese, refs #64
   - Translate to Russian, refs #65
   - Docker build & run Makefile targets, refs #59
   - Deploy to Heroku, refs #67
