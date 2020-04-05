@@ -1,0 +1,21 @@
+{
+  "betsize.betsize": "赌注大小",
+  "chanceofwinning.chanceofwinning": "胜率",
+  "coinfliprecap.flip-head-with-a-wager": "抛正面游戏中{betSize}的下注额可以获得{profit}的收益",
+  "container.no-account-connected": "未连接任何帐户，请使用与Web3兼容的钱包（例如{metamaskLink}）进行连接",
+  "container.place-your-bet": "下注",
+  "contractinfo.account": "帐户 ({accountBalance} ETH)",
+  "contractinfo.contract": "合约 ({contractBalance} ETH)",
+  "contractinfo.not-connected": "未连接，请登录到MetaMask",
+  "flipbutton.text": "抛正面",
+  "headers.navsections.navlink.about": "关于我们",
+  "headers.navsections.navlink.coin-flip": "抛硬币",
+  "headers.navsections.navlink.home": "主页",
+  "merged-log.transaction": "交易:",
+  "merged-log.wallet": "钱包:",
+  "rollunderrecap.for-a-profit-of": "获利",
+  "rollunderrecap.roll-under": "骰子数上限",
+  "rollunderrecap.with-a-wager-of": "下注",
+  "transactions-filter-buttons.all-transactions": "所有交易",
+  "transactions-filter-buttons.my-transactions": "我的交易"
+}

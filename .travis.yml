@@ -6,11 +6,11 @@ services:
   - docker
 
 env:
-  - COMMAND='make test CI=true'
-  - COMMAND='make lint'
+  - DOCKER_COMMAND='make test CI=true'
+  - DOCKER_COMMAND='make lint'
 
 install:
-  - docker build --tag=etheroll-js .
+  - make docker/build
 
 script:
-  - docker run etheroll-js /bin/sh -c "$COMMAND"
+  - make docker/run

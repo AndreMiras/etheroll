@@ -1,5 +1,13 @@
 # Change Log
 
+## [2020.04.05]
+
+  - Docker build & run Makefile targets, refs #59
+  - Translate to Chinese, refs #64
+  - Translate to Russian, refs #65
+  - Deploy to Heroku, refs #67
+
+
 ## [2020.03.07]
 
   - Language switcher, refs #61, #62 and #63
