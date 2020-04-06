@@ -1,10 +1,10 @@
 # Docker image for installing dependencies & running tests.
 # Build with:
-# docker build --tag=etheroll-js .
+# docker build --tag=andremiras/etheroll-js .
 # Run with:
-# docker run etheroll-js /bin/sh -c 'make test CI=1'
+# docker run andremiras/etheroll-js /bin/sh -c 'make test CI=1'
 # Or for interactive shell:
-# docker run -it --rm etheroll-js
+# docker run -it --rm andremiras/etheroll-js
 FROM ubuntu:18.04 as base
 
 # install dependencies and configure locale
@@ -34,4 +34,10 @@ WORKDIR /app
 COPY . /app
 
 FROM base as full
-RUN make
+RUN make && yarn build-staging
+
+# prod environment
+FROM nginx:1.17.10 as prod
+COPY default.conf.template /etc/nginx/conf.d/default.conf.template
+COPY --from=full /app/build /usr/share/nginx/html
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
