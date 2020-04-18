@@ -1,5 +1,10 @@
 # Change Log
 
+## [Unreleased]
+
+  - Translate to Vietnamese (@hesman)
+
+
 ## [2020.04.05]
 
   - Docker build & run Makefile targets, refs #59
