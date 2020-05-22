@@ -1,0 +1,22 @@
+{
+  "betsize.betsize": "Tiền đặt cược",
+  "chanceofwinning.chanceofwinning": "Cơ hội thắng cược",
+  "coinfliprecap.flip-head-with-a-wager": "Đặc cược (50/50) với số tiền {betSize} tiền lời là {profit}",
+  "container.no-account-connected": "Ví chưa được kết nối, hãy dùng một ví tương thích với Web3. Ví dụ: {metamaskLink}",
+  "container.place-your-bet": "Đặt cược",
+  "contractinfo.account": "Số tiền bạn đang có ({accountBalance} ETH)",
+  "contractinfo.contract": "Số tiền nhà cái đang có  ({contractBalance} ETH)",
+  "contractinfo.not-connected": "Ví chưa được kết nối, hãy đăng nhập vào ví MetaMask",
+  "flipbutton.text": "Cược 50/50",
+  "headers.navsections.navlink.about": "Giới thiệu",
+  "headers.navsections.navlink.coin-flip": "Cược 50/50",
+  "headers.navsections.navlink.home": "Trang chính",
+  "merged-log.transaction": "Thông tin về lần quay:",
+  "merged-log.wallet": "Ví ETH:",
+  "rollunderrecap.for-a-profit-of": "Số tiền lời sẽ là",
+  "rollunderrecap.roll-under": "Quay dưới số",
+  "rollunderrecap.with-a-wager-of": "Với số tiền cược là",
+  "transactions-filter-buttons.all-transactions": "Tất cả các lần quay",
+  "transactions-filter-buttons.my-transactions": "Các lần quay của tôi"
+}
+

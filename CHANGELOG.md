@@ -1,5 +1,11 @@
 # Change Log
 
+## [2020.05.22]
+
+  - Translate to Vietnamese (@hesman)
+  - Migrate to new contract
+
+
 ## [2020.04.05]
 
   - Docker build & run Makefile targets, refs #59

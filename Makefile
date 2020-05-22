@@ -1,5 +1,6 @@
-DOCKER_IMAGE=etheroll-js
+DOCKER_IMAGE=andremiras/etheroll-js
 DOCKER_COMMAND ?= /bin/bash
+DOCKER_PORT=8000
 
 all: install
 
@@ -30,5 +31,11 @@ docker/build:
 docker/build-full:
 	docker build --tag=$(DOCKER_IMAGE)-full --target=full .
 
+docker/build-prod:
+	docker build --tag=$(DOCKER_IMAGE)-prod --target=prod .
+
 docker/run:
 	docker run --rm -it $(DOCKER_IMAGE) $(DOCKER_COMMAND)
+
+docker/run-prod:
+	docker run --rm -it --env PORT=$(DOCKER_PORT) --publish $(DOCKER_PORT):$(DOCKER_PORT) $(DOCKER_IMAGE)-prod
