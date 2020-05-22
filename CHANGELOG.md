@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [2020.05.22]
 
   - Translate to Vietnamese (@hesman)
   - Migrate to new contract
