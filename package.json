@@ -49,7 +49,7 @@
     "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^2.0.1",
     "identity-obj-proxy": "^3.0.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "popper.js": "^1.14.5"
   }
 }
