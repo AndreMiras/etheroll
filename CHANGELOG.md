@@ -3,6 +3,7 @@
 ## [Unreleased]
 
   - Translate to Vietnamese (@hesman)
+  - Migrate to new contract
 
 
 ## [2020.04.05]
