@@ -6,7 +6,7 @@ import etherollAbi from './etheroll-abi';
 const Networks = Object.freeze({ mainnet: 1, morden: 2, ropsten: 3 });
 
 const contractAddresses = {
-  [Networks.mainnet]: '0x3d47Be8585C747218DaDCe3BEE6Fe18eE02F8A24',
+  [Networks.mainnet]: '0xf478c8Bc5448236d52067c96F8f4C8376E62Fa8f',
   [Networks.ropsten]: '0xe12c6dEb59f37011d2D9FdeC77A6f1A8f3B8B1e8',
 };
 
