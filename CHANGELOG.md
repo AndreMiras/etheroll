@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [2020.05.28]
 
   - Migrate to new contract
 
