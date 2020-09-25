@@ -32,7 +32,7 @@ make test
 We provide a [Dockerfile](Dockerfile) that can be used for development or production.
 Build and run with:
 ```sh
-docker-compuse up
+docker-compose up
 ```
 The application will be server on both port `80` (default HTTP) and `3000` (default Node.js port).
 Find out more reading the [docker-compose.yml](docker-compose.yml) file.
