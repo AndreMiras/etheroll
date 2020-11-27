@@ -34,7 +34,7 @@ Build and run with:
 ```sh
 docker-compose up
 ```
-The application will be server on both port `80` (default HTTP) and `3000` (default Node.js port).
+The application will be served on both port `80` (default HTTP) and `3000` (default Node.js port).
 Find out more reading the [docker-compose.yml](docker-compose.yml) file.
 
 ## Deployment
