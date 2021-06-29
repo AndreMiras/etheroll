@@ -7,7 +7,7 @@ import Address from './Address';
 import Transaction from './Transaction';
 
 
-function MergedLog({ network, mergedLog }) {
+const MergedLog = ({ network, mergedLog }) => {
   const { logBetEvent, logResultEvent } = mergedLog;
   const playerNumber = Number(logBetEvent.returnValues.PlayerNumber);
   let valueEth = '?';
@@ -59,7 +59,7 @@ function MergedLog({ network, mergedLog }) {
       </div>
     </div>
   );
-}
+};
 MergedLog.propTypes = {
   network: number.isRequired,
   mergedLog: shape({
@@ -68,37 +68,35 @@ MergedLog.propTypes = {
   }).isRequired,
 };
 
-function TransactionsFilterButtons({ onClick }) {
-  return (
-    <nav className="nav">
-      <button
-        type="button"
-        className="btn btn-link active"
-        onClick={() => onClick('#all-transactions')}
-      >
-        <FormattedMessage
-          id="transactions-filter-buttons.all-transactions"
-          defaultMessage="All transactions"
-        />
-      </button>
-      <button
-        type="button"
-        className="btn btn-link"
-        onClick={() => onClick('#my-transactions')}
-      >
-        <FormattedMessage
-          id="transactions-filter-buttons.my-transactions"
-          defaultMessage="My transactions"
-        />
-      </button>
-    </nav>
-  );
-}
+const TransactionsFilterButtons = ({ onClick }) => (
+  <nav className="nav">
+    <button
+      type="button"
+      className="btn btn-link active"
+      onClick={() => onClick('#all-transactions')}
+    >
+      <FormattedMessage
+        id="transactions-filter-buttons.all-transactions"
+        defaultMessage="All transactions"
+      />
+    </button>
+    <button
+      type="button"
+      className="btn btn-link"
+      onClick={() => onClick('#my-transactions')}
+    >
+      <FormattedMessage
+        id="transactions-filter-buttons.my-transactions"
+        defaultMessage="My transactions"
+      />
+    </button>
+  </nav>
+);
 TransactionsFilterButtons.propTypes = {
   onClick: func.isRequired,
 };
 
-function Transactions({ network, onClick, transactions }) {
+const Transactions = ({ network, onClick, transactions }) => {
   const reversedTransactions = transactions.slice().reverse();
   const transactionsElems = reversedTransactions.map(transaction => (
     <MergedLog
@@ -117,7 +115,7 @@ function Transactions({ network, onClick, transactions }) {
       </div>
     </div>
   );
-}
+};
 Transactions.propTypes = {
   network: number.isRequired,
   onClick: func.isRequired,

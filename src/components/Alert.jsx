@@ -1,15 +1,15 @@
 import React from 'react';
 import { string, node, oneOfType } from 'prop-types';
 
-function Alert({ classType, message }) {
-  return message
+const Alert = ({ classType, message }) => (
+  message
     ? (
       <div className={`alert alert-${classType}`} role="alert">
         {message}
       </div>
     )
-    : null;
-}
+    : null
+);
 Alert.propTypes = {
   classType: string,
   message: oneOfType([string, node]),

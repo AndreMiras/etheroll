@@ -3,9 +3,9 @@ import { number, string } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import Address from './Address';
 
-function ContractInfo({
+const ContractInfo = ({
   accountAddress, accountBalance, contractAddress, contractBalance, network,
-}) {
+}) => {
   const contractAddr = <Address network={network} address={contractAddress} />;
 
   const contractBalanceBlock = (
@@ -62,7 +62,7 @@ function ContractInfo({
       {contractAddressBlock}
     </div>
   );
-}
+};
 ContractInfo.propTypes = {
   accountAddress: string,
   accountBalance: number.isRequired,

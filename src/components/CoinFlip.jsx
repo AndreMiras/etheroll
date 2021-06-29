@@ -9,7 +9,7 @@ import CoinFlipRecap from './CoinFlipRecap';
 import CoinFlipTransactions from './CoinFlipTransactions';
 
 
-function CoinFlip(props) {
+const CoinFlip = (props) => {
   const {
     accountAddress, betSize, contract,
     filterTransactions, filteredTransactions, minBet, maxBet, network,
@@ -32,7 +32,7 @@ function CoinFlip(props) {
       />
     </Fragment>
   );
-}
+};
 
 CoinFlip.propTypes = {
   accountAddress: string,

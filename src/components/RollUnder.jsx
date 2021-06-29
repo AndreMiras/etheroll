@@ -11,7 +11,7 @@ import RollButton from './RollButton';
 import Transactions from './Transactions';
 
 
-function RollUnder(props) {
+const RollUnder = (props) => {
   const {
     accountAddress, betSize, chances, contract,
     filterTransactions, filteredTransactions, minBet, maxBet, minChances, maxChances, network,
@@ -37,7 +37,7 @@ function RollUnder(props) {
       />
     </div>
   );
-}
+};
 RollUnder.propTypes = {
   accountAddress: string,
   betSize: number.isRequired,

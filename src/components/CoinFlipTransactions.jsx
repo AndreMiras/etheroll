@@ -7,7 +7,7 @@ import Address from './Address';
 import Transaction from './Transaction';
 
 
-function MergedLog({ network, mergedLog }) {
+const MergedLog = ({ network, mergedLog }) => {
   const { logBetEvent, logResultEvent } = mergedLog;
   const playerNumber = Number(logBetEvent.returnValues.PlayerNumber);
   // const playerSide = 'Head';
@@ -52,7 +52,7 @@ function MergedLog({ network, mergedLog }) {
       </div>
     </div>
   );
-}
+};
 MergedLog.propTypes = {
   network: number.isRequired,
   mergedLog: shape({
@@ -89,7 +89,7 @@ TransactionsFilterButtons.propTypes = {
   onClick: func.isRequired,
 };
 
-function Transactions({ network, onClick, transactions }) {
+const Transactions = ({ network, onClick, transactions }) => {
   const coinflipTransactions = transactions.filter(transaction => (
     Number(transaction.logBetEvent.returnValues.PlayerNumber) === 51
   ));
@@ -111,7 +111,7 @@ function Transactions({ network, onClick, transactions }) {
       </div>
     </div>
   );
-}
+};
 Transactions.propTypes = {
   network: number.isRequired,
   onClick: func.isRequired,

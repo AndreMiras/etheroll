@@ -4,9 +4,9 @@ import { func, number, string } from 'prop-types';
 import 'rc-slider/assets/index.css';
 
 
-function ValueSlider({
+const ValueSlider = ({
   value, updateValue, step, min, max, addonText, toFixedDigits,
-}) {
+}) => {
   const addon = (addonText !== null) ? (
     <div className="input-group-append">
       <span className="input-group-text text-monospace">{addonText}</span>
@@ -29,7 +29,7 @@ function ValueSlider({
       </div>
     </div>
   );
-}
+};
 ValueSlider.propTypes = {
   value: number.isRequired,
   updateValue: func.isRequired,

@@ -3,6 +3,8 @@ import etherollAbi from './etheroll-abi';
 // TODO require vs import
 // const SolidityEvent = require('web3/lib/web3/event.js');
 
+const HOUSE_EDGE = 1 / 100.0;
+
 const Networks = Object.freeze({ mainnet: 1, morden: 2, ropsten: 3 });
 
 const contractAddresses = {
@@ -16,16 +18,15 @@ const etherscanUrls = {
 };
 
 
-function getPayout(betSize, winningChances) {
-  return 100 / winningChances * betSize;
-}
+const getPayout = (betSize, winningChances) => (
+  100 / winningChances * betSize
+);
 
-function cutHouseEdge(payout) {
-  const houseEdge = 1 / 100.0;
-  return payout * (1 - houseEdge);
-}
+const cutHouseEdge = payout => (
+  payout * (1 - HOUSE_EDGE)
+);
 
-function getProfit(betSize, winningChances) {
+const getProfit = (betSize, winningChances) => {
   if (winningChances === 0) {
     return 0;
   }
@@ -33,11 +34,11 @@ function getProfit(betSize, winningChances) {
   const netPayout = cutHouseEdge(rawPayout);
 
   return Math.max(netPayout - betSize, 0);
-}
+};
 
 
 // Merges bet logs (LogBet) with bet results logs (LogResult).
-function mergeLogs(logBetEvents, logResultEvents) {
+const mergeLogs = (logBetEvents, logResultEvents) => {
   const findLogResultEventBylogBetEvent = logBetEvent => (
     logResultEvents.find(logResultEvent => (
       logResultEvent.returnValues.BetID === logBetEvent.returnValues.BetID
@@ -48,7 +49,7 @@ function mergeLogs(logBetEvents, logResultEvents) {
     logBetEvent,
     logResultEvent: findLogResultEventBylogBetEvent(logBetEvent),
   }));
-}
+};
 
 class EtherollContract {
   constructor(web3, address) {

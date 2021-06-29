@@ -104,13 +104,13 @@ class MockContract {
   }
 }
 
-function mockWeb3() {
-  return {
+const mockWeb3 = () => (
+  {
     eth: {
       Contract: MockContract,
     },
-  };
-}
+  }
+);
 
 describe('EtherollContract', () => {
   it('construct with two parameters', () => {

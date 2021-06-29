@@ -4,7 +4,7 @@ import { number } from 'prop-types';
 import { getProfit } from '../utils/etheroll-contract';
 
 
-function RollUnderRecap({ betSize, value }) {
+const RollUnderRecap = ({ betSize, value }) => {
   const chances = value - 1;
   const profit = getProfit(betSize, chances);
   return (
@@ -48,7 +48,7 @@ function RollUnderRecap({ betSize, value }) {
       </div>
     </div>
   );
-}
+};
 RollUnderRecap.propTypes = {
   betSize: number.isRequired,
   value: number.isRequired,

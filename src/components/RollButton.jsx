@@ -20,9 +20,9 @@ Button.defaultProps = {
   isDisabled: false,
 };
 
-function RollButton({ isDisabled, onClick }) {
-  return <Button text="Roll" isDisabled={isDisabled} onClick={onClick} />;
-}
+const RollButton = ({ isDisabled, onClick }) => (
+  <Button text="Roll" isDisabled={isDisabled} onClick={onClick} />
+);
 RollButton.propTypes = {
   isDisabled: bool,
   onClick: func.isRequired,

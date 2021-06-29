@@ -21,7 +21,7 @@ Button.defaultProps = {
   isDisabled: false,
 };
 
-function FlipButton({ isDisabled, onClick }) {
+const FlipButton = ({ isDisabled, onClick }) => {
   // https://github.com/leesx/react-intl-demo2018/blob/0cd88df/docs/react-intl-corner-cases.md
   const messages = defineMessages({
     text: {
@@ -32,7 +32,7 @@ function FlipButton({ isDisabled, onClick }) {
   const intl = useIntl();
   return (
     <Button text={intl.formatMessage(messages.text)} isDisabled={isDisabled} onClick={onClick} />);
-}
+};
 FlipButton.propTypes = {
   isDisabled: bool,
   onClick: func.isRequired,

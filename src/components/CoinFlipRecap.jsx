@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { getProfit } from '../utils/etheroll-contract';
 
 
-function CoinFlipRecap({ betSize }) {
+const CoinFlipRecap = ({ betSize }) => {
   const chances = 50;
   const profit = getProfit(betSize, chances);
   return (
@@ -16,7 +16,7 @@ function CoinFlipRecap({ betSize }) {
       />
     </p>
   );
-}
+};
 CoinFlipRecap.propTypes = {
   betSize: number.isRequired,
 };
