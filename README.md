@@ -8,9 +8,9 @@
 Experimental project running an alternative [Etheroll](http://etheroll.com) frontend on [ReactJS](https://reactjs.org).
 If you're looking for the mobile app instead, see [EtherollApp](https://github.com/AndreMiras/EtherollApp).
 
-## Disclaimer
-This is very early stage and experimental.
-I'm learning ReactJS while building it, but I'm not a UX designer.
+## Closed down
+The upstream project/smart-contract closed down.
+<https://www.reddit.com/r/etheroll/comments/peeekh/etheroll_is_closing_down/>
 
 ## Run
 ```sh
