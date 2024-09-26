@@ -1,8 +1,5 @@
 import etherollAbi from './etheroll-abi';
 
-// TODO require vs import
-// const SolidityEvent = require('web3/lib/web3/event.js');
-
 const HOUSE_EDGE = 1 / 100.0;
 
 const Networks = Object.freeze({ mainnet: 1, morden: 2, ropsten: 3 });

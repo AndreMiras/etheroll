@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { fromWei } from 'web3-utils';
@@ -209,13 +209,11 @@ class Container extends React.Component {
     const getWeb3CallbackError = () => {
       const classType = 'danger';
       const message = (
-        <Fragment>
-          <FormattedMessage
-            id="container.no-account-connected"
-            defaultMessage={'No account connected, connect with a Web3-compatible wallet like {metamaskLink}'}
-            values={{ metamaskLink: <MetaMaskLink /> }}
-          />
-        </Fragment>
+        <FormattedMessage
+          id="container.no-account-connected"
+          defaultMessage={'No account connected, connect with a Web3-compatible wallet like {metamaskLink}'}
+          values={{ metamaskLink: <MetaMaskLink /> }}
+        />
       );
       showMessage(classType, message, this.updateState('alertDict'));
     };

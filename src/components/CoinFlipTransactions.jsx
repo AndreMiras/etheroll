@@ -10,7 +10,6 @@ import Transaction from './Transaction';
 const MergedLog = ({ network, mergedLog }) => {
   const { logBetEvent, logResultEvent } = mergedLog;
   const playerNumber = Number(logBetEvent.returnValues.PlayerNumber);
-  // const playerSide = 'Head';
   let valueEth = '?';
   let coinResult = '?';
   let alertClass = 'secondary';

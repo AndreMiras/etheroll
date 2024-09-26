@@ -5,7 +5,7 @@
 # docker run andremiras/etheroll-js /bin/sh -c 'make test CI=1'
 # Or for interactive shell:
 # docker run -it --rm andremiras/etheroll-js
-FROM ubuntu:18.04 as base
+FROM ubuntu:18.04 AS base
 
 # install dependencies and configure locale
 RUN apt update -qq > /dev/null && apt --yes install --no-install-recommends \
@@ -33,11 +33,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 WORKDIR /app
 COPY . /app
 
-FROM base as full
+FROM base AS full
 RUN make && yarn build-staging
 
 # prod environment
-FROM nginx:1.17.10 as prod
+FROM nginx:1.17.10 AS prod
 COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 COPY --from=full /app/build /usr/share/nginx/html
 CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
