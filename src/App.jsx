@@ -15,6 +15,7 @@ const App = () => {
     <Router>
       <IntlProvider locale={locale} messages={messages[locale]}>
         <div className="App">
+          <br />
           <Headers />
           <Container />
           <Footers />
